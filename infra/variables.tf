@@ -13,6 +13,7 @@ variable "subdomain" {
 variable "vercel_cname_target" {
   description = "CNAME target shown by Vercel under Project > Settings > Domains."
   type        = string
+  default     = "10160acc069ed795.vercel-dns-017.com"
 }
 
 variable "vercel_verification_txt" {

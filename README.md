@@ -63,9 +63,12 @@ records are left alone.
 ```sh
 cd infra
 tofu init
-tofu plan  -var vercel_cname_target=<value from Vercel>
-tofu apply -var vercel_cname_target=<value from Vercel>
+tofu plan
+tofu apply
 ```
+
+The CNAME target defaults to the value Vercel shows for this project under
+Settings > Domains; update `vercel_cname_target` if Vercel ever changes it.
 
 State is local (`infra/terraform.tfstate`, git-ignored). If it is lost, run
 `tofu import aws_route53_record.site <ZONE_ID>_lukasz.jagiello.org_CNAME`.
