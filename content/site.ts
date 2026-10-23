@@ -60,7 +60,7 @@ export const projectGroups: ProjectGroup[] = [
       {
         name: "ctf-skills",
         description:
-          "Agent skills for solving CTF challenges: web exploitation, binary pwn, crypto, reverse engineering, forensics and OSINT. 3,500+ stars on GitHub.",
+          "Hacking know-how for AI coding agents. It teaches Claude Code, Codex and other agents how to work through CTF challenges, from web bugs and binary exploits to crypto and forensics.",
         language: "Python",
         year: "2026",
         repo: "https://github.com/ljagiello/ctf-skills",
@@ -68,7 +68,7 @@ export const projectGroups: ProjectGroup[] = [
       {
         name: "lastwar-client",
         description:
-          "From-scratch Go client for Last War: Survival Game, covering its RSA/AES crypto and SFS2X wire protocol. Interoperability research.",
+          "A from-scratch client for the mobile game Last War, built by reverse-engineering how the app talks to its servers. It logs in and runs a real game session without the official app; the full protocol write-up is at lastwar.tech.",
         language: "Go",
         year: "2026",
         repo: "https://github.com/ljagiello/lastwar-client",
@@ -76,7 +76,7 @@ export const projectGroups: ProjectGroup[] = [
       {
         name: "git-clone",
         description:
-          "Clones repositories into a predictable ~/code/<host>/<org>/<repo> layout and prints the path.",
+          "Never wonder where you cloned something again. Whatever URL you give it, the repo lands in the same place under ~/code, and it prints the path so you can cd straight in.",
         language: "Go",
         year: "2024",
         repo: "https://github.com/ljagiello/git-clone",
@@ -89,14 +89,14 @@ export const projectGroups: ProjectGroup[] = [
       {
         name: "IceFinder",
         description:
-          "Wearable LED pendant for Burning Man: ESP32-S3 firmware running shareable light patterns, with an iOS and Android companion app over Bluetooth.",
+          "A wearable LED pendant for Burning Man 2027. You pick a light pattern as your personal signature and tune it from a phone app, so friends can spot you across the playa.",
         language: "C++",
         year: "2026",
       },
       {
         name: "yamaha-cli",
         description:
-          "Command-line control for Yamaha YXC/MusicCast AV receivers.",
+          "Control a Yamaha receiver from the terminal. It finds the receiver on your network by itself and handles volume, inputs, radio and multi-room audio, so it's easy to script.",
         language: "Go",
         year: "2026",
         repo: "https://github.com/ljagiello/yamaha-cli",
@@ -104,7 +104,7 @@ export const projectGroups: ProjectGroup[] = [
       {
         name: "airdash",
         description:
-          "AirGradient air quality measurements in the macOS menu bar.",
+          "Puts your AirGradient air-quality readings in the macOS menu bar, so CO2, PM2.5, temperature and humidity are always a glance away.",
         language: "Go",
         year: "2023",
         repo: "https://github.com/ljagiello/airdash",
