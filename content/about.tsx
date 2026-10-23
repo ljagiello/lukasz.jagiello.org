@@ -13,9 +13,11 @@ export function About() {
         <a href="https://www.linkedin.com/in/lukaszjagiello/">LinkedIn</a>.
       </p>
       <p>
-        Outside work I play CTFs a few times a year, just for fun. I finished
-        24th of 817 at the 36C3 Junior CTF, and lately I&apos;ve been teaching
-        coding agents to play too: with{" "}
+        Outside work I play CTFs as{" "}
+        <a href="https://ctftime.org/team/57347">LCF</a>. My best finishes so
+        far are 4th of 808 at MetaCTF&apos;s March Flash CTF and 11th of 890 at
+        KnightCTF.
+        Lately I&apos;ve been teaching coding agents to play too: with{" "}
         <a href="https://github.com/ljagiello/ctf-skills">ctf-skills</a>, one
         solved 50 of 54 challenges at BSidesSF. I also like taking apart the
         things around me, from firmware and wire protocols to the gadgets on my
