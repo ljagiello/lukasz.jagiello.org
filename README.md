@@ -23,6 +23,14 @@ npm run build
 
 Node 24 (see `engines` in `package.json`).
 
+TypeScript 7 runs side by side with the TypeScript 6 API, as
+[recommended by the TypeScript team](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/#running-side-by-side-with-typescript-6.0):
+`@typescript/native` is TypeScript 7 and provides `tsc`, which `npm run
+typecheck` and `next build` use. `typescript` is an alias for
+`@typescript/typescript6`, because typescript-eslint still needs the
+JavaScript API that TypeScript 7 doesn't ship yet. Once typescript-eslint
+supports TypeScript 7, drop the alias and depend on `typescript@^7` directly.
+
 ## Environment variables
 
 Set these in Vercel under Project > Settings > Environment Variables
