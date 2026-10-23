@@ -1,32 +1,7 @@
 @import "tailwindcss";
 
-/* Light is the default; dark follows the system setting, and the theme toggle
-   overrides either one by setting data-theme on <html>. */
+/* Dark only. */
 :root {
-  color-scheme: light;
-  --bg: #eef1f2;
-  --ink: #11171c;
-  --mute: #58646f;
-  --rule: #d2dadf;
-  --soft: #e4e9ec;
-  --acc: oklch(0.52 0.12 215);
-  --glow: oklch(0.7 0.12 210 / 0.3);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    color-scheme: dark;
-    --bg: #06090c;
-    --ink: #e8eef3;
-    --mute: #8a96a3;
-    --rule: #1d252e;
-    --soft: #0c1116;
-    --acc: oklch(0.84 0.12 205);
-    --glow: oklch(0.84 0.12 205 / 0.35);
-  }
-}
-
-:root[data-theme="dark"] {
   color-scheme: dark;
   --bg: #06090c;
   --ink: #e8eef3;
@@ -76,9 +51,6 @@ a:hover {
   font-family: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
   font-size: 18px;
   line-height: 1.6;
-  transition:
-    background-color 400ms,
-    color 400ms;
 }
 
 .mono {
@@ -201,52 +173,6 @@ a:hover {
   to {
     background-position: -20% 0;
   }
-}
-
-/* Top bar */
-
-.topbar {
-  display: flex;
-  justify-content: flex-end;
-  font-size: 12px;
-}
-
-.theme-toggle {
-  padding: 6px 12px;
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  background: var(--bg);
-  color: var(--ink);
-  font: inherit;
-  cursor: pointer;
-  transition: border-color 200ms;
-}
-
-.theme-toggle:hover {
-  border-color: var(--acc);
-}
-
-/* The toggle names the theme it switches to. */
-.theme-to-light {
-  display: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .theme-to-dark {
-    display: none;
-  }
-
-  :root:not([data-theme="light"]) .theme-to-light {
-    display: inline;
-  }
-}
-
-:root[data-theme="dark"] .theme-to-dark {
-  display: none;
-}
-
-:root[data-theme="dark"] .theme-to-light {
-  display: inline;
 }
 
 /* Header */
@@ -491,8 +417,6 @@ a:hover {
     mask-position: 50% 0;
   }
 
-  .site,
-  .theme-toggle,
   .profiles a,
   .card,
   .contact-button {
