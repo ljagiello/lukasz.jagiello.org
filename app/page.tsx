@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { About } from "@/content/about";
-import { activeLinks, now, projectGroups, site } from "@/content/site";
+import { activeLinks, projectGroups, site } from "@/content/site";
 import photo from "@/public/photo.jpg";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -58,17 +58,6 @@ export default function Home() {
               <About />
             </div>
           </header>
-
-          <section className="now" aria-labelledby="now">
-            <h2 id="now" className="now-label mono">
-              Now, {now.updated}
-            </h2>
-            <ul className="now-items">
-              {now.items.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </section>
 
           <section className="projects" aria-labelledby="projects">
             <h2 id="projects">Side projects</h2>

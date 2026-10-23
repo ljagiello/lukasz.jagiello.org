@@ -53,17 +53,6 @@ export const links: Link[] = [
   { label: "Instagram", href: "https://www.instagram.com/lukaszjagiello/" },
 ];
 
-// The "Now" strip under the header. Update the month by hand when the items
-// change.
-export const now = {
-  updated: "Oct 2026",
-  items: [
-    "Leading teams building AI agents and developer platforms.",
-    "Building IceFinder, a wearable LED pendant, for the 2027 burn.",
-    "Teaching coding agents to play CTFs with ctf-skills.",
-  ],
-};
-
 export const projectGroups: ProjectGroup[] = [
   {
     title: "Hacking and tooling",

@@ -343,53 +343,11 @@ a:hover {
   white-space: nowrap;
 }
 
-/* Now */
-
-.now {
-  padding: 24px 0 28px;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-}
-
-.now-label {
-  margin: 0 0 16px;
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--mute);
-}
-
-.now-items {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-  gap: 16px 32px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.now-items li {
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
-  font-size: 17px;
-  line-height: 1.45;
-}
-
-.now-items li::before {
-  content: "";
-  flex: none;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--acc);
-  box-shadow: 0 0 10px 1px var(--glow);
-  transform: translateY(-2px);
-}
-
 /* Side projects */
 
 .projects {
-  margin-top: 72px;
+  padding-top: 48px;
+  border-top: 1px solid var(--rule);
 }
 
 .projects h2 {
