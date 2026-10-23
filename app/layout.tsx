@@ -1,13 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo } from "next/font/google";
+import { Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { activeLinks, site } from "@/content/site";
 import "./globals.css";
 
-const archivo = Archivo({
-  variable: "--font-archivo",
+const sans = Hanken_Grotesk({
+  variable: "--font-hanken",
   subsets: ["latin", "latin-ext"],
-  axes: ["wdth"],
+});
+
+const mono = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin", "latin-ext"],
 });
 
 const gaId = process.env.NEXT_PUBLIC_GA_ID;
@@ -43,8 +47,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f3f6f8" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f1824" },
+    { media: "(prefers-color-scheme: light)", color: "#eef1f2" },
+    { media: "(prefers-color-scheme: dark)", color: "#06090c" },
   ],
 };
 
@@ -73,7 +77,7 @@ const personJsonLd = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={archivo.variable}>
+    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
       <body>
         {children}
         <script

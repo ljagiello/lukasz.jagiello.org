@@ -4,7 +4,7 @@ export function About() {
   return (
     <>
       <p>
-        Hi, I&apos;m Łukasz. I got started in 2003 running the dorm network at
+        Hi, I&apos;m Lukasz. I got started in 2003 running the dorm network at
         Gdańsk University of Technology, and I&apos;ve been building
         infrastructure, and the teams behind it, ever since: at Fandom, at
         Fleetsmith and then Apple, and as a co-founder of Tempest. These days I

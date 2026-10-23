@@ -1,93 +1,111 @@
 import Image from "next/image";
 import { About } from "@/content/about";
-import { activeLinks, projectGroups, site } from "@/content/site";
+import { activeLinks, now, projectGroups, site } from "@/content/site";
 import photo from "@/public/photo.jpg";
+import { ThemeToggle } from "./theme-toggle";
+
+const projects = projectGroups.flatMap((group) =>
+  group.projects.map((project) => ({ ...project, group: group.title })),
+);
 
 export default function Home() {
   return (
-    <main className="page">
-      <header className="hero">
-        <Image
-          src={photo}
-          alt={site.photo.alt}
-          className="portrait"
-          width={160}
-          height={160}
-          preload
-        />
-        <div className="hero-text">
-          <h1 className="name">
-            <span>{site.givenName}</span> <span>{site.familyName}</span>
-          </h1>
-          <p className="headline">{site.jobTitle}</p>
-          <p className="location">{site.location}</p>
-        </div>
-      </header>
-
-      <div className="about">
-        <About />
+    <div className="site">
+      <div className="backdrop" aria-hidden="true">
+        <div className="backdrop-dots" />
+        <div className="backdrop-halo" />
+        <div className="backdrop-wave backdrop-wave-1" />
+        <div className="backdrop-wave backdrop-wave-2" />
       </div>
 
-      <nav aria-label="Profiles and contact">
-        <ul className="links">
-          {activeLinks.map((link) => (
-            <li key={link.label}>
-              <a
-                href={link.href}
-                className="link-button"
-                // rel="me" marks the other profiles as belonging to the same person.
-                rel={link.href.startsWith("https://") ? "me" : undefined}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <div className="page">
+        <div className="topbar mono">
+          <span>{site.url.replace("https://", "")}</span>
+          <ThemeToggle />
+        </div>
 
-      <section className="section" aria-labelledby="projects">
-        <h2 id="projects">Side projects</h2>
-        {projectGroups.map((group) => (
-          <div key={group.title} className="project-group">
-            <h3 className="project-group-title">{group.title}</h3>
-            <ul className="projects">
-              {group.projects.map((project) => (
-                <li key={project.name} className="project">
-                  <h4 className="project-name">
-                    {project.repo ? (
-                      <a href={project.repo}>{project.name}</a>
-                    ) : (
-                      project.name
-                    )}
-                  </h4>
-                  <p className="project-description">{project.description}</p>
-                  <p className="project-meta">
-                    <span>{project.year}</span>
-                    <span>{project.language}</span>
-                    {project.repo ? (
-                      <a href={project.repo} className="project-repo">
-                        {project.repo.replace("https://", "")}
+        <main>
+          <header className="hero">
+            <div>
+              <Image
+                src={photo}
+                alt={site.photo.alt}
+                className="portrait"
+                width={80}
+                height={80}
+                preload
+              />
+              <h1 className="name">
+                <span>{site.givenName}</span> <span>{site.familyName}</span>
+              </h1>
+              <p className="tagline mono">
+                {site.jobTitle} · {site.location}
+              </p>
+              <nav aria-label="Profiles">
+                <ul className="profiles mono">
+                  {activeLinks.map((link) => (
+                    <li key={link.label}>
+                      {/* rel="me" marks the other profiles as belonging to the same person. */}
+                      <a href={link.href} rel="me">
+                        {link.label}
                       </a>
-                    ) : null}
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+            <div className="about">
+              <About />
+            </div>
+          </header>
+
+          <section className="now" aria-labelledby="now">
+            <h2 id="now" className="now-label mono">
+              Now, {now.updated}
+            </h2>
+            <ul className="now-items">
+              {now.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="projects" aria-labelledby="projects">
+            <h2 id="projects">Side projects</h2>
+            <ul className="cards">
+              {projects.map((project) => (
+                <li key={project.name} className="card">
+                  <p className="card-meta mono">
+                    <span>{project.group}</span>
+                    <span>
+                      {project.language} · {project.year}
+                    </span>
                   </p>
+                  <h3>{project.name}</h3>
+                  <p className="card-description">{project.description}</p>
+                  {project.repo ? (
+                    <a href={project.repo} className="card-repo mono">
+                      {project.repo.replace("https://", "")}
+                    </a>
+                  ) : null}
                 </li>
               ))}
             </ul>
-          </div>
-        ))}
-      </section>
+          </section>
 
-      <section className="section" aria-labelledby="contact">
-        <h2 id="contact">Contact</h2>
-        <p className="contact">
-          Email is the quickest way to reach me:{" "}
-          <a href={`mailto:${site.email}`}>{site.email}</a>
-        </p>
-      </section>
+          <section className="contact" aria-labelledby="contact">
+            <div>
+              <h2 id="contact">Contact</h2>
+              <p>Email is the quickest way to reach me.</p>
+            </div>
+            <a href={`mailto:${site.email}`} className="contact-button">
+              Contact me <span aria-hidden="true">→</span>
+            </a>
+          </section>
+        </main>
 
-      <footer className="footer">
-        <p>{site.name}</p>
-      </footer>
-    </main>
+        <footer className="footer mono">{site.name}</footer>
+      </div>
+    </div>
   );
 }
