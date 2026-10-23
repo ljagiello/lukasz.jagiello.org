@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { activeLinks, experience, projects, site } from "@/content/site";
+import { About } from "@/content/about";
+import { activeLinks, projectGroups, site } from "@/content/site";
 import photo from "@/public/photo.jpg";
 
 export default function Home() {
@@ -23,7 +24,9 @@ export default function Home() {
         </div>
       </header>
 
-      <p className="intro">{site.intro}</p>
+      <div className="about">
+        <About />
+      </div>
 
       <nav aria-label="Profiles and contact">
         <ul className="links">
@@ -42,52 +45,36 @@ export default function Home() {
         </ul>
       </nav>
 
-      <section className="section" aria-labelledby="experience">
-        <h2 id="experience">Experience</h2>
-        <ol className="timeline">
-          {experience.map((role) => (
-            <li key={`${role.company}-${role.years}`} className="role">
-              <p className="role-years">{role.years}</p>
-              <div>
-                <h3 className="role-title">
-                  {role.title},{" "}
-                  {role.url ? (
-                    <a href={role.url}>{role.company}</a>
-                  ) : (
-                    role.company
-                  )}
-                </h3>
-                <p className="role-summary">{role.summary}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </section>
-
       <section className="section" aria-labelledby="projects">
         <h2 id="projects">Side projects</h2>
-        <ul className="projects">
-          {projects.map((project) => (
-            <li key={project.name} className="project">
-              <h3 className="project-name">
-                {project.repo ? (
-                  <a href={project.repo}>{project.name}</a>
-                ) : (
-                  project.name
-                )}
-              </h3>
-              <p className="project-description">{project.description}</p>
-              <p className="project-meta">
-                <span>{project.language}</span>
-                {project.repo ? (
-                  <a href={project.repo} className="project-repo">
-                    {project.repo.replace("https://", "")}
-                  </a>
-                ) : null}
-              </p>
-            </li>
-          ))}
-        </ul>
+        {projectGroups.map((group) => (
+          <div key={group.title} className="project-group">
+            <h3 className="project-group-title">{group.title}</h3>
+            <ul className="projects">
+              {group.projects.map((project) => (
+                <li key={project.name} className="project">
+                  <h4 className="project-name">
+                    {project.repo ? (
+                      <a href={project.repo}>{project.name}</a>
+                    ) : (
+                      project.name
+                    )}
+                  </h4>
+                  <p className="project-description">{project.description}</p>
+                  <p className="project-meta">
+                    <span>{project.year}</span>
+                    <span>{project.language}</span>
+                    {project.repo ? (
+                      <a href={project.repo} className="project-repo">
+                        {project.repo.replace("https://", "")}
+                      </a>
+                    ) : null}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </section>
 
       <section className="section" aria-labelledby="contact">

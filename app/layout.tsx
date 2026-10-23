@@ -61,7 +61,7 @@ const personJsonLd = {
     jobTitle: site.jobTitle,
     alumniOf: { "@type": "CollegeOrUniversity", name: site.alumniOf },
     homeLocation: { "@type": "Place", name: site.location },
-    description: site.intro,
+    description: site.description,
     url: site.url,
     image: new URL(site.photo.src, site.url).toString(),
     email: `mailto:${site.email}`,
