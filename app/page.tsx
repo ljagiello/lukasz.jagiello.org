@@ -20,7 +20,6 @@ export default function Home() {
 
       <div className="page">
         <div className="topbar mono">
-          <span>{site.url.replace("https://", "")}</span>
           <ThemeToggle />
         </div>
 
