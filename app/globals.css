@@ -6,7 +6,7 @@
   --muted: #55677d;
   --rule: #c7d2dc;
   --accent: #0b64a8;
-  --label-col: 13rem;
+  --label-col: 9rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -58,8 +58,9 @@ a:hover {
   border-radius: 2px;
 }
 
+/* One centered reading column; every section shares its left and right edge. */
 .page {
-  max-width: 64rem;
+  max-width: 48rem;
   margin: 0 auto;
   padding: 3rem 1rem 2rem;
 }
@@ -75,7 +76,7 @@ a:hover {
 .hero {
   display: grid;
   gap: 1.75rem;
-  align-items: end;
+  align-items: center;
 }
 
 @media (min-width: 44rem) {
@@ -102,7 +103,7 @@ a:hover {
 
 .name {
   margin: 0;
-  font-size: clamp(2.75rem, 8vw, 4.75rem);
+  font-size: clamp(2.5rem, 9vw, 4.25rem);
   font-weight: 800;
   font-stretch: 125%;
   line-height: 0.95;
@@ -126,7 +127,6 @@ a:hover {
 }
 
 .about {
-  max-width: 40rem;
   margin-top: 2.5rem;
   font-size: 1.1875rem;
   line-height: 1.6;
@@ -138,6 +138,11 @@ a:hover {
 
 .about p:last-child {
   margin-bottom: 0;
+}
+
+/* Keep short inline links like "ctf-skills" from breaking at the hyphen. */
+.about a {
+  white-space: nowrap;
 }
 
 .links {
@@ -250,7 +255,6 @@ a:hover {
 
 .project-description {
   margin: 0;
-  max-width: 40rem;
 }
 
 .project-meta {
