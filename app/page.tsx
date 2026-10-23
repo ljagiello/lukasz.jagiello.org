@@ -1,29 +1,71 @@
 import Image from "next/image";
-import { Pinout } from "@/components/pinout";
-import { activeLinks, projects, site } from "@/content/site";
+import { activeLinks, experience, projects, site } from "@/content/site";
 import photo from "@/public/photo.jpg";
 
 export default function Home() {
   return (
     <main className="page">
       <header className="hero">
+        <Image
+          src={photo}
+          alt={site.photo.alt}
+          className="portrait"
+          width={160}
+          height={160}
+          preload
+        />
         <div className="hero-text">
-          <Image
-            src={photo}
-            alt={site.photo.alt}
-            className="portrait"
-            width={112}
-            height={112}
-            preload
-          />
           <h1 className="name">
             <span>{site.givenName}</span> <span>{site.familyName}</span>
           </h1>
-          <p className="headline">{site.headline}</p>
-          <p className="intro">{site.intro}</p>
+          <p className="headline">
+            {site.jobTitle} at{" "}
+            <a href={site.company.url}>{site.company.name}</a>
+          </p>
+          <p className="location">{site.location}</p>
         </div>
-        <Pinout links={activeLinks} marking="LJ" />
       </header>
+
+      <p className="intro">{site.intro}</p>
+
+      <nav aria-label="Profiles and contact">
+        <ul className="links">
+          {activeLinks.map((link) => (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                className="link-button"
+                // rel="me" marks the other profiles as belonging to the same person.
+                rel={link.href.startsWith("https://") ? "me" : undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <section className="section" aria-labelledby="experience">
+        <h2 id="experience">Experience</h2>
+        <ol className="timeline">
+          {experience.map((role) => (
+            <li key={`${role.company}-${role.years}`} className="role">
+              <p className="role-years">{role.years}</p>
+              <div>
+                <h3 className="role-title">
+                  {role.title},{" "}
+                  {role.url ? (
+                    <a href={role.url}>{role.company}</a>
+                  ) : (
+                    role.company
+                  )}
+                </h3>
+                <p className="role-summary">{role.summary}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
 
       <section className="section" aria-labelledby="projects">
         <h2 id="projects">Side projects</h2>

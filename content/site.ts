@@ -5,6 +5,14 @@ export type Link = {
   href: string;
 };
 
+export type Role = {
+  years: string;
+  title: string;
+  company: string;
+  url?: string;
+  summary: string;
+};
+
 export type Project = {
   name: string;
   description: string;
@@ -14,38 +22,89 @@ export type Project = {
 
 export const site = {
   url: "https://lukasz.jagiello.org",
-  name: "Lukasz Jagiello",
-  givenName: "Lukasz",
-  familyName: "Jagiello",
-  // Shown under the name and used as the search result description.
-  headline: "Software engineer",
+  name: "Łukasz Jagiełło",
+  // ASCII spelling, so searches without Polish characters still match.
+  alternateName: "Lukasz Jagiello",
+  givenName: "Łukasz",
+  familyName: "Jagiełło",
+  jobTitle: "VP of Engineering",
+  company: { name: "Friday AI", url: "https://hellofriday.ai" },
+  location: "San Francisco Bay Area",
   intro:
-    "I build developer tools, play CTFs, and take apart firmware and network protocols to see how they work.",
+    "I lead engineering at Friday AI, a local-first platform for running AI agent workflows. Before that I co-founded Tempest, helped ship Apple Business Essentials after Apple acquired Fleetsmith, and ran global infrastructure at Fandom. Outside work I play CTFs and build security tooling.",
+  // Search result and link preview description.
   description:
-    "Lukasz Jagiello: software engineer. Side projects in security, reverse engineering and Go tooling, plus how to get in touch.",
+    "Łukasz Jagiełło is VP of Engineering at Friday AI. Previously co-founder of Tempest, engineering manager at Apple via the Fleetsmith acquisition, and director of technical operations at Fandom.",
   email: "lukasz@jagiello.org",
   photo: {
     src: "/photo.jpg",
-    alt: "Portrait of Lukasz Jagiello",
+    alt: "Portrait of Łukasz Jagiełło",
   },
   twitterHandle: "@lcfpl",
+  alumniOf: "Gdańsk University of Technology",
 };
 
-// Rendered as pins on the pinout diagram, in order. Links with an empty
-// href are skipped, so fill in LinkedIn and Instagram to make them appear.
+// Shown as buttons under the intro, in order. Links with an empty href are
+// skipped, so fill in Instagram to make it appear.
 export const links: Link[] = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/lukaszjagiello/" },
   { label: "GitHub", href: "https://github.com/ljagiello" },
-  { label: "LinkedIn", href: "" }, // TODO: https://www.linkedin.com/in/<handle>/
-  { label: "Instagram", href: "" }, // TODO: https://www.instagram.com/<handle>/
   { label: "X", href: "https://x.com/lcfpl" },
+  { label: "Instagram", href: "" }, // TODO: https://www.instagram.com/<handle>/
   { label: "Email", href: `mailto:${site.email}` },
+];
+
+export const experience: Role[] = [
+  {
+    years: "2026 – now",
+    title: "VP of Engineering",
+    company: "Friday AI",
+    url: "https://hellofriday.ai",
+    summary:
+      "Leading engineering for a local-first platform that turns natural-language requests into repeatable, production-grade AI agent workflows.",
+  },
+  {
+    years: "2023 – 2026",
+    title: "Co-founder & VP of Engineering",
+    company: "Tempest",
+    summary:
+      "Built an internal developer platform with self-serve workflows and security guardrails, from day zero to public launch and a $3.2M seed round.",
+  },
+  {
+    years: "2020 – 2023",
+    title: "Engineering Manager",
+    company: "Apple",
+    summary:
+      "Led the team behind the cloud platform for Apple Business Essentials, Apple's first B2B SaaS product.",
+  },
+  {
+    years: "2019 – 2020",
+    title: "Director of Engineering, Cloud Operations",
+    company: "Fleetsmith",
+    summary:
+      "Built the cloud platform for Fleetsmith's Apple device management product on Google Cloud, through its acquisition by Apple.",
+  },
+  {
+    years: "2013 – 2019",
+    title: "Director of Technical Operations",
+    company: "Fandom",
+    summary:
+      "Ran infrastructure for one of the 20 largest websites in the world: four datacenters on two continents and a global CDN.",
+  },
+  {
+    years: "2003 – 2012",
+    title: "Systems and network administration",
+    company: "Gdańsk, Poland",
+    summary:
+      "Started out running the Gdańsk University of Technology campus network, then high-availability systems for web companies.",
+  },
 ];
 
 export const projects: Project[] = [
   {
     name: "ctf-skills",
     description:
-      "Agent skills for solving CTF challenges: web exploitation, binary pwn, crypto, reverse engineering, forensics and OSINT.",
+      "Agent skills for solving CTF challenges: web exploitation, binary pwn, crypto, reverse engineering, forensics and OSINT. A coding agent using them solved 50 of 54 challenges at BSidesSF CTF.",
     language: "Python",
     repo: "https://github.com/ljagiello/ctf-skills",
   },
@@ -57,8 +116,7 @@ export const projects: Project[] = [
   },
   {
     name: "yamaha-cli",
-    description:
-      "Command-line control for Yamaha YXC/MusicCast AV receivers.",
+    description: "Command-line control for Yamaha YXC/MusicCast AV receivers.",
     language: "Go",
     repo: "https://github.com/ljagiello/yamaha-cli",
   },

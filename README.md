@@ -5,11 +5,10 @@ Personal page. Next.js (App Router), hosted on Vercel, DNS in Route53.
 ## Editing content
 
 Everything on the page comes from [`content/site.ts`](content/site.ts): name,
-intro, links (drawn as pins on the chip), side projects and contact email.
+title, intro, profile links, experience, side projects and contact email.
 Replace `public/photo.jpg` to change the photo (square, at least 400×400).
 
-Links with an empty `href` are hidden; fill in LinkedIn and Instagram to show
-them.
+Links with an empty `href` are hidden; fill in Instagram to show it.
 
 ## Development
 
