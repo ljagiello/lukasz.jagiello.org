@@ -255,8 +255,15 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
   gap: clamp(40px, 6vw, 72px);
-  align-items: end;
   padding: clamp(64px, 10vw, 120px) 0 clamp(56px, 8vw, 96px);
+}
+
+/* Side by side, the photo lines up with the top of the about text and the
+   links with its bottom. */
+.hero-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .portrait {

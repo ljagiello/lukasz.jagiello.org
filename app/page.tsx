@@ -25,7 +25,7 @@ export default function Home() {
 
         <main>
           <header className="hero">
-            <div>
+            <div className="hero-intro">
               <Image
                 src={photo}
                 alt={site.photo.alt}
@@ -34,24 +34,26 @@ export default function Home() {
                 height={112}
                 preload
               />
-              <h1 className="name">
-                <span>{site.givenName}</span> <span>{site.familyName}</span>
-              </h1>
-              <p className="tagline mono">
-                {site.jobTitle} · {site.location}
-              </p>
-              <nav aria-label="Profiles">
-                <ul className="profiles mono">
-                  {activeLinks.map((link) => (
-                    <li key={link.label}>
-                      {/* rel="me" marks the other profiles as belonging to the same person. */}
-                      <a href={link.href} rel="me">
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
+              <div>
+                <h1 className="name">
+                  <span>{site.givenName}</span> <span>{site.familyName}</span>
+                </h1>
+                <p className="tagline mono">
+                  {site.jobTitle} · {site.location}
+                </p>
+                <nav aria-label="Profiles">
+                  <ul className="profiles mono">
+                    {activeLinks.map((link) => (
+                      <li key={link.label}>
+                        {/* rel="me" marks the other profiles as belonging to the same person. */}
+                        <a href={link.href} rel="me">
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              </div>
             </div>
             <div className="about">
               <About />
