@@ -31,8 +31,8 @@ export default function Home() {
                 src={photo}
                 alt={site.photo.alt}
                 className="portrait"
-                width={80}
-                height={80}
+                width={112}
+                height={112}
                 preload
               />
               <h1 className="name">
