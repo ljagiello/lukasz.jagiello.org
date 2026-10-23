@@ -2,7 +2,6 @@ import Image from "next/image";
 import { About } from "@/content/about";
 import { activeLinks, projectGroups, site } from "@/content/site";
 import photo from "@/public/photo.jpg";
-import { ThemeToggle } from "./theme-toggle";
 
 const projects = projectGroups.flatMap((group) =>
   group.projects.map((project) => ({ ...project, group: group.title })),
@@ -19,10 +18,6 @@ export default function Home() {
       </div>
 
       <div className="page">
-        <div className="topbar mono">
-          <ThemeToggle />
-        </div>
-
         <main>
           <header className="hero">
             <div>

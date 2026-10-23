@@ -46,10 +46,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#eef1f2" },
-    { media: "(prefers-color-scheme: dark)", color: "#06090c" },
-  ],
+  themeColor: "#06090c",
 };
 
 // Lets Google show the page as a profile with links to the other accounts.
