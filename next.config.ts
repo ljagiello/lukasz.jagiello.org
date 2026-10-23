@@ -5,6 +5,14 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {
+    // Next.js always bundles polyfills for Array.prototype.at, Object.hasOwn
+    // and friends, which every browser it supports already has natively
+    // (Lighthouse flags them as legacy JavaScript). Swap in an empty module.
+    // The key matches the relative path next/dist/client/app-globals.js uses
+    // to require it; the package path doesn't match.
+    resolveAlias: {
+      "../build/polyfills/polyfill-module": "./no-polyfills.js",
+    },
     rules: {
       "*.css": {
         loaders: ["@tailwindcss/turbopack"],
