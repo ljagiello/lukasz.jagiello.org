@@ -70,14 +70,20 @@ export default function Home() {
           {projects.map((project) => (
             <li key={project.name} className="project">
               <h3 className="project-name">
-                <a href={project.repo}>{project.name}</a>
+                {project.repo ? (
+                  <a href={project.repo}>{project.name}</a>
+                ) : (
+                  project.name
+                )}
               </h3>
               <p className="project-description">{project.description}</p>
               <p className="project-meta">
                 <span>{project.language}</span>
-                <a href={project.repo} className="project-repo">
-                  {project.repo.replace("https://", "")}
-                </a>
+                {project.repo ? (
+                  <a href={project.repo} className="project-repo">
+                    {project.repo.replace("https://", "")}
+                  </a>
+                ) : null}
               </p>
             </li>
           ))}

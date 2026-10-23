@@ -17,7 +17,8 @@ export type Project = {
   name: string;
   description: string;
   language: string;
-  repo: string;
+  // Omit for private projects; the name is then shown without a link.
+  repo?: string;
 };
 
 export const site = {
@@ -120,11 +121,10 @@ export const projects: Project[] = [
     repo: "https://github.com/ljagiello/yamaha-cli",
   },
   {
-    name: "totem-compass",
+    name: "IceFinder",
     description:
-      "Reverse-engineering notes for the Totem Compass ESP32 firmware: memory map, frozen modules, and its BLE, ESP-NOW and Wi-Fi OTA protocols.",
-    language: "Go",
-    repo: "https://github.com/ljagiello/totem-compass",
+      "Wearable LED pendant for Burning Man: ESP32-S3 firmware running shareable light patterns, with an iOS and Android companion app over Bluetooth.",
+    language: "C++",
   },
   {
     name: "lastwar-client",
