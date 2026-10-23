@@ -46,6 +46,7 @@ export const links: Link[] = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/lukaszjagiello/" },
   { label: "GitHub", href: "https://github.com/ljagiello" },
   { label: "CTFtime", href: "https://ctftime.org/team/57347" },
+  { label: "Discogs", href: "https://www.discogs.com/user/lcf" },
   { label: "X", href: "https://x.com/lcfpl" },
   { label: "Instagram", href: "https://www.instagram.com/lukaszjagiello/" },
   { label: "Email", href: `mailto:${site.email}` },

@@ -29,6 +29,12 @@ export function About() {
         behind the Iceberg art car, and I&apos;m making IceFinder, a wearable
         LED pendant, for the 2027 burn.
       </p>
+      <p>
+        I also collect records, mostly breakbeat hardcore and jungle on 12-inch
+        vinyl, with a serious Kniteforce habit. The collection is close to
+        2,000 releases, all of it on{" "}
+        <a href="https://www.discogs.com/user/lcf/collection">Discogs</a>.
+      </p>
     </>
   );
 }
