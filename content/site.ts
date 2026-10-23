@@ -31,10 +31,10 @@ export const site = {
   company: { name: "Friday AI", url: "https://hellofriday.ai" },
   location: "San Francisco Bay Area",
   intro:
-    "I lead engineering at Friday AI, a local-first platform for running AI agent workflows. Before that I co-founded Tempest, helped ship Apple Business Essentials after Apple acquired Fleetsmith, and ran global infrastructure at Fandom. Outside work I play CTFs and build security tooling.",
+    "I lead engineering teams building AI agents, developer platforms and infrastructure. Along the way I co-founded Tempest, helped ship Apple Business Essentials after Apple acquired Fleetsmith, and ran global infrastructure at Fandom. Outside work I play CTFs and build security tooling.",
   // Search result and link preview description.
   description:
-    "Łukasz Jagiełło is VP of Engineering at Friday AI. Previously co-founder of Tempest, engineering manager at Apple via the Fleetsmith acquisition, and director of technical operations at Fandom.",
+    "Łukasz Jagiełło is an engineering leader working on AI agents, developer platforms and infrastructure. Co-founder of Tempest, previously at Apple via the Fleetsmith acquisition and at Fandom.",
   email: "lukasz@jagiello.org",
   photo: {
     src: "/photo.jpg",
