@@ -25,35 +25,33 @@ export default function Home() {
 
         <main>
           <header className="hero">
-            <div className="hero-intro">
+            <div>
               <Image
                 src={photo}
                 alt={site.photo.alt}
                 className="portrait"
-                width={112}
-                height={112}
+                width={176}
+                height={176}
                 preload
               />
-              <div>
-                <h1 className="name">
-                  <span>{site.givenName}</span> <span>{site.familyName}</span>
-                </h1>
-                <p className="tagline mono">
-                  {site.jobTitle} · {site.location}
-                </p>
-                <nav aria-label="Profiles">
-                  <ul className="profiles mono">
-                    {activeLinks.map((link) => (
-                      <li key={link.label}>
-                        {/* rel="me" marks the other profiles as belonging to the same person. */}
-                        <a href={link.href} rel="me">
-                          {link.label}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-              </div>
+              <h1 className="name">
+                <span>{site.givenName}</span> <span>{site.familyName}</span>
+              </h1>
+              <p className="tagline mono">
+                {site.jobTitle} · {site.location}
+              </p>
+              <nav aria-label="Profiles">
+                <ul className="profiles mono">
+                  {activeLinks.map((link) => (
+                    <li key={link.label}>
+                      {/* rel="me" marks the other profiles as belonging to the same person. */}
+                      <a href={link.href} rel="me">
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
             </div>
             <div className="about">
               <About />

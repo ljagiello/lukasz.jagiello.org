@@ -255,23 +255,25 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
   gap: clamp(40px, 6vw, 72px);
+  align-items: end;
   padding: clamp(64px, 10vw, 120px) 0 clamp(56px, 8vw, 96px);
-}
-
-/* Side by side, the photo lines up with the top of the about text and the
-   links with its bottom. */
-.hero-intro {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 .portrait {
   display: block;
-  width: 112px;
-  height: 112px;
+  width: 128px;
+  height: 128px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+/* Side by side (the header goes two-column at 1000px), this size puts the
+   top of the photo level with the top of the about text. */
+@media (min-width: 1000px) {
+  .portrait {
+    width: 176px;
+    height: 176px;
+  }
 }
 
 .name {
