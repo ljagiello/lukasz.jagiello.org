@@ -21,27 +21,29 @@ export type ProjectGroup = {
 
 export const site = {
   url: "https://lukasz.jagiello.org",
-  name: "Łukasz Jagiełło",
-  // ASCII spelling, so searches without Polish characters still match.
-  alternateName: "Lukasz Jagiello",
-  givenName: "Łukasz",
-  familyName: "Jagiełło",
+  // The page uses the ASCII spelling of the name.
+  name: "Lukasz Jagiello",
+  // Polish spelling, so searches with Polish characters still match.
+  alternateName: "Łukasz Jagiełło",
+  givenName: "Lukasz",
+  familyName: "Jagiello",
   jobTitle: "Engineering leader",
   location: "San Francisco Bay Area",
   // Search result and link preview description; also the structured-data bio.
   description:
-    "Łukasz Jagiełło is an engineering leader in the San Francisco Bay Area. He plays CTFs, takes apart firmware and protocols, and builds art for Burning Man.",
+    "Lukasz Jagiello is an engineering leader in the San Francisco Bay Area. He plays CTFs, takes apart firmware and protocols, and builds art for Burning Man.",
   email: "lukasz@jagiello.org",
   photo: {
     src: "/photo.jpg",
-    alt: "Portrait of Łukasz Jagiełło",
+    alt: "Portrait of Lukasz Jagiello",
   },
   twitterHandle: "@lcfpl",
   alumniOf: "Gdańsk University of Technology",
 };
 
-// Shown as buttons under the about text, in order. Links with an empty href
-// are skipped.
+// Profile links under the name, in order; also the structured-data sameAs
+// list. Email has its own Contact section. Links with an empty href are
+// skipped.
 export const links: Link[] = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/lukaszjagiello/" },
   { label: "GitHub", href: "https://github.com/ljagiello" },
@@ -49,7 +51,6 @@ export const links: Link[] = [
   { label: "Discogs", href: "https://www.discogs.com/user/lcf" },
   { label: "X", href: "https://x.com/lcfpl" },
   { label: "Instagram", href: "https://www.instagram.com/lukaszjagiello/" },
-  { label: "Email", href: `mailto:${site.email}` },
 ];
 
 export const projectGroups: ProjectGroup[] = [
