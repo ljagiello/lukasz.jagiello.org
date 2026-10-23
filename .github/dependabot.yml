@@ -1,0 +1,60 @@
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    # Skip releases younger than this, to dodge compromised versions that get
+    # pulled within a day or two of publishing.
+    cooldown:
+      default-days: 3
+    groups:
+      # These are released together and must stay on the same version.
+      nextjs:
+        patterns:
+          - next
+          - "@next/*"
+          - eslint-config-next
+      react:
+        patterns:
+          - react
+          - react-dom
+          - "@types/react"
+          - "@types/react-dom"
+      tailwind:
+        patterns:
+          - tailwindcss
+          - "@tailwindcss/*"
+      dev-tooling:
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
+    ignore:
+      # Tracks the Node.js runtime (engines.node and the Vercel project
+      # setting); bump the major together with the runtime.
+      - dependency-name: "@types/node"
+        update-types:
+          - version-update:semver-major
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    cooldown:
+      default-days: 3
+    groups:
+      actions:
+        patterns:
+          - "*"
+
+  - package-ecosystem: opentofu
+    directory: /infra
+    schedule:
+      interval: weekly
+      day: monday
+    cooldown:
+      default-days: 3
