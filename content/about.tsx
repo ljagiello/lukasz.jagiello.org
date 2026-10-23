@@ -4,35 +4,28 @@ export function About() {
   return (
     <>
       <p>
-        Hi, I&apos;m Lukasz. I got started in 2003 running the dorm network at
-        Gdańsk University of Technology, and I&apos;ve been building
-        infrastructure, and the teams behind it, ever since: at Fandom, at
-        Fleetsmith and then Apple, and as a co-founder of Tempest. These days I
-        lead teams building AI agents and developer platforms. The full résumé
-        lives on{" "}
+        Hi, I&apos;m Lukasz. I&apos;ve been building infrastructure, and the
+        teams behind it, for more than twenty years. These days that means AI
+        agents and developer platforms. The résumé version is on{" "}
         <a href="https://www.linkedin.com/in/lukaszjagiello/">LinkedIn</a>.
       </p>
       <p>
-        Outside work I play CTFs as{" "}
-        <a href="https://ctftime.org/team/57347">LCF</a>. My best finishes so
-        far are 4th of 808 at MetaCTF&apos;s March Flash CTF and 11th of 890 at
-        KnightCTF.
-        Lately I&apos;ve been teaching coding agents to play too: with{" "}
-        <a href="https://github.com/ljagiello/ctf-skills">ctf-skills</a>, one
-        solved 50 of 54 challenges at BSidesSF. I also like taking apart the
-        things around me, from firmware and wire protocols to the gadgets on my
-        desk.
+        In my spare time I play{" "}
+        <a href="https://ctftime.org/team/57347">CTFs</a>. I also build{" "}
+        <a href="https://github.com/ljagiello/ctf-skills">ctf-skills</a>, an
+        open-source set of skills that teaches coding agents to solve CTF
+        challenges. And I like taking things apart to see how they work, from
+        firmware and wire protocols to whatever gadget is on my desk.
       </p>
       <p>
-        I&apos;m part of the Burning Man community. I help build art with{" "}
+        At Burning Man I help build art with{" "}
         <a href="https://www.titanicsend.com/">Titanic&apos;s End</a>, the crew
-        behind the Iceberg art car, and I&apos;m making IceFinder, a wearable
-        LED pendant, for the 2027 burn.
+        behind the Iceberg art car. For the 2027 burn I&apos;m making IceFinder,
+        a wearable LED pendant.
       </p>
       <p>
-        I also collect records, mostly breakbeat hardcore and jungle on 12-inch
-        vinyl, with a serious Kniteforce habit. The collection is close to
-        2,000 releases, all of it on{" "}
+        I also collect records, mostly breakbeat hardcore and jungle on vinyl,
+        with a real weakness for Kniteforce. The whole collection is on{" "}
         <a href="https://www.discogs.com/user/lcf/collection">Discogs</a>.
       </p>
     </>
