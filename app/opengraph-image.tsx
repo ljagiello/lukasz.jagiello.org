@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/content/site";
 
-export const alt = `${site.name}: ${site.jobTitle} at ${site.company.name}`;
+export const alt = `${site.name}: ${site.jobTitle}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -44,9 +44,7 @@ export default function OpengraphImage() {
             paddingTop: 28,
           }}
         >
-          <span>
-            {site.jobTitle} at {site.company.name}
-          </span>
+          <span>{site.jobTitle}</span>
           <span>{site.url.replace("https://", "")}</span>
         </div>
       </div>

@@ -15,7 +15,7 @@ const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: `${site.name}: ${site.jobTitle} at ${site.company.name}`,
+  title: `${site.name}: ${site.jobTitle}`,
   description: site.description,
   keywords: [site.name, site.alternateName],
   applicationName: site.name,
@@ -59,11 +59,6 @@ const personJsonLd = {
     givenName: site.givenName,
     familyName: site.familyName,
     jobTitle: site.jobTitle,
-    worksFor: {
-      "@type": "Organization",
-      name: site.company.name,
-      url: site.company.url,
-    },
     alumniOf: { "@type": "CollegeOrUniversity", name: site.alumniOf },
     homeLocation: { "@type": "Place", name: site.location },
     description: site.intro,

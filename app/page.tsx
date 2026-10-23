@@ -18,10 +18,7 @@ export default function Home() {
           <h1 className="name">
             <span>{site.givenName}</span> <span>{site.familyName}</span>
           </h1>
-          <p className="headline">
-            {site.jobTitle} at{" "}
-            <a href={site.company.url}>{site.company.name}</a>
-          </p>
+          <p className="headline">{site.jobTitle}</p>
           <p className="location">{site.location}</p>
         </div>
       </header>

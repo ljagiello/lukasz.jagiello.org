@@ -27,8 +27,7 @@ export const site = {
   alternateName: "Lukasz Jagiello",
   givenName: "Łukasz",
   familyName: "Jagiełło",
-  jobTitle: "VP of Engineering",
-  company: { name: "Friday AI", url: "https://hellofriday.ai" },
+  jobTitle: "Engineering leader",
   location: "San Francisco Bay Area",
   intro:
     "I lead engineering teams building AI agents, developer platforms and infrastructure. Along the way I co-founded Tempest, helped ship Apple Business Essentials after Apple acquired Fleetsmith, and ran global infrastructure at Fandom. Outside work I play CTFs, write security tooling, and build art and projects for Burning Man.",
@@ -56,12 +55,12 @@ export const links: Link[] = [
 
 export const experience: Role[] = [
   {
-    years: "2026 – now",
+    years: "2026",
     title: "VP of Engineering",
     company: "Friday AI",
     url: "https://hellofriday.ai",
     summary:
-      "Leading engineering for a local-first platform that turns natural-language requests into repeatable, production-grade AI agent workflows.",
+      "Local-first platform that turns natural-language requests into repeatable, production-grade AI agent workflows.",
   },
   {
     years: "2023 – 2026",

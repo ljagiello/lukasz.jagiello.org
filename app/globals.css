@@ -120,10 +120,6 @@ a:hover {
   font-stretch: 110%;
 }
 
-.headline a {
-  color: inherit;
-}
-
 .location {
   margin: 0.25rem 0 0;
   color: var(--muted);
