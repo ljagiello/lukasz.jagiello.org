@@ -8,7 +8,7 @@ Everything on the page comes from [`content/site.ts`](content/site.ts): name,
 title, intro, profile links, experience, side projects and contact email.
 Replace `public/photo.jpg` to change the photo (square, at least 400×400).
 
-Links with an empty `href` are hidden; fill in Instagram to show it.
+Links with an empty `href` are hidden.
 
 ## Development
 

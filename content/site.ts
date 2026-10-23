@@ -45,12 +45,12 @@ export const site = {
 };
 
 // Shown as buttons under the intro, in order. Links with an empty href are
-// skipped, so fill in Instagram to make it appear.
+// skipped.
 export const links: Link[] = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/lukaszjagiello/" },
   { label: "GitHub", href: "https://github.com/ljagiello" },
   { label: "X", href: "https://x.com/lcfpl" },
-  { label: "Instagram", href: "" }, // TODO: https://www.instagram.com/<handle>/
+  { label: "Instagram", href: "https://www.instagram.com/lukaszjagiello/" },
   { label: "Email", href: `mailto:${site.email}` },
 ];
 
