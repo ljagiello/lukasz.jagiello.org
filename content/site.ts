@@ -77,9 +77,17 @@ export const links: Link[] = [
   },
 ];
 
-// Side project cards, most recently active first. Reorder as activity
-// changes.
+// Side project cards. IceFinder, the current focus, goes first; the rest are
+// most recently active first. Reorder as activity changes.
 export const projects: Project[] = [
+  {
+    name: "IceFinder",
+    category: "Hardware",
+    description:
+      "A wearable LED pendant for Burning Man 2027. Its lights point toward your friends, so you can find each other anywhere on the playa.",
+    language: "C++",
+    year: "2026",
+  },
   {
     name: "lastwar-client",
     category: "Hacking and tooling",
@@ -98,14 +106,6 @@ export const projects: Project[] = [
     language: "Python",
     year: "2026",
     repo: "https://github.com/ljagiello/ctf-skills",
-  },
-  {
-    name: "IceFinder",
-    category: "Hardware",
-    description:
-      "A wearable LED pendant for Burning Man 2027. Its lights point toward your friends, so you can find each other anywhere on the playa.",
-    language: "C++",
-    year: "2026",
   },
   {
     name: "Totem Compass",
