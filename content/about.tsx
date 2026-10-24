@@ -26,8 +26,11 @@ export function About() {
       </p>
       <p>
         I also collect records, mostly breakbeat hardcore and jungle on vinyl,
-        with a real weakness for Kniteforce. The whole collection is on{" "}
-        <a href="https://www.discogs.com/user/lcf/collection">Discogs</a>. When
+        with a real weakness for Kniteforce. The collection lives on{" "}
+        <a href="https://www.discogs.com/user/lcf/collection">Discogs</a> and{" "}
+        <a href="https://bandcamp.com/ljagiello">Bandcamp</a>, and what I&apos;m
+        listening to lately is on{" "}
+        <a href="https://soundcloud.com/jagiello-lukasz">SoundCloud</a>. When
         I&apos;m not digging through record crates, I&apos;m at a show or chasing
         the big sound camps on the playa.
       </p>
