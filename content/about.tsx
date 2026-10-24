@@ -4,33 +4,35 @@ export function About() {
   return (
     <>
       <p>
-        Hi, I&apos;m Lukasz. I&apos;ve been building infrastructure, and the
-        teams behind it, for more than twenty years. These days that means AI
-        agents and developer platforms. The résumé version is on{" "}
+        I’ve spent more than twenty years building infrastructure and the teams
+        behind it. These days, my focus is on AI agents and developer
+        platforms. You can find the professional version of my story on{" "}
         <a href="https://www.linkedin.com/in/lukaszjagiello/">LinkedIn</a>.
       </p>
       <p>
-        In my spare time I play{" "}
-        <a href="https://ctftime.org/team/57347">CTFs</a>. I also build{" "}
+        Outside of work, I play{" "}
+        <a href="https://ctftime.org/team/57347">CTFs</a> and build{" "}
         <a href="https://github.com/ljagiello/ctf-skills">ctf-skills</a>, an
-        open-source set of skills that teaches coding agents to solve CTF
-        challenges. And I like taking things apart to see how they work, from
-        firmware and wire protocols to whatever gadget is on my desk. Away from
-        the desk, I&apos;m usually grilling something or snowboarding at Tahoe.
+        open-source collection of skills that helps coding agents solve CTF
+        challenges. I’ve always enjoyed taking things apart to understand how
+        they work, whether it’s firmware, wire protocols, or whatever gadget
+        happens to be on my desk. When I’m not tinkering with something, I’m
+        probably grilling or snowboarding in Tahoe.
       </p>
       <p>
-        At Burning Man I help build art with{" "}
-        <a href="https://www.titanicsend.com/">Titanic&apos;s End</a>, the crew
-        behind the Iceberg art car. For the 2027 burn I&apos;m making IceFinder,
-        a wearable LED pendant.
+        At Burning Man, I’m part of{" "}
+        <a href="https://www.titanicsend.com/">Titanic’s End</a>, the crew
+        behind the Iceberg art car. My latest project is IceFinder, a light-up
+        pendant that points you toward your friends, making it easier to find
+        each other in the chaos of the playa.
       </p>
       <p>
-        I also collect records, mostly breakbeat hardcore and jungle on vinyl,
-        with a real weakness for Kniteforce. The collection lives on{" "}
+        I’m also a vinyl collector, mostly breakbeat hardcore and jungle, with a
+        particular soft spot for Kniteforce. My collection is on{" "}
         <a href="https://www.discogs.com/user/lcf/collection">Discogs</a> and{" "}
-        <a href="https://bandcamp.com/ljagiello">Bandcamp</a>. When I&apos;m not
-        digging through record crates, I&apos;m at a show or chasing the big
-        sound camps on the playa.
+        <a href="https://bandcamp.com/ljagiello">Bandcamp</a>. When I’m not
+        digging through record crates, you’ll find me at a show or somewhere in
+        front of a massive sound system on the playa.
       </p>
     </>
   );

@@ -126,7 +126,7 @@ export const projectGroups: ProjectGroup[] = [
       {
         name: "IceFinder",
         description:
-          "A wearable LED pendant for Burning Man 2027. You pick a light pattern as your personal signature and tune it from a phone app, so friends can spot you across the playa.",
+          "A wearable LED pendant for Burning Man 2027. Its lights point toward your friends, so you can find each other anywhere on the playa.",
         language: "C++",
         year: "2026",
       },
