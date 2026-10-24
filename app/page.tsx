@@ -72,10 +72,19 @@ export default function Home() {
                   </p>
                   <h3>{project.name}</h3>
                   <p className="card-description">{project.description}</p>
-                  {project.repo ? (
-                    <a href={project.repo} className="card-repo mono">
-                      {project.repo.replace("https://", "")}
-                    </a>
+                  {project.url || project.repo ? (
+                    <p className="card-links mono">
+                      {project.url ? (
+                        <a href={project.url}>
+                          {project.url.replace("https://", "")}
+                        </a>
+                      ) : null}
+                      {project.repo ? (
+                        <a href={project.repo}>
+                          {project.repo.replace("https://", "")}
+                        </a>
+                      ) : null}
+                    </p>
                   ) : null}
                 </li>
               ))}
