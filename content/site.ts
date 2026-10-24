@@ -18,6 +18,8 @@ export type Link = {
 
 export type Project = {
   name: string;
+  // Shown in the card's corner, e.g. "Hardware".
+  category: string;
   description: string;
   language: string;
   year: string;
@@ -25,11 +27,6 @@ export type Project = {
   url?: string;
   // Omit for private projects.
   repo?: string;
-};
-
-export type ProjectGroup = {
-  title: string;
-  projects: Project[];
 };
 
 export const site = {
@@ -80,81 +77,81 @@ export const links: Link[] = [
   },
 ];
 
-export const projectGroups: ProjectGroup[] = [
+// Side project cards. IceFinder, the current focus, goes first; the rest are
+// most recently active first. Reorder as activity changes.
+export const projects: Project[] = [
   {
-    title: "Hacking and tooling",
-    projects: [
-      {
-        name: "ctf-skills",
-        description:
-          "Hacking know-how for AI coding agents. It teaches Claude Code, Codex and other agents how to work through CTF challenges, from web bugs and binary exploits to crypto and forensics.",
-        language: "Python",
-        year: "2026",
-        repo: "https://github.com/ljagiello/ctf-skills",
-      },
-      {
-        name: "lastwar-client",
-        description:
-          "A from-scratch client for the mobile game Last War, built by reverse-engineering how the app talks to its servers. It logs in and runs a real game session without the official app, and its site has the full protocol write-up.",
-        language: "Go",
-        year: "2026",
-        url: "https://lastwar.tech",
-        repo: "https://github.com/ljagiello/lastwar-client",
-      },
-      {
-        name: "Poo Math",
-        description:
-          "Plans the least glamorous part of Burning Man: when your RV needs pumping out and refilling. It simulates a thousand possible weeks to predict when the tanks fill up, then drafts your reply to the camp's RV survey.",
-        language: "Svelte",
-        year: "2026",
-        url: "https://poomath.com",
-        repo: "https://github.com/ljagiello/poomath.com",
-      },
-      {
-        name: "git-clone",
-        description:
-          "Never wonder where you cloned something again. Whatever URL you give it, the repo lands in the same place under ~/code, and it prints the path so you can cd straight in.",
-        language: "Go",
-        year: "2024",
-        repo: "https://github.com/ljagiello/git-clone",
-      },
-    ],
+    name: "IceFinder",
+    category: "Hardware",
+    description:
+      "A wearable LED pendant for Burning Man 2027. Its lights point toward your friends, so you can find each other anywhere on the playa.",
+    language: "C++",
+    year: "2026",
   },
   {
-    title: "Hardware",
-    projects: [
-      {
-        name: "IceFinder",
-        description:
-          "A wearable LED pendant for Burning Man 2027. Its lights point toward your friends, so you can find each other anywhere on the playa.",
-        language: "C++",
-        year: "2026",
-      },
-      {
-        name: "Totem Compass",
-        description:
-          "A teardown of the Totem Compass, the festival gadget that helps friends find each other. It explains how the firmware works and how the devices talk to the phone and to each other, with a working client and an ESP32 that joins the mesh.",
-        language: "Go",
-        year: "2026",
-        repo: "https://github.com/ljagiello/totem-compass",
-      },
-      {
-        name: "yamaha-cli",
-        description:
-          "Control a Yamaha receiver from the terminal. It finds the receiver on your network by itself and handles volume, inputs, radio and multi-room audio, so it's easy to script.",
-        language: "Go",
-        year: "2026",
-        repo: "https://github.com/ljagiello/yamaha-cli",
-      },
-      {
-        name: "airdash",
-        description:
-          "Puts your AirGradient air-quality readings in the macOS menu bar, so CO2, PM2.5, temperature and humidity are always a glance away.",
-        language: "Go",
-        year: "2023",
-        repo: "https://github.com/ljagiello/airdash",
-      },
-    ],
+    name: "lastwar-client",
+    category: "Hacking and tooling",
+    description:
+      "A from-scratch client for the mobile game Last War, built by reverse-engineering how the app talks to its servers. It logs in and runs a real game session without the official app, and its site has the full protocol write-up.",
+    language: "Go",
+    year: "2026",
+    url: "https://lastwar.tech",
+    repo: "https://github.com/ljagiello/lastwar-client",
+  },
+  {
+    name: "ctf-skills",
+    category: "Hacking and tooling",
+    description:
+      "Hacking know-how for AI coding agents. It teaches Claude Code, Codex and other agents how to work through CTF challenges, from web bugs and binary exploits to crypto and forensics.",
+    language: "Python",
+    year: "2026",
+    repo: "https://github.com/ljagiello/ctf-skills",
+  },
+  {
+    name: "Totem Compass",
+    category: "Hardware",
+    description:
+      "A teardown of the Totem Compass, the festival gadget that helps friends find each other. It explains how the firmware works and how the devices talk to the phone and to each other, with a working client and an ESP32 that joins the mesh.",
+    language: "Go",
+    year: "2026",
+    repo: "https://github.com/ljagiello/totem-compass",
+  },
+  {
+    name: "yamaha-cli",
+    category: "Hardware",
+    description:
+      "Control a Yamaha receiver from the terminal. It finds the receiver on your network by itself and handles volume, inputs, radio and multi-room audio, so it's easy to script.",
+    language: "Go",
+    year: "2026",
+    repo: "https://github.com/ljagiello/yamaha-cli",
+  },
+  {
+    name: "Poo Math",
+    category: "Hacking and tooling",
+    description:
+      "Plans the least glamorous part of Burning Man: when your RV needs pumping out and refilling. It simulates a thousand possible weeks to predict when the tanks fill up, then drafts your reply to the camp's RV survey.",
+    language: "Svelte",
+    year: "2026",
+    url: "https://poomath.com",
+    repo: "https://github.com/ljagiello/poomath.com",
+  },
+  {
+    name: "airdash",
+    category: "Hardware",
+    description:
+      "Puts your AirGradient air-quality readings in the macOS menu bar, so CO2, PM2.5, temperature and humidity are always a glance away.",
+    language: "Go",
+    year: "2023",
+    repo: "https://github.com/ljagiello/airdash",
+  },
+  {
+    name: "git-clone",
+    category: "Hacking and tooling",
+    description:
+      "Never wonder where you cloned something again. Whatever URL you give it, the repo lands in the same place under ~/code, and it prints the path so you can cd straight in.",
+    language: "Go",
+    year: "2024",
+    repo: "https://github.com/ljagiello/git-clone",
   },
 ];
 

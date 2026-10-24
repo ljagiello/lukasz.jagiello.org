@@ -1,12 +1,8 @@
 import Image from "next/image";
 import { About } from "@/content/about";
-import { activeLinks, projectGroups, site } from "@/content/site";
+import { activeLinks, projects, site } from "@/content/site";
 import photo from "@/public/photo.jpg";
 import { ProfileIcon } from "./profile-icon";
-
-const projects = projectGroups.flatMap((group) =>
-  group.projects.map((project) => ({ ...project, group: group.title })),
-);
 
 export default function Home() {
   return (
@@ -65,7 +61,7 @@ export default function Home() {
               {projects.map((project) => (
                 <li key={project.name} className="card">
                   <p className="card-meta mono">
-                    <span>{project.group}</span>
+                    <span>{project.category}</span>
                     <span>
                       {project.language} · {project.year}
                     </span>
