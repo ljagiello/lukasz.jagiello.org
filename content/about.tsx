@@ -22,8 +22,8 @@ export function About() {
         At Burning Man I help build art with{" "}
         <a href="https://www.titanicsend.com/">Titanic&apos;s End</a>, the crew
         behind the Iceberg art car. Right now I&apos;m building IceFinder, a
-        light-up pendant I can restyle from my phone, so friends can spot me from
-        across the playa.
+        light-up pendant that shows which way my friends are, so we can find
+        each other anywhere on the playa.
       </p>
       <p>
         I also collect records, mostly breakbeat hardcore and jungle on vinyl,
