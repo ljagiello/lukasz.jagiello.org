@@ -1,8 +1,19 @@
 // Everything shown on the page lives here (the about prose is in about.tsx).
 
+export type IconName =
+  | "linkedin"
+  | "github"
+  | "ctftime"
+  | "discogs"
+  | "bandcamp"
+  | "soundcloud"
+  | "x"
+  | "instagram";
+
 export type Link = {
   label: string;
   href: string;
+  icon: IconName;
 };
 
 export type Project = {
@@ -41,16 +52,30 @@ export const site = {
   alumniOf: "Gdańsk University of Technology",
 };
 
-// Profile links under the name, in order; also the structured-data sameAs
+// Profile icons under the name, in order; also the structured-data sameAs
 // list. Email has its own Contact section. Links with an empty href are
 // skipped.
 export const links: Link[] = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/lukaszjagiello/" },
-  { label: "GitHub", href: "https://github.com/ljagiello" },
-  { label: "CTFtime", href: "https://ctftime.org/team/57347" },
-  { label: "Discogs", href: "https://www.discogs.com/user/lcf" },
-  { label: "X", href: "https://x.com/lcfpl" },
-  { label: "Instagram", href: "https://www.instagram.com/lukaszjagiello/" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/lukaszjagiello/",
+    icon: "linkedin",
+  },
+  { label: "GitHub", href: "https://github.com/ljagiello", icon: "github" },
+  { label: "CTFtime", href: "https://ctftime.org/team/57347", icon: "ctftime" },
+  { label: "Discogs", href: "https://www.discogs.com/user/lcf", icon: "discogs" },
+  { label: "Bandcamp", href: "https://bandcamp.com/ljagiello", icon: "bandcamp" },
+  {
+    label: "SoundCloud",
+    href: "https://soundcloud.com/jagiello-lukasz",
+    icon: "soundcloud",
+  },
+  { label: "X", href: "https://x.com/lcfpl", icon: "x" },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/lukaszjagiello/",
+    icon: "instagram",
+  },
 ];
 
 export const projectGroups: ProjectGroup[] = [

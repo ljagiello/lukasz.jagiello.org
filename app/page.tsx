@@ -2,6 +2,7 @@ import Image from "next/image";
 import { About } from "@/content/about";
 import { activeLinks, projectGroups, site } from "@/content/site";
 import photo from "@/public/photo.jpg";
+import { ProfileIcon } from "./profile-icon";
 
 const projects = projectGroups.flatMap((group) =>
   group.projects.map((project) => ({ ...project, group: group.title })),
@@ -36,12 +37,17 @@ export default function Home() {
                 {site.jobTitle} · {site.location}
               </p>
               <nav aria-label="Profiles">
-                <ul className="profiles mono">
+                <ul className="profiles">
                   {activeLinks.map((link) => (
                     <li key={link.label}>
                       {/* rel="me" marks the other profiles as belonging to the same person. */}
-                      <a href={link.href} rel="me">
-                        {link.label}
+                      <a
+                        href={link.href}
+                        rel="me"
+                        aria-label={link.label}
+                        title={link.label}
+                      >
+                        <ProfileIcon name={link.icon} />
                       </a>
                     </li>
                   ))}
