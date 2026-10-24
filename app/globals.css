@@ -220,37 +220,38 @@ a:hover {
   color: var(--acc);
 }
 
+/* Icon links. The padding gives each a comfortable tap target; the negative
+   margin keeps the first icon on the column's left edge. */
 .profiles {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px 20px;
-  margin: 28px 0 0;
+  gap: 4px;
+  margin: 24px 0 0 -8px;
   padding: 0;
   list-style: none;
-  font-size: 13px;
-}
-
-/* Phones: two even rows of three instead of one link wrapping on its own. */
-@media (max-width: 30rem) {
-  .profiles {
-    display: grid;
-    grid-template-columns: repeat(3, max-content);
-  }
 }
 
 .profiles a {
-  padding-bottom: 3px;
-  border-bottom: 1px solid var(--rule);
+  display: flex;
+  padding: 8px;
+  border-radius: 8px;
   color: var(--ink);
-  text-decoration: none;
-  transition:
-    color 200ms,
-    border-color 200ms;
+  transition: color 200ms;
 }
 
 .profiles a:hover {
-  border-color: var(--acc);
   color: var(--acc);
+}
+
+/* The narrowest phones: slimmer tap padding keeps all eight on one row. */
+@media (max-width: 22rem) {
+  .profiles {
+    margin-left: -6px;
+  }
+
+  .profiles a {
+    padding: 6px;
+  }
 }
 
 .about {
