@@ -15,7 +15,8 @@ export function About() {
         <a href="https://github.com/ljagiello/ctf-skills">ctf-skills</a>, an
         open-source set of skills that teaches coding agents to solve CTF
         challenges. And I like taking things apart to see how they work, from
-        firmware and wire protocols to whatever gadget is on my desk.
+        firmware and wire protocols to whatever gadget is on my desk. Away from
+        the desk, I&apos;m usually grilling something or snowboarding at Tahoe.
       </p>
       <p>
         At Burning Man I help build art with{" "}

@@ -74,6 +74,14 @@ export const projectGroups: ProjectGroup[] = [
         repo: "https://github.com/ljagiello/lastwar-client",
       },
       {
+        name: "Poo Math",
+        description:
+          "Plans the least glamorous part of Burning Man: when your RV needs pumping out and refilling. It simulates a thousand possible weeks to predict when the tanks fill up, then drafts your reply to the camp's RV survey.",
+        language: "Svelte",
+        year: "2026",
+        repo: "https://github.com/ljagiello/poomath.com",
+      },
+      {
         name: "git-clone",
         description:
           "Never wonder where you cloned something again. Whatever URL you give it, the repo lands in the same place under ~/code, and it prints the path so you can cd straight in.",
@@ -92,6 +100,14 @@ export const projectGroups: ProjectGroup[] = [
           "A wearable LED pendant for Burning Man 2027. You pick a light pattern as your personal signature and tune it from a phone app, so friends can spot you across the playa.",
         language: "C++",
         year: "2026",
+      },
+      {
+        name: "Totem Compass",
+        description:
+          "A teardown of the Totem Compass, the festival gadget that helps friends find each other. It explains how the firmware works and how the devices talk to the phone and to each other, with a working client and an ESP32 that joins the mesh.",
+        language: "Go",
+        year: "2026",
+        repo: "https://github.com/ljagiello/totem-compass",
       },
       {
         name: "yamaha-cli",
