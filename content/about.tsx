@@ -19,11 +19,11 @@ export function About() {
         the desk, I&apos;m usually grilling something or snowboarding at Tahoe.
       </p>
       <p>
-        At Burning Man I help build art with{" "}
+        In 2026 I helped{" "}
         <a href="https://www.titanicsend.com/">Titanic&apos;s End</a>, the crew
-        behind the Iceberg art car. Right now I&apos;m building IceFinder, a
-        light-up pendant that shows which way my friends are, so we can find
-        each other anywhere on the playa.
+        behind the Iceberg art car, build their art for Burning Man. Now I&apos;m
+        building IceFinder, a light-up pendant that shows which way my friends
+        are, so we can find each other anywhere on the playa.
       </p>
       <p>
         I also collect records, mostly breakbeat hardcore and jungle on vinyl,
