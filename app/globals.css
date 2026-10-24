@@ -341,8 +341,17 @@ a:hover {
   color: var(--mute);
 }
 
-.card-repo {
+/* The project's website, if any, above its repo. */
+.card-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  margin: 0;
   font-size: 11px;
+}
+
+.card-links a {
   overflow-wrap: anywhere;
 }
 

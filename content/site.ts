@@ -21,7 +21,9 @@ export type Project = {
   description: string;
   language: string;
   year: string;
-  // Omit for private projects; the name is then shown without a link.
+  // The project's own website, if it has one.
+  url?: string;
+  // Omit for private projects.
   repo?: string;
 };
 
@@ -93,9 +95,10 @@ export const projectGroups: ProjectGroup[] = [
       {
         name: "lastwar-client",
         description:
-          "A from-scratch client for the mobile game Last War, built by reverse-engineering how the app talks to its servers. It logs in and runs a real game session without the official app; the full protocol write-up is at lastwar.tech.",
+          "A from-scratch client for the mobile game Last War, built by reverse-engineering how the app talks to its servers. It logs in and runs a real game session without the official app, and its site has the full protocol write-up.",
         language: "Go",
         year: "2026",
+        url: "https://lastwar.tech",
         repo: "https://github.com/ljagiello/lastwar-client",
       },
       {
@@ -104,6 +107,7 @@ export const projectGroups: ProjectGroup[] = [
           "Plans the least glamorous part of Burning Man: when your RV needs pumping out and refilling. It simulates a thousand possible weeks to predict when the tanks fill up, then drafts your reply to the camp's RV survey.",
         language: "Svelte",
         year: "2026",
+        url: "https://poomath.com",
         repo: "https://github.com/ljagiello/poomath.com",
       },
       {
