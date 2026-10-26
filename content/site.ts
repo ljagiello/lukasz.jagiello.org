@@ -8,6 +8,7 @@ export type IconName =
   | "bandcamp"
   | "soundcloud"
   | "x"
+  | "bluesky"
   | "instagram";
 
 export type Link = {
@@ -70,6 +71,11 @@ export const links: Link[] = [
     icon: "soundcloud",
   },
   { label: "X", href: "https://x.com/lcfpl", icon: "x" },
+  {
+    label: "Bluesky",
+    href: "https://bsky.app/profile/jagiello.org",
+    icon: "bluesky",
+  },
   {
     label: "Instagram",
     href: "https://www.instagram.com/lukaszjagiello/",
