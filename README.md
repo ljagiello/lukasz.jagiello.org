@@ -12,8 +12,12 @@ Replace `public/photo.jpg` to change the photo (square, at least 400×400).
 Links with an empty `href` are hidden. Profiles in `extraProfiles` get no
 icon; they only go in the structured data and `/llms.txt`.
 
-When you change the content, bump `site.updated`. It's the structured-data
-`dateModified` and the sitemap's `lastmod`.
+The structured-data `dateModified` and the sitemap's `lastmod` come from
+`content/updated.ts`. Don't edit it: after a change to `content/` or the photo
+lands on `main`, the content-date workflow
+(`.github/workflows/content-date.yml`) writes that commit's time there and
+pushes it, which deploys again. It pushes straight to `main`, so keep `main`
+open to the Actions bot if you add branch protection.
 
 ## Development
 
