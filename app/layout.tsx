@@ -17,9 +17,12 @@ const mono = JetBrains_Mono({
 const gaId = process.env.NEXT_PUBLIC_GA_ID;
 const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 
+// Search results and link previews show the same title.
+const title = `${site.name}: ${site.jobTitle}, ${site.location}`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: `${site.name}: ${site.jobTitle}, ${site.location}`,
+  title,
   description: site.description,
   keywords: [site.name, site.alternateName],
   applicationName: site.name,
@@ -29,7 +32,7 @@ export const metadata: Metadata = {
     type: "profile",
     url: "/",
     siteName: site.name,
-    title: site.name,
+    title,
     description: site.description,
     firstName: site.givenName,
     lastName: site.familyName,
@@ -38,7 +41,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     creator: site.twitterHandle,
-    title: site.name,
+    title,
     description: site.description,
   },
   robots: { index: true, follow: true },
