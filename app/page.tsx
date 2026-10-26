@@ -26,12 +26,16 @@ export default function Home() {
                 height={176}
                 preload
               />
-              <h1 className="name">
-                <span>{site.givenName}</span> <span>{site.familyName}</span>
+              {/* The tagline is part of the heading so it says who and what,
+                  like the page title, not just the name. */}
+              <h1>
+                <span className="name">
+                  <span>{site.givenName}</span> <span>{site.familyName}</span>
+                </span>{" "}
+                <span className="tagline mono">
+                  {site.jobTitle} · {site.location}
+                </span>
               </h1>
-              <p className="tagline mono">
-                {site.jobTitle} · {site.location}
-              </p>
               <nav aria-label="Profiles">
                 <ul className="profiles">
                   {activeLinks.map((link) => (

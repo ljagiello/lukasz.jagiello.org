@@ -46,8 +46,10 @@ Both are inlined at build time, so redeploy after changing them.
 ## Search engines
 
 The page ships a canonical URL, Open Graph/Twitter tags, a generated social
-image (`app/opengraph-image.tsx`), JSON-LD `ProfilePage`/`Person` data,
-`/robots.txt` and `/sitemap.xml`.
+image (`app/opengraph-image.tsx`), a generated Apple touch icon
+(`app/apple-icon.tsx`), JSON-LD `ProfilePage`/`Person` data, `/robots.txt`,
+`/sitemap.xml` and `/llms.txt` (a Markdown summary for LLMs, built from
+`content/site.ts`).
 
 To get indexed:
 
