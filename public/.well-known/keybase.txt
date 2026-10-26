@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/ljagiello
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://lukasz.jagiello.org
+  * I am ljagiello (https://keybase.io/ljagiello) on keybase.
+  * I have a public key ASA60CwlhP8qB1Gqcq9V_CRoY6zMmZi_mrwmDogrn24_RAo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101adfbdd4c981ed03c26b762150fbcfb2248d4f95e2c535d78748eb06c5b68620d0a",
+      "host": "keybase.io",
+      "kid": "01203ad02c2584ff2a0751aa72af55fc246863accc9998bf9abc260e882b9f6e3f440a",
+      "uid": "6ec1c474a029e9f53ec4a5081d8c6219",
+      "username": "ljagiello"
+    },
+    "merkle_root": {
+      "ctime": 1793031123,
+      "hash": "075d3221bc7788f56151a4c3d2486c794eae015f62ef779a85888e08d9b2654c914834af95ab59f759893893373d06772409c5ed3ab95db30527b5a5ec8570c5",
+      "hash_meta": "80c26c10b904cdcc662d94e0078facde4b204a9ad62cad3f95ce24e261807996",
+      "seqno": 27841028
+    },
+    "service": {
+      "entropy": "XPEohD7kmpvp9fgsvqa9MgsT",
+      "hostname": "lukasz.jagiello.org",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "6.6.3"
+  },
+  "ctime": 1793031397,
+  "expire_in": 504576000,
+  "prev": "eda95ab9f18251e831e8a706268cdbc8f549ef890e4cad2a0ff2bd0f94d0ffad",
+  "seqno": 57,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgOtAsJYT/KgdRqnKvVfwkaGOszJmYv5q8Jg6IK59uP0QKp3BheWxvYWTESpcCOcQg7alaufGCUegx6KcGJozbyPVJ74kOTK0qD/K9D5TQ/63EIMbUJfNgWsukM2xc2xE5N8yyoxT2iZDKf500197bfZHaAgHCo3NpZ8RAFUygJqimTIxeQpL7lbfqRCPQMAPpSJ3cw6BoEyfxBnwf0XRgDW144M+fgnhKGJarOPHVACFS6355RFbY5dDgCqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEILz6C3MKThn4mTTql2WrcSVisz6SzKToMNCTevBWkHFoo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/ljagiello
+
+==================================================================
