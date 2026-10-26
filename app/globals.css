@@ -203,6 +203,7 @@ a:hover {
 }
 
 .name {
+  display: block;
   margin: 32px 0 0;
   font-size: clamp(56px, 10vw, 104px);
   font-weight: 700;
@@ -215,6 +216,7 @@ a:hover {
 }
 
 .tagline {
+  display: block;
   margin: 22px 0 0;
   font-size: 13px;
   color: var(--acc);
