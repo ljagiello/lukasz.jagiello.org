@@ -4,6 +4,12 @@ const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
+  experimental: {
+    // Puts the (small, Tailwind) stylesheet in a <style> tag instead of a
+    // render-blocking <link>. Most visitors land once, so there's no cached
+    // stylesheet to lose.
+    inlineCss: true,
+  },
   turbopack: {
     // Next.js always bundles polyfills for Array.prototype.at, Object.hasOwn
     // and friends, which every browser it supports already has natively
