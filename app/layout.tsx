@@ -19,7 +19,7 @@ const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: `${site.name}: ${site.jobTitle}`,
+  title: `${site.name}: ${site.jobTitle}, ${site.location}`,
   description: site.description,
   keywords: [site.name, site.alternateName],
   applicationName: site.name,
