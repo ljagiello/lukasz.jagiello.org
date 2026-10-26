@@ -4,14 +4,85 @@ import { activeLinks, projects, site } from "@/content/site";
 import photo from "@/public/photo.jpg";
 import { ProfileIcon } from "./profile-icon";
 
+const home = `${site.url}/`;
+
+// Lets Google show the page as a profile with links to the other accounts,
+// and use the name as the site name in results. Here rather than in the
+// layout so the 404 page doesn't carry it.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${home}#website`,
+      url: home,
+      name: site.name,
+      alternateName: site.alternateName,
+      inLanguage: "en",
+      publisher: { "@id": `${home}#person` },
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${home}#profilepage`,
+      url: home,
+      isPartOf: { "@id": `${home}#website` },
+      dateCreated: site.created,
+      dateModified: site.updated,
+      mainEntity: {
+        "@type": "Person",
+        "@id": `${home}#person`,
+        name: site.name,
+        alternateName: site.alternateName,
+        givenName: site.givenName,
+        familyName: site.familyName,
+        jobTitle: site.jobTitle,
+        description: site.description,
+        url: home,
+        image: {
+          "@type": "ImageObject",
+          url: new URL(site.photo.src, site.url).toString(),
+          width: photo.width,
+          height: photo.height,
+          caption: site.photo.alt,
+        },
+        email: `mailto:${site.email}`,
+        homeLocation: {
+          "@type": "Place",
+          name: site.location,
+          address: {
+            "@type": "PostalAddress",
+            addressRegion: "CA",
+            addressCountry: "US",
+          },
+        },
+        alumniOf: { "@type": "CollegeOrUniversity", name: site.alumniOf },
+        memberOf: site.memberOf.map((org) => ({
+          "@type": "Organization",
+          ...org,
+        })),
+        knowsAbout: site.knowsAbout,
+        sameAs: [...activeLinks, ...site.extraProfiles]
+          .map((link) => link.href)
+          .filter((href) => href.startsWith("https://")),
+      },
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <div className="site">
       <div className="backdrop" aria-hidden="true">
         <div className="backdrop-dots" />
         <div className="backdrop-halo" />
-        <div className="backdrop-wave backdrop-wave-1" />
-        <div className="backdrop-wave backdrop-wave-2" />
+        {/* The wave moves its mask with transform; the inner layer moves the
+            other way so the dots themselves stay put. */}
+        <div className="backdrop-wave backdrop-wave-1">
+          <div />
+        </div>
+        <div className="backdrop-wave backdrop-wave-2">
+          <div />
+        </div>
       </div>
 
       <div className="page">
@@ -104,6 +175,12 @@ export default function Home() {
 
         <footer className="footer mono">{site.name}</footer>
       </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
     </div>
   );
 }

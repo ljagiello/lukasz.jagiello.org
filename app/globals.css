@@ -99,34 +99,47 @@ a:hover {
   opacity: 0.08;
 }
 
+/* The halo and the waves are twice the backdrop's width with the light in
+   the middle, and slide across with transform, which the browser can animate
+   without repainting. */
+.backdrop-halo,
+.backdrop-wave {
+  right: auto;
+  width: 200%;
+}
+
 .backdrop-halo {
   background: linear-gradient(
-      100deg,
-      transparent 42%,
-      var(--glow) 50%,
-      transparent 58%
-    )
-    no-repeat;
-  background-size: 200% 100%;
+    100deg,
+    transparent 42%,
+    var(--glow) 50%,
+    transparent 58%
+  );
   opacity: 0.25;
-  animation: halo-sweep 12s linear infinite;
+  animation: sweep 12s linear infinite;
 }
 
 .backdrop-wave {
-  background-size: 26px 26px;
-  background-position: 13px 13px;
-  -webkit-mask-size: 200% 100%;
-  mask-size: 200% 100%;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
+  animation: sweep var(--sweep-time) linear var(--sweep-delay, 0s) infinite;
+}
+
+/* The dots inside a wave, moved back as far as the wave moves so they stay
+   lined up with the dot grid. */
+.backdrop-wave > div {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  background-size: 26px 26px;
+  background-position: 13px 13px;
+  animation: hold var(--sweep-time) linear var(--sweep-delay, 0s) infinite;
 }
 
 .backdrop-wave-1 {
-  background-image: radial-gradient(
-    circle,
-    var(--acc) 1.4px,
-    transparent 2px
-  );
+  --sweep-time: 12s;
   -webkit-mask-image: linear-gradient(
     100deg,
     transparent 42%,
@@ -135,15 +148,19 @@ a:hover {
   );
   mask-image: linear-gradient(100deg, transparent 42%, #000 50%, transparent 58%);
   opacity: 0.55;
-  animation: wave-sweep 12s linear infinite;
+}
+
+.backdrop-wave-1 > div {
+  background-image: radial-gradient(
+    circle,
+    var(--acc) 1.4px,
+    transparent 2px
+  );
 }
 
 .backdrop-wave-2 {
-  background-image: radial-gradient(
-    circle,
-    var(--acc) 1.2px,
-    transparent 1.8px
-  );
+  --sweep-time: 18s;
+  --sweep-delay: -7s;
   -webkit-mask-image: linear-gradient(
     75deg,
     transparent 42%,
@@ -152,26 +169,32 @@ a:hover {
   );
   mask-image: linear-gradient(75deg, transparent 42%, #000 50%, transparent 58%);
   opacity: 0.35;
-  animation: wave-sweep 18s linear -7s infinite;
 }
 
-@keyframes wave-sweep {
+.backdrop-wave-2 > div {
+  background-image: radial-gradient(
+    circle,
+    var(--acc) 1.2px,
+    transparent 1.8px
+  );
+}
+
+/* The light starts just off the left edge and ends just off the right. */
+@keyframes sweep {
   from {
-    -webkit-mask-position: 120% 0;
-    mask-position: 120% 0;
+    transform: translateX(-60%);
   }
   to {
-    -webkit-mask-position: -20% 0;
-    mask-position: -20% 0;
+    transform: translateX(10%);
   }
 }
 
-@keyframes halo-sweep {
+@keyframes hold {
   from {
-    background-position: 120% 0;
+    transform: translateX(120%);
   }
   to {
-    background-position: -20% 0;
+    transform: translateX(-20%);
   }
 }
 
@@ -415,18 +438,19 @@ a:hover {
 
 @media (prefers-reduced-motion: reduce) {
   .backdrop-halo,
-  .backdrop-wave {
+  .backdrop-wave,
+  .backdrop-wave > div {
     animation: none;
   }
 
   /* Park the light mid-page instead of at the edge where the sweep starts. */
-  .backdrop-halo {
-    background-position: 50% 0;
+  .backdrop-halo,
+  .backdrop-wave {
+    transform: translateX(-25%);
   }
 
-  .backdrop-wave {
-    -webkit-mask-position: 50% 0;
-    mask-position: 50% 0;
+  .backdrop-wave > div {
+    transform: translateX(50%);
   }
 
   .profiles a,

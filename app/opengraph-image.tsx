@@ -1,9 +1,15 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { site } from "@/content/site";
 
 export const alt = `${site.name}: ${site.jobTitle}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+// The portrait, so shared links are recognisable at a glance.
+const photo = await readFile(join(process.cwd(), "public", site.photo.src));
+const photoSrc = `data:image/jpeg;base64,${photo.toString("base64")}`;
 
 export default function OpengraphImage() {
   return new ImageResponse(
@@ -23,15 +29,30 @@ export default function OpengraphImage() {
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
-            fontSize: 120,
-            fontWeight: 800,
-            lineHeight: 1,
-            letterSpacing: "-0.02em",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
           }}
         >
-          <span>{site.givenName}</span>
-          <span>{site.familyName}</span>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              fontSize: 120,
+              fontWeight: 800,
+              lineHeight: 1,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            <span>{site.givenName}</span>
+            <span>{site.familyName}</span>
+          </div>
+          <img
+            src={photoSrc}
+            alt=""
+            width={240}
+            height={240}
+            style={{ borderRadius: 120, objectFit: "cover" }}
+          />
         </div>
         <div
           style={{
