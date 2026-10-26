@@ -173,9 +173,7 @@ export default function Home() {
           </section>
         </main>
 
-        <footer className="footer mono">
-          {site.name} · <span lang="pl">{site.alternateName}</span>
-        </footer>
+        <footer className="footer mono">{site.name}</footer>
       </div>
       <script
         type="application/ld+json"

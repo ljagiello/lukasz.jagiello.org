@@ -4,8 +4,8 @@ import Script from "next/script";
 import { site } from "@/content/site";
 import "./globals.css";
 
-// `subsets` only picks which files are preloaded. The latin-ext ones (for
-// the Polish name in the footer) still load when that text renders.
+// `subsets` only picks which files are preloaded. The page text is all
+// latin; the latin-ext files still load if a character ever needs them.
 const sans = Hanken_Grotesk({
   variable: "--font-hanken",
   subsets: ["latin"],
