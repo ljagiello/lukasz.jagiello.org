@@ -1,0 +1,55 @@
+name: Content date
+
+# After a change to the page content lands on main, record when it happened in
+# content/updated.ts (the structured-data dateModified and the sitemap
+# lastmod), so nobody has to remember to bump it. The commit it pushes starts
+# a second Vercel deploy. It pushes straight to main, so it stops working if
+# main gets branch protection that blocks the Actions bot.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - content/**
+      - public/photo.jpg
+  # A manual re-run, e.g. if a push was ever rejected.
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Two quick merges run one after the other instead of racing to push.
+concurrency:
+  group: content-date
+  cancel-in-progress: false
+
+jobs:
+  stamp:
+    runs-on: ubuntu-latest
+    steps:
+      # Unlike ci.yml, this keeps the checkout credentials, because it pushes.
+      # The latest main, not the triggering commit, so a run queued behind
+      # another can still push.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Record the time of the last content change
+        run: |
+          # The commit's own time, not the clock. updated.ts is left out so
+          # this workflow's commits don't count as content changes.
+          changed=$(git log -1 --format=%cI -- content public/photo.jpg ':!content/updated.ts')
+          cat > content/updated.ts <<EOF
+          // When the page content last changed: the time of the last commit to content/
+          // or the photo. The content-date workflow rewrites this file after each such
+          // change lands on main, so don't edit it by hand.
+          export const updated = "$changed";
+          EOF
+          if git diff --quiet -- content/updated.ts; then
+            echo "Already $changed"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Record when the content last changed" -- content/updated.ts
+          git push origin HEAD:main
