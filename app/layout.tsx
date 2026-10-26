@@ -1,17 +1,19 @@
 import type { Metadata, Viewport } from "next";
 import { Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
-import { activeLinks, site } from "@/content/site";
+import Script from "next/script";
+import { site } from "@/content/site";
 import "./globals.css";
 
+// `subsets` only picks which files are preloaded. The latin-ext ones (for
+// the Polish name in the footer) still load when that text renders.
 const sans = Hanken_Grotesk({
   variable: "--font-hanken",
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
 });
 
 const mono = JetBrains_Mono({
   variable: "--font-jetbrains",
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
 });
 
 const gaId = process.env.NEXT_PUBLIC_GA_ID;
@@ -44,7 +46,17 @@ export const metadata: Metadata = {
     title,
     description: site.description,
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    // Lets Google show the portrait large in results.
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   verification: googleVerification ? { google: googleVerification } : undefined,
 };
 
@@ -52,42 +64,28 @@ export const viewport: Viewport = {
   themeColor: "#06090c",
 };
 
-// Lets Google show the page as a profile with links to the other accounts.
-const personJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfilePage",
-  mainEntity: {
-    "@type": "Person",
-    name: site.name,
-    alternateName: site.alternateName,
-    givenName: site.givenName,
-    familyName: site.familyName,
-    jobTitle: site.jobTitle,
-    alumniOf: { "@type": "CollegeOrUniversity", name: site.alumniOf },
-    homeLocation: { "@type": "Place", name: site.location },
-    description: site.description,
-    url: site.url,
-    image: new URL(site.photo.src, site.url).toString(),
-    email: `mailto:${site.email}`,
-    sameAs: activeLinks
-      .map((link) => link.href)
-      .filter((href) => href.startsWith("https://")),
-  },
-};
-
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${sans.variable} ${mono.variable}`}>
       <body>
         {children}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c"),
-          }}
-        />
+        {/* Analytics loads once the page is idle, so it doesn't compete with
+            the page itself. Visits shorter than that aren't counted. */}
+        {gaId ? (
+          <>
+            <Script id="ga-init" strategy="lazyOnload">
+              {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${gaId}');`}
+            </Script>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+              strategy="lazyOnload"
+            />
+          </>
+        ) : null}
       </body>
-      {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
     </html>
   );
 }

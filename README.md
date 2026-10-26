@@ -9,7 +9,11 @@ title, profile links, side projects, contact email) and
 [`content/about.tsx`](content/about.tsx) (the about paragraphs).
 Replace `public/photo.jpg` to change the photo (square, at least 400×400).
 
-Links with an empty `href` are hidden.
+Links with an empty `href` are hidden. Profiles in `extraProfiles` get no
+icon; they only go in the structured data and `/llms.txt`.
+
+When you change the content, bump `site.updated`. It's the structured-data
+`dateModified` and the sitemap's `lastmod`.
 
 ## Development
 
@@ -38,7 +42,7 @@ Set these in Vercel under Project > Settings > Environment Variables
 
 | Variable | Purpose |
 | --- | --- |
-| `NEXT_PUBLIC_GA_ID` | GA4 measurement ID (`G-…`). Analytics loads only when set. |
+| `NEXT_PUBLIC_GA_ID` | GA4 measurement ID (`G-…`). Analytics loads only when set, once the page is idle. |
 | `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Optional Search Console HTML-tag token. |
 
 Both are inlined at build time, so redeploy after changing them.
@@ -47,7 +51,8 @@ Both are inlined at build time, so redeploy after changing them.
 
 The page ships a canonical URL, Open Graph/Twitter tags, a generated social
 image (`app/opengraph-image.tsx`), a generated Apple touch icon
-(`app/apple-icon.tsx`), JSON-LD `ProfilePage`/`Person` data, `/robots.txt`,
+(`app/apple-icon.tsx`), JSON-LD `WebSite`/`ProfilePage`/`Person` data,
+a `googlebot` tag allowing large image previews, `/robots.txt`,
 `/sitemap.xml` and `/llms.txt` (a Markdown summary for LLMs, built from
 `content/site.ts`).
 

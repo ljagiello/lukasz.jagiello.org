@@ -50,6 +50,29 @@ export const site = {
   },
   twitterHandle: "@lcfpl",
   alumniOf: "Gdańsk University of Technology",
+  // Structured-data dates. Bump `updated` by hand when the content changes;
+  // it is also the sitemap's lastmod.
+  created: "2026-10-23",
+  updated: "2026-10-26",
+  // Structured-data topics, all mentioned on the page.
+  knowsAbout: [
+    "AI agents",
+    "Developer platforms",
+    "Infrastructure",
+    "Capture the flag (CTF)",
+    "Reverse engineering",
+    "Firmware",
+    "Wire protocols",
+  ],
+  memberOf: [{ name: "Titanic’s End", url: "https://www.titanicsend.com/" }],
+  // Profiles that go in the structured-data sameAs list and llms.txt but
+  // don't get an icon on the page.
+  extraProfiles: [
+    { label: "Keybase", href: "https://keybase.io/ljagiello" },
+    { label: "Gravatar", href: "https://gravatar.com/lcfik" },
+    { label: "Reddit", href: "https://www.reddit.com/user/ljagiello" },
+    { label: "HackerOne", href: "https://hackerone.com/ljagiello" },
+  ],
 };
 
 // Profile icons under the name, in order; also the structured-data sameAs
@@ -58,7 +81,7 @@ export const site = {
 export const links: Link[] = [
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/lukaszjagiello/",
+    href: "https://www.linkedin.com/in/lukaszjagiello",
     icon: "linkedin",
   },
   { label: "GitHub", href: "https://github.com/ljagiello", icon: "github" },

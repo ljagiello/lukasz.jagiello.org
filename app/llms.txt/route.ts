@@ -16,7 +16,9 @@ export function GET() {
     `> ${site.description}`,
     `${site.jobTitle}, ${site.location}. Also spelled ${site.alternateName}. Home page: ${site.url}`,
     "## Profiles",
-    activeLinks.map((link) => `- [${link.label}](${link.href})`).join("\n"),
+    [...activeLinks, ...site.extraProfiles]
+      .map((link) => `- [${link.label}](${link.href})`)
+      .join("\n"),
     "## Side projects",
     projectLines.join("\n"),
     "## Contact",
