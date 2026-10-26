@@ -12,7 +12,8 @@ Replace `public/photo.jpg` to change the photo (square, at least 400×400).
 Links with an empty `href` are hidden. Profiles in `extraProfiles` get no
 icon; they only go in the structured data and `/llms.txt`.
 
-When you change the content, bump `site.updated`. It's the structured-data
+When you change the content, bump `site.updated` (a full timestamp with an
+offset, e.g. `2026-10-26T16:25:29-07:00`). It's the structured-data
 `dateModified` and the sitemap's `lastmod`.
 
 ## Development

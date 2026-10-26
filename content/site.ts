@@ -51,9 +51,10 @@ export const site = {
   twitterHandle: "@lcfpl",
   alumniOf: "Gdańsk University of Technology",
   // Structured-data dates. Bump `updated` by hand when the content changes;
-  // it is also the sitemap's lastmod.
-  created: "2026-10-23",
-  updated: "2026-10-26",
+  // it is also the sitemap's lastmod. Google wants a full date and time with
+  // a UTC offset here, not just a date.
+  created: "2026-10-23T11:05:59-07:00",
+  updated: "2026-10-26T16:25:29-07:00",
   // Structured-data topics, all mentioned on the page.
   knowsAbout: [
     "AI agents",
