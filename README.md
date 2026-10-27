@@ -10,7 +10,9 @@ title, profile links, side projects, contact email) and
 Replace `public/photo.jpg` to change the photo (square, at least 400×400).
 
 Links with an empty `href` are hidden. Profiles in `extraProfiles` get no
-icon; they only go in the structured data and `/llms.txt`.
+icon; they only go in the structured data and `/llms.txt`. Other people share
+the name, so `disambiguatingDescription` (structured data) and `handles`
+(llms.txt) say which accounts are his; keep them in step with the links.
 
 The structured-data `dateModified` and the sitemap's `lastmod` come from
 `content/updated.ts`. Don't edit it: after a change to `content/` or the photo
@@ -55,10 +57,13 @@ Both are inlined at build time, so redeploy after changing them.
 
 The page ships a canonical URL, Open Graph/Twitter tags, a generated social
 image (`app/opengraph-image.tsx`), a generated Apple touch icon
-(`app/apple-icon.tsx`), JSON-LD `WebSite`/`ProfilePage`/`Person` data,
-a `googlebot` tag allowing large image previews, `/robots.txt`,
-`/sitemap.xml` and `/llms.txt` (a Markdown summary for LLMs, built from
-`content/site.ts`).
+(`app/apple-icon.tsx`), `favicon.ico` alongside `icon.svg`, JSON-LD
+`WebSite`/`ProfilePage`/`Person` data plus a `SoftwareSourceCode` entry per
+public project, a `googlebot` tag allowing large image previews,
+`/robots.txt`, `/sitemap.xml` and `/llms.txt` (a Markdown summary for LLMs,
+built from `content/site.ts`, with the about prose rendered from
+`content/about.tsx`). The 404 page (`app/not-found.tsx`) has its own
+`noindex` tags.
 
 To get indexed:
 

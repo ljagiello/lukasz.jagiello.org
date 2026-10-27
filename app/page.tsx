@@ -37,6 +37,7 @@ const jsonLd = {
         familyName: site.familyName,
         jobTitle: site.jobTitle,
         description: site.description,
+        disambiguatingDescription: site.disambiguatingDescription,
         url: home,
         image: {
           "@type": "ImageObject",
@@ -66,6 +67,23 @@ const jsonLd = {
           .filter((href) => href.startsWith("https://")),
       },
     },
+    // The public side projects, credited to him. Private ones (no repo) are
+    // left out.
+    ...projects.flatMap((project) =>
+      project.repo
+        ? [
+            {
+              "@type": "SoftwareSourceCode",
+              name: project.name,
+              description: project.description,
+              codeRepository: project.repo,
+              url: project.url ?? project.repo,
+              programmingLanguage: project.language,
+              author: { "@id": `${home}#person` },
+            },
+          ]
+        : [],
+    ),
   ],
 };
 
@@ -104,21 +122,20 @@ export default function Home() {
                   <span>{site.givenName}</span> <span>{site.familyName}</span>
                 </span>{" "}
                 <span className="tagline mono">
-                  {site.jobTitle} · {site.location}
+                  {site.jobTitle} ·{" "}
+                  <span className="whitespace-nowrap">{site.location}</span>
                 </span>
               </h1>
               <nav aria-label="Profiles">
                 <ul className="profiles">
                   {activeLinks.map((link) => (
                     <li key={link.label}>
-                      {/* rel="me" marks the other profiles as belonging to the same person. */}
-                      <a
-                        href={link.href}
-                        rel="me"
-                        aria-label={link.label}
-                        title={link.label}
-                      >
+                      {/* rel="me" marks the other profiles as belonging to the same person.
+                          The hidden label is the link text for screen readers
+                          and search engines. */}
+                      <a href={link.href} rel="me" title={link.label}>
                         <ProfileIcon name={link.icon} />
+                        <span className="sr-only">{link.label}</span>
                       </a>
                     </li>
                   ))}

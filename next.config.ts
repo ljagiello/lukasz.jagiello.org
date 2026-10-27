@@ -4,6 +4,12 @@ const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
+  // Next renders the page fresh, skipping the CDN cache, for crawlers on its
+  // "HTML-limited bots" list (Bingbot, social link previews) so they get
+  // metadata without streaming. Ours is static and already in the cached
+  // page's <head>, so this matches no real user agent and they get the cached
+  // page too. Drop it if metadata ever comes from generateMetadata.
+  htmlLimitedBots: /NoHtmlLimitedBots/,
   experimental: {
     // Puts the (small, Tailwind) stylesheet in a <style> tag instead of a
     // render-blocking <link>. Most visitors land once, so there's no cached
