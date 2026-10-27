@@ -85,7 +85,7 @@ export const site = {
   extraProfiles: [
     { label: "Keybase", href: "https://keybase.io/ljagiello" },
     { label: "Gravatar", href: "https://gravatar.com/lcfik" },
-    { label: "Reddit", href: "https://www.reddit.com/user/ljagiello" },
+    { label: "Reddit", href: "https://www.reddit.com/user/ljagiello/" },
     { label: "HackerOne", href: "https://hackerone.com/ljagiello" },
     {
       label: "Hack The Box",
@@ -93,7 +93,11 @@ export const site = {
     },
     // The icon links the team, which is just him; this is his player page.
     { label: "CTFtime (player)", href: "https://ctftime.org/user/77743" },
-    { label: "YouTube", href: "https://www.youtube.com/@lukasz.jagiello" },
+    // youtube.com/@lukasz.jagiello; this is the URL YouTube marks canonical.
+    {
+      label: "YouTube",
+      href: "https://www.youtube.com/channel/UCel6PiSuL-7RsQ1DzSW4SsA",
+    },
     {
       label: "Hacker News",
       href: "https://news.ycombinator.com/user?id=ljagiello",
@@ -113,7 +117,7 @@ export const links: Link[] = [
     icon: "linkedin",
   },
   { label: "GitHub", href: "https://github.com/ljagiello", icon: "github" },
-  { label: "CTFtime", href: "https://ctftime.org/team/57347", icon: "ctftime" },
+  { label: "CTFtime", href: "https://ctftime.org/team/57347/", icon: "ctftime" },
   { label: "Discogs", href: "https://www.discogs.com/user/lcf", icon: "discogs" },
   { label: "Bandcamp", href: "https://bandcamp.com/ljagiello", icon: "bandcamp" },
   {
@@ -189,7 +193,7 @@ export const projects: Project[] = [
       "Plans the least glamorous part of Burning Man: when your RV needs pumping out and refilling. It simulates a thousand possible weeks to predict when the tanks fill up, then drafts your reply to the camp's RV survey.",
     language: "Svelte",
     year: "2026",
-    url: "https://poomath.com",
+    url: "https://poomath.com/",
     repo: "https://github.com/ljagiello/poomath.com",
   },
   {
