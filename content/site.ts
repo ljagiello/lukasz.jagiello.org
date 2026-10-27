@@ -45,6 +45,18 @@ export const site = {
   // Search result and link preview description; also the structured-data bio.
   description:
     "Lukasz Jagiello is an engineering leader in the San Francisco Bay Area. He plays CTFs, takes apart firmware and protocols, and builds art for Burning Man.",
+  // Structured data only: tells him apart from other people with the same
+  // name, some of whom use the same handles elsewhere.
+  disambiguatingDescription:
+    "Engineering leader in the San Francisco Bay Area, CTF player and author of ctf-skills. ljagiello on GitHub, Keybase, Reddit and HackerOne; lukaszjagiello on LinkedIn and Instagram; lcfpl on X.",
+  // Which handle he uses where, for llms.txt.
+  handles: [
+    "ljagiello on GitHub, Keybase, Reddit, HackerOne, Hacker News, Docker Hub and Bandcamp",
+    "lukaszjagiello on LinkedIn and Instagram",
+    "lcfpl on X",
+    "jagiello.org on Bluesky",
+    "lcf on Discogs, LCF on CTFtime",
+  ],
   email: "lukasz@jagiello.org",
   photo: {
     src: "/photo.jpg",
@@ -75,12 +87,21 @@ export const site = {
     { label: "Gravatar", href: "https://gravatar.com/lcfik" },
     { label: "Reddit", href: "https://www.reddit.com/user/ljagiello" },
     { label: "HackerOne", href: "https://hackerone.com/ljagiello" },
+    // The icon links the team, which is just him; this is his player page.
+    { label: "CTFtime (player)", href: "https://ctftime.org/user/77743" },
+    { label: "YouTube", href: "https://www.youtube.com/@lukasz.jagiello" },
+    {
+      label: "Hacker News",
+      href: "https://news.ycombinator.com/user?id=ljagiello",
+    },
+    { label: "Docker Hub", href: "https://hub.docker.com/u/ljagiello" },
   ],
 };
 
 // Profile icons under the name, in order; also the structured-data sameAs
 // list. Email has its own Contact section. Links with an empty href are
-// skipped.
+// skipped. Adding a tenth icon needs the narrow-phone CSS in globals.css
+// rechecked, or the row wraps.
 export const links: Link[] = [
   {
     label: "LinkedIn",

@@ -4,7 +4,8 @@ import { site } from "@/content/site";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: site.url,
+      // With the slash, the same URL Google indexed.
+      url: `${site.url}/`,
       lastModified: site.updated,
       changeFrequency: "weekly",
       priority: 1,
