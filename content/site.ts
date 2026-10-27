@@ -48,10 +48,10 @@ export const site = {
   // Structured data only: tells him apart from other people with the same
   // name, some of whom use the same handles elsewhere.
   disambiguatingDescription:
-    "Engineering leader in the San Francisco Bay Area, CTF player and author of ctf-skills. ljagiello on GitHub, Keybase, Reddit and HackerOne; lukaszjagiello on LinkedIn and Instagram; lcfpl on X.",
+    "Engineering leader in the San Francisco Bay Area, CTF player and author of ctf-skills. ljagiello on GitHub, Keybase, Reddit, HackerOne and Hack The Box; lukaszjagiello on LinkedIn and Instagram; lcfpl on X.",
   // Which handle he uses where, for llms.txt.
   handles: [
-    "ljagiello on GitHub, Keybase, Reddit, HackerOne, Hacker News, Docker Hub and Bandcamp",
+    "ljagiello on GitHub, Keybase, Reddit, HackerOne, Hack The Box, Hacker News, Docker Hub and Bandcamp",
     "lukaszjagiello on LinkedIn and Instagram",
     "lcfpl on X",
     "jagiello.org on Bluesky",
@@ -87,6 +87,10 @@ export const site = {
     { label: "Gravatar", href: "https://gravatar.com/lcfik" },
     { label: "Reddit", href: "https://www.reddit.com/user/ljagiello" },
     { label: "HackerOne", href: "https://hackerone.com/ljagiello" },
+    {
+      label: "Hack The Box",
+      href: "https://profile.hackthebox.com/profile/01a17907-47d7-71a0-bd82-f5231b09a7e6",
+    },
     // The icon links the team, which is just him; this is his player page.
     { label: "CTFtime (player)", href: "https://ctftime.org/user/77743" },
     { label: "YouTube", href: "https://www.youtube.com/@lukasz.jagiello" },
