@@ -7,11 +7,11 @@ export function About() {
         I’ve spent more than twenty years building infrastructure and the teams
         behind it. These days, my focus is on AI agents and developer
         platforms. You can find the professional version of my story on{" "}
-        <a href="https://www.linkedin.com/in/lukaszjagiello/">LinkedIn</a>.
+        <a href="https://www.linkedin.com/in/lukaszjagiello">LinkedIn</a>.
       </p>
       <p>
         Outside of work, I play{" "}
-        <a href="https://ctftime.org/team/57347">CTFs</a> and build{" "}
+        <a href="https://ctftime.org/team/57347/">CTFs</a> and build{" "}
         <a href="https://github.com/ljagiello/ctf-skills">ctf-skills</a>, an
         open-source collection of skills that helps coding agents solve CTF
         challenges. I’ve always enjoyed taking things apart to understand how
