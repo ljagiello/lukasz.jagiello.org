@@ -63,7 +63,15 @@ export const site = {
     alt: "Portrait of Lukasz Jagiello",
   },
   twitterHandle: "@lcfpl",
-  alumniOf: "Gdańsk University of Technology",
+  // Structured data only. sameAs pins down which university it is.
+  alumniOf: {
+    name: "Gdańsk University of Technology",
+    url: "https://pg.edu.pl/",
+    sameAs: [
+      "https://www.wikidata.org/wiki/Q465922",
+      "https://en.wikipedia.org/wiki/Gda%C5%84sk_University_of_Technology",
+    ],
+  },
   // Structured-data dates, also the sitemap's lastmod. Google wants a full
   // date and time with a UTC offset, not just a date. `updated` is set
   // automatically (see updated.ts).

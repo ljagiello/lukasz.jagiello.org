@@ -56,7 +56,7 @@ const jsonLd = {
             addressCountry: "US",
           },
         },
-        alumniOf: { "@type": "CollegeOrUniversity", name: site.alumniOf },
+        alumniOf: { "@type": "CollegeOrUniversity", ...site.alumniOf },
         memberOf: site.memberOf.map((org) => ({
           "@type": "Organization",
           ...org,
