@@ -65,6 +65,12 @@ built from `content/site.ts`, with the about prose rendered from
 `content/about.tsx`). The 404 page (`app/not-found.tsx`) has its own
 `noindex` tags.
 
+After each production deploy, the IndexNow workflow
+(`.github/workflows/indexnow.yml`) asks Bing and the other IndexNow engines to
+recrawl the home page. The key lives in `public/<key>.txt`, whose name and
+content are the key; it's public by design. To change it, replace that file.
+Google doesn't use IndexNow and goes by the sitemap's `lastmod` instead.
+
 To get indexed:
 
 1. In [Search Console](https://search.google.com/search-console), add a

@@ -1,0 +1,58 @@
+name: IndexNow
+
+# After each production deploy, ask the IndexNow search engines (Bing, Yandex,
+# Seznam, Naver and others) to recrawl the page, so nobody has to submit it by
+# hand. Google doesn't use IndexNow; it goes by the sitemap's lastmod.
+#
+# Vercel reports deploys as a commit status named "Vercel", not as GitHub
+# deployments, and a successful one on a main commit is a production deploy.
+# Status events only run workflows from main, so test changes to this file
+# with a manual run after merging.
+
+on:
+  status:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.context == 'Vercel' &&
+      github.event.state == 'success' &&
+      contains(github.event.branches.*.name, 'main'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Ping IndexNow
+        run: |
+          # The key is the name and the content of public/<key>.txt, which
+          # proves the site owns it. It isn't a secret.
+          for file in public/*.txt; do
+            name=$(basename "$file" .txt)
+            if [[ $name =~ ^[0-9a-f]{32}$ ]]; then key=$name; fi
+          done
+          : "${key:?no IndexNow key file in public/}"
+          # The home page is the only page; it's also all the sitemap lists.
+          jq -n --arg key "$key" '{
+            host: "lukasz.jagiello.org",
+            key: $key,
+            keyLocation: "https://lukasz.jagiello.org/\($key).txt",
+            urlList: ["https://lukasz.jagiello.org/"]
+          }' > request.json
+          code=$(curl -sS -o response.txt -w '%{http_code}' \
+            -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            --data @request.json)
+          echo "IndexNow answered $code"
+          cat response.txt
+          # 200: accepted. 202: accepted, key check still pending.
+          [ "$code" = 200 ] || [ "$code" = 202 ]
