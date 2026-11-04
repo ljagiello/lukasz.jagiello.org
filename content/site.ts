@@ -48,12 +48,13 @@ export const site = {
   // Structured data only: tells him apart from other people with the same
   // name, some of whom use the same handles elsewhere.
   disambiguatingDescription:
-    "Engineering leader in the San Francisco Bay Area, CTF player and author of ctf-skills. ljagiello on GitHub, Keybase, Reddit, HackerOne and Hack The Box; lukaszjagiello on LinkedIn and Instagram; lcfpl on X.",
+    "Engineering leader in the San Francisco Bay Area, CTF player and author of ctf-skills. ljagiello on GitHub, Keybase, Reddit, HackerOne and Hack The Box; lukaszjagiello on LinkedIn and Instagram; lcfpl on X; jagiello_lukasz on Pinterest.",
   // Which handle he uses where, for llms.txt.
   handles: [
     "ljagiello on GitHub, Keybase, Reddit, HackerOne, Hack The Box, Hacker News, Docker Hub and Bandcamp",
     "lukaszjagiello on LinkedIn and Instagram",
     "lcfpl on X",
+    "jagiello_lukasz on Pinterest",
     "jagiello.org on Bluesky",
     "lcf on Discogs, LCF on CTFtime",
   ],
@@ -111,6 +112,8 @@ export const site = {
       href: "https://news.ycombinator.com/user?id=ljagiello",
     },
     { label: "Docker Hub", href: "https://hub.docker.com/u/ljagiello" },
+    // ljagiello and lukaszjagiello on Pinterest are other people.
+    { label: "Pinterest", href: "https://www.pinterest.com/jagiello_lukasz/" },
   ],
 };
 
