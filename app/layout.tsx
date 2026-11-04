@@ -57,7 +57,12 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: googleVerification ? { google: googleVerification } : undefined,
+  verification: {
+    google: googleVerification,
+    // Verifies the site for the Pinterest profile (Settings, Link to
+    // Pinterest, Websites). Keep it after the claim goes through.
+    other: { "p:domain_verify": "693356cf978328840bcb248d2219e847" },
+  },
 };
 
 export const viewport: Viewport = {
