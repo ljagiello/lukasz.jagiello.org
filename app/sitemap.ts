@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/content/site";
+import { work } from "@/content/work";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -9,6 +10,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: site.updated,
       changeFrequency: "weekly",
       priority: 1,
+    },
+    {
+      url: `${site.url}${work.path}`,
+      lastModified: site.updated,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
   ];
 }

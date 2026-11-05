@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { About } from "@/content/about";
 import { activeLinks, projects, site } from "@/content/site";
 import photo from "@/public/photo.jpg";
@@ -182,7 +183,10 @@ export default function Home() {
           <section className="contact" aria-labelledby="contact">
             <div>
               <h2 id="contact">Contact</h2>
-              <p>Email is the quickest way to reach me.</p>
+              <p>
+                Email is the quickest way to reach me. Shipping AI agents?{" "}
+                <Link href="/work">See how I work with teams</Link>.
+              </p>
             </div>
             <a href={`mailto:${site.email}`} className="contact-button">
               Contact me <span aria-hidden="true">→</span>
