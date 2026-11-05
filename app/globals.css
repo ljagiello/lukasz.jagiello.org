@@ -524,54 +524,6 @@ a:hover {
   color: var(--acc);
 }
 
-.workshop {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
-  gap: clamp(24px, 4vw, 48px);
-  margin-top: 56px;
-  padding: 40px 0 0;
-  border-top: 1px solid var(--rule);
-}
-
-.workshop h2 {
-  margin: 10px 0 12px;
-  font-size: clamp(26px, 3.4vw, 36px);
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
-  text-wrap: balance;
-}
-
-.when {
-  margin: 0;
-  font-size: 13px;
-  color: var(--acc);
-}
-
-.workshop-body > p:first-child {
-  margin: 0 0 16px;
-}
-
-.workshop-body .includes {
-  margin-bottom: 20px;
-}
-
-.lightning {
-  margin: 24px 0 0;
-  padding: 16px 18px;
-  border: 1px solid var(--rule);
-  border-radius: 14px;
-  background: var(--soft);
-  font-size: 15.5px;
-  line-height: 1.5;
-  color: var(--mute);
-}
-
-.lightning strong {
-  color: var(--ink);
-  font-weight: 600;
-}
-
 .how {
   margin-top: 56px;
   padding-top: 40px;

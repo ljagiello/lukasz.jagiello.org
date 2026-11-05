@@ -57,21 +57,6 @@ const jsonLd = {
         url,
       },
     })),
-    {
-      "@type": "Event",
-      name: work.workshop.name,
-      description: work.workshop.description,
-      startDate: "2027-02-10",
-      endDate: "2027-02-11",
-      eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
-      organizer: { "@id": `${home}#person` },
-      offers: {
-        "@type": "Offer",
-        price: "900",
-        priceCurrency: "USD",
-        url,
-      },
-    },
   ],
 };
 
@@ -124,43 +109,6 @@ export default function Work() {
                 </li>
               ))}
             </ul>
-          </section>
-
-          <section className="workshop" aria-labelledby="workshop">
-            <div className="workshop-head">
-              <p className="card-meta mono">
-                <span>Public workshop · founding cohort</span>
-              </p>
-              <h2 id="workshop">{work.workshop.name}</h2>
-              <p className="when mono">{work.workshop.when}</p>
-            </div>
-            <div className="workshop-body">
-              <p>{work.workshop.description}</p>
-              <ul className="includes">
-                {work.workshop.includes.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-              <p className="price">
-                {work.workshop.price}
-                <span className="terms mono">
-                  {work.workshop.earlyBird} · {work.workshop.seats}
-                </span>
-              </p>
-              <p className="work-actions">
-                <a href={links.presale} className="contact-button">
-                  Reserve a founding seat <span aria-hidden="true">→</span>
-                </a>
-                <a href={links.waitlist} className="work-link mono">
-                  Join the waitlist
-                </a>
-              </p>
-              <p className="lightning">
-                <strong>{work.workshop.lightning.name}</strong>,{" "}
-                {work.workshop.lightning.when}. {work.workshop.lightning.description}{" "}
-                <a href={links.waitlist}>Get the invite</a>.
-              </p>
-            </div>
           </section>
 
           <section className="how" aria-labelledby="how">

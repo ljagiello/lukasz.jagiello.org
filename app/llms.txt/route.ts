@@ -71,7 +71,6 @@ export function GET() {
     `## Work with me (${site.url}${work.path})`,
     `${work.headline}. ${work.intro[0]}`,
     offerLines.join("\n"),
-    `- Public workshop: ${work.workshop.name}, ${work.workshop.when}, ${work.workshop.price} (${work.workshop.earlyBird}). ${work.workshop.description}`,
     `Not a fit: ${work.notAFit.join(" ")}`,
     "## Contact",
     `- [Email](mailto:${site.email})`,

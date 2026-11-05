@@ -1,4 +1,4 @@
-// Everything on the /work page (offers, the workshop, the links to connect).
+// Everything on the /work page (offers, how to get in touch, the booking link).
 // The prose stays here so llms.txt can carry the same words as the page.
 
 import { site } from "./site";
@@ -19,12 +19,8 @@ export type Offer = {
 // Links that need an account on another service. An empty href falls back to
 // email, so the page works before they are connected:
 // - booking: a Cal.com or Calendly event (30 minutes).
-// - presale: a Stripe Payment Link for the founding-cohort seat.
-// - waitlist: a form (Tally, Google Forms) for the workshop waitlist.
 export const connect = {
   booking: "",
-  presale: "",
-  waitlist: "",
 };
 
 export const work = {
@@ -34,7 +30,7 @@ export const work = {
   headline: "Fractional engineering lead for teams shipping AI agents to production",
   // Search result and link preview description.
   description:
-    "Lukasz Jagiello works with teams shipping AI agents to production: a fixed-fee Agent Platform Review, a fractional Head of Platform retainer, and a hands-on workshop on building and evaluating agent skills.",
+    "Lukasz Jagiello works with teams shipping AI agents to production: a fixed-fee Agent Platform Review, a fractional Head of Platform retainer, and a one-day team workshop on building and evaluating agent skills.",
   intro: [
     "I ran the platform (VP Engineering at Friday AI, a local-first agent runtime with MCP tool integrations across several LLM providers), the infrastructure under it (Kubernetes and GKE in production since 2019, HashiCorp Vault, the cost model), and I maintain ctf-skills, an open-source library of agent skills with an evaluation suite that lets coding agents solve CTF challenges.",
     "Before that I cofounded Tempest, an enterprise internal developer platform, led cloud engineering at Fleetsmith through its acquisition by Apple, and ran the global infrastructure of a top-20 website at Fandom. I work with a small number of teams at a time, remote, from the San Francisco Bay Area.",
@@ -87,27 +83,6 @@ export const work = {
       fit: "Engineering and security teams adopting coding agents.",
     },
   ] satisfies Offer[],
-  workshop: {
-    name: "Building and evaluating agent skills: the ctf-skills playbook",
-    when: "10–11 February 2027, two live sessions of 3.5 hours, online",
-    price: "$900",
-    earlyBird: "$750 until 31 December 2026",
-    seats: "15 seats in the founding cohort",
-    description:
-      "A hands-on course on the thing behind ctf-skills: how to package know-how into skills that coding agents can use, how to structure an orchestrator, and how to build evaluations with promptfoo so you can tell when a change helps. CTF challenges are the testbed because they give an unambiguous score; the methods carry to any domain. For engineers adopting coding agents and people building skills; this is not a security course.",
-    includes: [
-      "Both sessions live, with the recording afterwards",
-      "The skills, orchestrator and eval suite walked through end to end",
-      "One live CTF solved together, with the agent doing the work",
-      "A founding-cohort price in exchange for a short testimonial",
-    ],
-    lightning: {
-      name: "Free lightning lesson",
-      when: "14 January 2027, 60 minutes, online",
-      description:
-        "One skill, one eval, one challenge, start to finish. A preview of the workshop and a way to see if it is for you.",
-    },
-  },
   howItWorks: [
     "Email me or book a call: thirty minutes, no deck, we talk about what you are shipping.",
     "I send a one-page proposal within two days: scope, price, dates.",
@@ -122,13 +97,11 @@ export const work = {
   email: site.email,
 };
 
-// Email fallbacks for the links in `connect`, so every button works before
-// the services are connected.
+// Email fallback for the booking link, so the button works before the
+// calendar is connected.
 const mail = (subject: string) =>
   `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
 
 export const links = {
   booking: connect.booking || mail("Call about working together"),
-  presale: connect.presale || mail("Founding-cohort seat: agent skills workshop"),
-  waitlist: connect.waitlist || mail("Workshop waitlist: agent skills"),
 };
