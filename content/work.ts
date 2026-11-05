@@ -91,7 +91,6 @@ export const work = {
   notAFit: [
     "Full-time roles and interim roles: I am building a practice, not looking for a job.",
     "Anything related to Apple or Apple products.",
-    "Security research or penetration testing: ctf-skills is agent tooling, and I play CTFs for fun. For offensive-security work I will point you to people who do it for a living.",
     "Equity-only advisory.",
   ],
   email: site.email,
