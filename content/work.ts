@@ -20,7 +20,7 @@ export type Offer = {
 // email, so the page works before they are connected:
 // - booking: a Cal.com or Calendly event (30 minutes).
 export const connect = {
-  booking: "",
+  booking: "https://cal.com/ljagiello/intro",
 };
 
 export const work = {
