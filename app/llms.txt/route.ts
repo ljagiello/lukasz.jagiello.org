@@ -1,6 +1,7 @@
 import { isValidElement, type ReactNode } from "react";
 import { About } from "@/content/about";
 import { activeLinks, projects, site } from "@/content/site";
+import { work } from "@/content/work";
 
 type ProseProps = { children?: ReactNode; href?: string };
 
@@ -48,6 +49,11 @@ export function GET() {
       : []),
   ];
 
+  const offerLines = work.offers.map(
+    (offer) =>
+      `- ${offer.name} (${offer.price}, ${offer.terms.toLowerCase()}): ${offer.description} For: ${offer.fit}`,
+  );
+
   const body = [
     `# ${site.name}`,
     `> ${site.description}`,
@@ -62,6 +68,11 @@ export function GET() {
       .join("\n"),
     "## Side projects",
     projectLines.join("\n"),
+    `## Work with me (${site.url}${work.path})`,
+    `${work.headline}. ${work.intro[0]}`,
+    offerLines.join("\n"),
+    `- Public workshop: ${work.workshop.name}, ${work.workshop.when}, ${work.workshop.price} (${work.workshop.earlyBird}). ${work.workshop.description}`,
+    `Not a fit: ${work.notAFit.join(" ")}`,
     "## Contact",
     `- [Email](mailto:${site.email})`,
   ].join("\n\n");

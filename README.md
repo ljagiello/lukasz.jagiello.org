@@ -9,6 +9,11 @@ title, profile links, side projects, contact email) and
 [`content/about.tsx`](content/about.tsx) (the about paragraphs).
 Replace `public/photo.jpg` to change the photo (square, at least 400×400).
 
+The `/work` page (offers, the workshop, how to get in touch) comes from
+[`content/work.ts`](content/work.ts). Its `connect` object holds the booking,
+pre-sale and waitlist links; an empty one falls back to email, so the page
+works before those services are connected.
+
 Links with an empty `href` are hidden. Profiles in `extraProfiles` get no
 icon; they only go in the structured data and `/llms.txt`. Other people share
 the name, so `disambiguatingDescription` (structured data) and `handles`
