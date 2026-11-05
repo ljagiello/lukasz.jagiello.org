@@ -9,8 +9,8 @@ title, profile links, side projects, contact email) and
 [`content/about.tsx`](content/about.tsx) (the about paragraphs).
 Replace `public/photo.jpg` to change the photo (square, at least 400×400).
 
-The `/work` page (offers, how to get in touch) comes from
-[`content/work.ts`](content/work.ts). Its `connect` object holds the booking
+The `/work` page (intro, offers, how to get in touch) comes from
+[`content/work.tsx`](content/work.tsx). Its `connect` object holds the booking
 link; while empty it falls back to email, so the page works before the
 calendar is connected.
 

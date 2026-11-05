@@ -299,7 +299,8 @@ a:hover {
 }
 
 /* Keep short inline links like "ctf-skills" from breaking at the hyphen. */
-.about a {
+.about a,
+.work-intro a {
   white-space: nowrap;
 }
 

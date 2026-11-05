@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { site } from "@/content/site";
-import { links, work } from "@/content/work";
+import { links, work, WorkIntro } from "@/content/work";
 
 const home = `${site.url}/`;
 const url = `${site.url}${work.path}`;
@@ -72,9 +72,7 @@ export default function Work() {
             </p>
             <h1>{work.headline}</h1>
             <div className="work-intro">
-              {work.intro.map((paragraph) => (
-                <p key={paragraph.slice(0, 24)}>{paragraph}</p>
-              ))}
+              <WorkIntro />
             </div>
             <p className="work-actions">
               <a href={links.booking} className="contact-button">

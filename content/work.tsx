@@ -1,5 +1,5 @@
-// Everything on the /work page (offers, how to get in touch, the booking link).
-// The prose stays here so llms.txt can carry the same words as the page.
+// Everything on the /work page (intro, offers, how to get in touch, the booking
+// link). The prose stays here so llms.txt can carry the same words as the page.
 
 import { site } from "./site";
 
@@ -31,11 +31,6 @@ export const work = {
   // Search result and link preview description.
   description:
     "Lukasz Jagiello works with teams shipping AI agents to production: a fixed-fee Agent Platform Review, a fractional Head of Platform retainer, and a one-day team workshop on building and evaluating agent skills.",
-  intro: [
-    "I led engineering at Friday AI, building the platform behind a local-first agent runtime with MCP tool integrations across multiple LLM providers. That included the runtime itself, production infrastructure (Kubernetes and GKE since 2019), HashiCorp Vault, and the underlying cost model. I also maintain ctf-skills, an open-source library of agent skills with an evaluation suite that lets coding agents solve CTF challenges.",
-    "Before that, I co-founded Tempest, an enterprise internal developer platform; led cloud engineering at Fleetsmith through its acquisition by Apple; and ran global infrastructure for one of the top 20 websites at Fandom.",
-    "I work remotely with a small number of teams at a time, based in the San Francisco Bay Area.",
-  ],
   offers: [
     {
       name: "Agent Platform Review",
@@ -96,6 +91,34 @@ export const work = {
   ],
   email: site.email,
 };
+
+// The intro under the headline. Plain JSX so it can carry inline links.
+export function WorkIntro() {
+  return (
+    <>
+      <p>
+        I co-founded Tempest Labs, where we built Friday AI, a platform for
+        running AI agents with a local-first runtime and MCP tool integrations
+        across multiple LLM providers. I led engineering, building everything
+        from the runtime itself to production infrastructure (Kubernetes and GKE
+        since 2019), HashiCorp Vault, and the underlying cost model. I also
+        maintain{" "}
+        <a href="https://github.com/ljagiello/ctf-skills">ctf-skills</a>, an
+        open-source library of agent skills with an evaluation suite that lets
+        coding agents solve CTF challenges.
+      </p>
+      <p>
+        Before Tempest, I led cloud engineering at Fleetsmith through its
+        acquisition by Apple and ran global infrastructure for one of the top 20
+        websites at Fandom.
+      </p>
+      <p>
+        I work remotely with a small number of teams at a time, based in the San
+        Francisco Bay Area.
+      </p>
+    </>
+  );
+}
 
 // Email fallback for the booking link, so the button works before the
 // calendar is connected.
