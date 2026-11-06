@@ -31,8 +31,8 @@ export type Project = {
   // Omit for private projects.
   repo?: string;
   // Its page on this site, /projects/<slug>, with the write-up from
-  // projects.tsx. A private project can have one too; it just shows no source
-  // link. Omit to leave the project without a page.
+  // projects/<slug>.tsx. A private project can have one too; it just shows no
+  // source link. Omit to leave the project without a page.
   slug?: string;
 };
 
