@@ -150,3 +150,11 @@ Dependabot (`.github/dependabot.yml`) opens weekly grouped PRs for npm,
 GitHub Actions and OpenTofu providers, skipping releases younger than three
 days. CI (`.github/workflows/ci.yml`) lints, type-checks and builds every PR,
 and Vercel deploys a preview for it.
+
+`overrides` in `package.json` lifts `minimatch` 10 to 11 for the advisory
+GHSA-g3hv-75wg-m249: ESLint, `@eslint/config-array` and
+`@typescript-eslint/typescript-estree` still ask for `^10`, which has no
+patched release. They only call `minimatch()`, `new Minimatch()`, `.match()`
+and `.pattern`, which 11 keeps, and ESLint lints the same files with it. Drop
+the override once they depend on `^11`. The `minimatch` 3 copy under the
+`eslint-config-next` plugins is outside the affected range and stays.
