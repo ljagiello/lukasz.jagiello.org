@@ -231,24 +231,24 @@ export const stories: Record<string, Story> = {
     ),
   },
   airdash: {
-    tagline: "Air quality in the macOS menu bar",
+    tagline: "Air quality in your macOS menu bar",
     body: () => (
       <>
         <p>
           AirGradient makes air quality monitors that measure CO2, fine
-          particles (PM2.5), temperature and humidity. airdash shows those
-          readings in the macOS menu bar, so you can check the air in the room
-          without opening a dashboard.
+          particles (PM2.5), temperature, and humidity. airdash brings those
+          readings straight to your macOS menu bar, so you can check the air
+          quality in your room at a glance without opening a dashboard.
         </p>
         <p>
-          It’s a small native Mac app written in Go, using bindings to Apple’s
-          AppKit. It fetches the latest readings from AirGradient’s API once a
-          minute and can install itself as a background service that starts
-          when you log in. It runs on Apple Silicon Macs.
+          It’s a small, native macOS app written in Go, with bindings to
+          Apple’s AppKit. It fetches the latest readings from the AirGradient
+          API every minute and can run as a background service, starting
+          automatically when you log in. It runs on Apple Silicon Macs.
         </p>
         <p>
-          It goes back to 2023, which makes it the oldest of my side projects
-          here, and it still gets updates.
+          This is the oldest of my side projects featured here. I started it in
+          2023, and it still gets updates.
         </p>
       </>
     ),
