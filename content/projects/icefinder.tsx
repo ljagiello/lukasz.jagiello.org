@@ -1,9 +1,15 @@
+import render from "@/public/img/icefinder.webp";
 import type { Story } from "./index";
 
 // The write-up on /projects/icefinder. See index.ts for the fields.
 export const story: Story = {
   tagline: "A pendant that points you toward your friends",
   published: "2026-11-05T17:01:17-08:00",
+  image: {
+    file: render,
+    path: "/img/icefinder.webp",
+    alt: "3D render of the IceFinder light board design: a round circuit board with a ring of LEDs around its edge",
+  },
   body: () => (
     <>
       <p>

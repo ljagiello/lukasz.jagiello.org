@@ -1,3 +1,4 @@
+import photo from "@/public/img/totem-compass.webp";
 import type { Story } from "./index";
 
 // The write-up on /projects/totem-compass. See index.ts for the fields.
@@ -8,6 +9,11 @@ export const story: Story = {
   searchDescription:
     "A teardown of the Totem Compass: how its firmware works, how the devices talk to the phone and to each other, and an ESP32 that joins their mesh.",
   docs: "https://totem-cb8b3887.mintlify.app",
+  image: {
+    file: photo,
+    path: "/img/totem-compass.webp",
+    alt: "The LED side of a Totem Compass circuit board, powered on, with a ring of LEDs around the edge and a cluster lit in the middle",
+  },
   body: () => (
     <>
       <p>

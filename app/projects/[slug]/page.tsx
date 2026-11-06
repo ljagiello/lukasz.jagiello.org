@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { type ProjectPage, projectPages } from "@/content/projects";
@@ -77,6 +78,17 @@ export default async function Project({ params }: PageProps<"/projects/[slug]">)
   const description = descriptionOf(project);
   // Empty for a private project (no repo), which then has no `about`.
   const software = softwareSourceCode(project);
+  const ogImage = `${url}/opengraph-image`;
+  const image = project.image
+    ? {
+        "@type": "ImageObject",
+        "@id": `${url}#image`,
+        url: new URL(project.image.path, site.url).toString(),
+        width: project.image.file.width,
+        height: project.image.file.height,
+        caption: project.image.alt,
+      }
+    : null;
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -88,6 +100,7 @@ export default async function Project({ params }: PageProps<"/projects/[slug]">)
         description,
         isPartOf: websiteRef,
         ...(software.length > 0 ? { about: { "@id": `${url}#software` } } : {}),
+        ...(image ? { primaryImageOfPage: { "@id": image["@id"] } } : {}),
         author: personRef,
         breadcrumb: { "@id": `${url}#breadcrumb` },
         datePublished: project.published,
@@ -104,7 +117,9 @@ export default async function Project({ params }: PageProps<"/projects/[slug]">)
         publisher: personRef,
         datePublished: project.published,
         dateModified: project.modified,
-        image: `${url}/opengraph-image`,
+        // The project's picture, if it has one, then the preview card: Google
+        // picks from several sizes and shapes.
+        image: image ? [image, ogImage] : ogImage,
         mainEntityOfPage: { "@id": `${url}#webpage` },
         ...(software.length > 0 ? { about: { "@id": `${url}#software` } } : {}),
         inLanguage: "en",
@@ -145,6 +160,21 @@ export default async function Project({ params }: PageProps<"/projects/[slug]">)
 
           <div className="project-layout">
             <article className="project-story">
+              {project.image ? (
+                <figure className="project-image">
+                  {/* The page's largest image, so fetched first. One no wider
+                      than the column is served as is: resizing can't make it
+                      smaller, and re-encoding would blur a screenshot's text. */}
+                  <Image
+                    src={project.image.file}
+                    alt={project.image.alt}
+                    sizes="(min-width: 960px) 700px, 100vw"
+                    loading="eager"
+                    fetchPriority="high"
+                    unoptimized={project.image.file.width <= 700}
+                  />
+                </figure>
+              ) : null}
               <Body />
             </article>
             <aside className="project-facts mono" aria-label="About the project">

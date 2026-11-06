@@ -679,6 +679,25 @@ a:hover {
   color: var(--mute);
 }
 
+/* The project's picture, framed like the facts box so a light render or
+   screenshot doesn't sit raw on the dark page, and never shown larger than
+   it is. */
+.project-image {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 32px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  background: var(--soft);
+}
+
+.project-image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 .project-story code {
   font-family: var(--font-jetbrains), ui-monospace, monospace;
   font-size: 0.82em;

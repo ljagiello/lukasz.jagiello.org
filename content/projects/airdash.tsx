@@ -1,3 +1,4 @@
+import screenshot from "@/public/img/airdash.png";
 import type { Story } from "./index";
 
 // The write-up on /projects/airdash. See index.ts for the fields.
@@ -5,6 +6,11 @@ export const story: Story = {
   tagline: "Air quality in your macOS menu bar",
   published: "2026-11-05T16:41:20-08:00",
   searchTitle: "airdash: AirGradient readings in your macOS menu bar",
+  image: {
+    file: screenshot,
+    path: "/img/airdash.png",
+    alt: "airdash in the macOS menu bar, showing temperature, PM2.5, humidity and CO2 readings from an AirGradient monitor",
+  },
   body: () => (
     <>
       <p>

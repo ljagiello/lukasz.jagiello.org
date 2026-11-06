@@ -3,6 +3,7 @@
 // last-changed date (see updated.ts). Plain JSX so it can carry inline links.
 // The first paragraph is shown in full ink, the rest muted.
 
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 import { type Project, projects } from "../site";
 import { updated } from "../updated";
@@ -30,6 +31,17 @@ export type Story = {
   searchDescription?: string;
   // A documentation site separate from `url`, if there is one.
   docs?: string;
+  // A picture of the project, shown above the write-up and listed for image
+  // search. It lives in public/img/, named after the slug.
+  image?: {
+    // A static import of that file, which gives its size.
+    file: StaticImageData;
+    // Its public URL, e.g. "/img/airdash.png": the structured data and the
+    // sitemap use this one because it stays the same from build to build.
+    path: string;
+    // What it shows, for screen readers and image search.
+    alt: string;
+  };
   body: () => ReactNode;
 };
 
