@@ -68,36 +68,41 @@ export const stories: Record<string, Story> = {
     body: () => (
       <>
         <p>
-          CTFs are hacking competitions. Players race to break into
-          deliberately vulnerable programs and recover a hidden “flag”, and the
-          challenges cover everything from web apps and compiled binaries to
-          cryptography and forensics. ctf-skills teaches AI coding agents like
-          Claude Code and Codex to work through them the way an experienced
-          player would: what to check first, which tools to reach for, and which
-          tricks usually pay off.
+          CTFs (Capture The Flag competitions) are hacking competitions where
+          players race to exploit deliberately vulnerable systems and recover
+          hidden flags. Challenges cover everything from web applications and
+          compiled binaries to cryptography and digital forensics.
         </p>
         <p>
-          It’s a set of skills, one for each kind of challenge, written in the
-          open Agent Skills format so any agent that supports it can use them. A
-          coordinating skill reads a new challenge, works out what kind it is
-          and hands it to the right specialist. Others look up writeups of
-          similar challenges when the agent gets stuck, and write up the
-          solution once the flag is found.
+          ctf-skills teaches AI coding agents like Claude Code and Codex to
+          approach these challenges the way an experienced CTF player would:
+          what to look at first, which tools to use, and which techniques are
+          likely to pay off.
         </p>
         <p>
-          The part I care about most is proving that the skills actually help.
-          The repo has an evaluation suite that checks three things: whether the
-          agent picks the right skill for a challenge, whether it sticks to the
-          rules written into a skill even when the prompt pushes it to cut
-          corners, and whether it solves small offline challenges more often
-          with the skills than without them.
+          The project is a collection of skills, each focused on a different
+          type of challenge, built using the open Agent Skills format. This
+          means any compatible agent can use them. A coordinating skill analyzes
+          each new challenge, identifies its type, and delegates it to the
+          appropriate specialist. Other skills help the agent find and learn
+          from existing writeups when it gets stuck, then document its own
+          solution once it finds the flag.
         </p>
         <p>
-          It’s open source under the MIT license, and I maintain it in my spare
-          time. If it saves your team hours during a competition or a security
-          assessment, you can{" "}
+          The part I care about most is measuring whether these skills actually
+          make a difference. The repository includes an evaluation suite that
+          tests three things: whether the agent selects the right skill for a
+          challenge, whether it follows the rules defined by a skill even when
+          prompted to cut corners, and whether having the skills improves its
+          success rate on small, offline challenges compared to working without
+          them.
+        </p>
+        <p>
+          The project is open source under the MIT license, and I maintain it
+          in my spare time. If it saves your team hours during a competition or
+          security assessment, consider{" "}
           <a href="https://github.com/sponsors/ljagiello">
-            sponsor it on GitHub
+            sponsoring it on GitHub
           </a>
           .
         </p>
