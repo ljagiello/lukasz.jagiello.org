@@ -20,40 +20,46 @@ export const stories: Record<string, Story> = {
       <>
         <p>
           IceFinder is a wearable LED pendant I’m building for Burning Man
-          2027. Its ring of lights points toward your friends, so you can find
+          2027. Its ring of lights points toward your friends, helping you find
           each other anywhere on the playa.
         </p>
         <p>
-          Each pendant knows where it is and which way you’re facing, from its
-          own GPS receiver, compass and motion sensor. Friends’ pendants share
-          their positions directly with each other over a radio mesh, with no
-          phones, cell signal or internet involved. Your pendant works out where
-          each friend is relative to you and lights up the part of the ring that
-          faces them, with the top of the ring meaning straight ahead.
+          Each pendant knows its own position and orientation using an onboard
+          GPS receiver, compass, and motion sensor. Friends’ pendants share
+          their positions directly over a radio mesh, without relying on phones,
+          cellular coverage, or the internet. Your pendant calculates the
+          direction of each friend relative to your own position and
+          illuminates the corresponding part of the ring. The top of the ring
+          represents straight ahead.
         </p>
         <p>
-          Because the pendant shares where you are, security matters as much as
-          the lights. Friends are added by exchanging keys between their owners’
-          phones, and every position is encrypted so only the friends it’s meant
-          for can read it. Only the owner can change a pendant’s settings, and a
-          pendant installs only firmware updates that are signed.
+          Since the pendant shares your location, security is just as important
+          as the lights themselves. Friends establish trust by exchanging keys
+          through their phones, and every location update is encrypted so that
+          only its intended recipients can read it. Only the owner can change a
+          pendant’s settings, and firmware updates are accepted only when
+          signed.
         </p>
         <p>
-          Right now I’m rewriting the firmware in C on ESP-IDF, ahead of the
-          final circuit board. It runs on a development board with the same GPS
-          receiver, and it already handles owner pairing, the encrypted
-          Bluetooth session, saved settings, the lights and signed updates over
-          Bluetooth or Wi-Fi. The mesh radio and the direction display come
-          next.
+          I’m currently rewriting the firmware in C using ESP-IDF, ahead of the
+          final PCB design. Development is happening on a board equipped with
+          the same GPS receiver as the planned hardware. The firmware already
+          supports owner pairing, encrypted Bluetooth sessions, persistent
+          settings, LED control, and signed firmware updates over Bluetooth and
+          Wi-Fi. The mesh radio and directional display are next.
         </p>
         <p>
-          A device people wear for a week in the desert has to be reliable, so
-          the firmware is tested hard. Every parser that reads outside data has
-          a fuzz target. Mutation tests check that the test suite actually
-          catches bugs. Independent QA agents write their own tests from the
-          design documents rather than from the code.
+          A device people wear for a week in the desert needs to be
+          exceptionally reliable. That’s why I’m putting considerable effort
+          into testing the firmware. Every parser that handles external input
+          has a dedicated fuzzing target. Mutation testing checks whether the
+          test suite actually catches bugs, while independent QA agents derive
+          their own tests from the design documents rather than the
+          implementation.
         </p>
-        <p>The code is private for now, so there’s no repository to link.</p>
+        <p>
+          The code is private for now, so there’s no public repository to link.
+        </p>
       </>
     ),
   },

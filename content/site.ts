@@ -161,7 +161,9 @@ export const projects: Project[] = [
     category: "Hardware",
     description:
       "A wearable LED pendant for Burning Man 2027. Its lights point toward your friends, so you can find each other anywhere on the playa.",
-    language: "C++",
+    // The firmware is being rewritten in C; only the light-pattern engine
+    // inside it stays C++.
+    language: "C",
     year: "2026",
     // Private repo, so no `repo`: the page has no source link.
     slug: "icefinder",
