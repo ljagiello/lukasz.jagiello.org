@@ -86,7 +86,7 @@ export const work = {
   ],
   notAFit: [
     "Full-time or interim positions. I’m focused on building an independent practice and working with teams on a project basis.",
-    "Anything related to Apple or Apple products.",
+    "Questions about my time at Apple or the work I did there.",
     "Equity-only advisory.",
   ],
   email: site.email,
