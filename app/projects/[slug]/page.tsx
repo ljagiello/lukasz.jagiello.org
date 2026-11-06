@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { projectPages } from "@/content/projects";
+import { type ProjectPage, projectPages } from "@/content/projects";
 import { site } from "@/content/site";
+import { home, personRef, siteNodes, websiteRef } from "../../schema";
 import { softwareSourceCode } from "../software";
 
 // Every project page is built ahead of time; the build fails if one can't be.
@@ -23,8 +24,12 @@ async function findProject(params: PageProps<"/projects/[slug]">["params"]) {
   return project;
 }
 
-const titleOf = (project: { name: string; tagline: string }) =>
-  `${project.name}: ${project.tagline}`;
+// The search-result title and description, which can say more than the
+// visible name and tagline (see Story in content/projects.tsx).
+const titleOf = (project: ProjectPage) =>
+  project.searchTitle ?? `${project.name}: ${project.tagline}`;
+const descriptionOf = (project: ProjectPage) =>
+  project.searchDescription ?? project.description;
 
 // Replaces the home page's profile-shaped tags for this page. Resolved at
 // build time, so the tags are in the prerendered <head>.
@@ -33,23 +38,28 @@ export async function generateMetadata({
 }: PageProps<"/projects/[slug]">): Promise<Metadata> {
   const project = await findProject(params);
   const title = titleOf(project);
+  const description = descriptionOf(project);
   return {
     title,
-    description: project.description,
+    description,
     alternates: { canonical: project.path },
+    // The preview image comes from opengraph-image.tsx next to this page.
     openGraph: {
-      type: "website",
+      type: "article",
       url: project.path,
       siteName: site.name,
       title,
-      description: project.description,
+      description,
       locale: "en_US",
+      publishedTime: project.published,
+      modifiedTime: site.updated.projects,
+      authors: [home],
     },
     twitter: {
       card: "summary_large_image",
       creator: site.twitterHandle,
       title,
-      description: project.description,
+      description,
     },
   };
 }
@@ -62,9 +72,9 @@ export default async function Project({ params }: PageProps<"/projects/[slug]">)
   const Body = project.body;
   const others = projectPages.filter((page) => page.slug !== project.slug);
 
-  const home = `${site.url}/`;
   const url = `${site.url}${project.path}`;
   const title = titleOf(project);
+  const description = descriptionOf(project);
   // Empty for a private project (no repo), which then has no `about`.
   const software = softwareSourceCode(project);
   const jsonLd = {
@@ -75,12 +85,29 @@ export default async function Project({ params }: PageProps<"/projects/[slug]">)
         "@id": `${url}#webpage`,
         url,
         name: title,
-        description: project.description,
-        isPartOf: { "@id": `${home}#website` },
+        description,
+        isPartOf: websiteRef,
         ...(software.length > 0 ? { about: { "@id": `${url}#software` } } : {}),
-        author: { "@id": `${home}#person` },
+        author: personRef,
         breadcrumb: { "@id": `${url}#breadcrumb` },
-        dateModified: site.updated,
+        datePublished: project.published,
+        dateModified: site.updated.projects,
+      },
+      // The write-up itself, signed by him, so search engines and LLMs credit
+      // the author and dates.
+      {
+        "@type": "Article",
+        "@id": `${url}#article`,
+        headline: title,
+        description,
+        author: personRef,
+        publisher: personRef,
+        datePublished: project.published,
+        dateModified: site.updated.projects,
+        image: `${url}/opengraph-image`,
+        mainEntityOfPage: { "@id": `${url}#webpage` },
+        ...(software.length > 0 ? { about: { "@id": `${url}#software` } } : {}),
+        inLanguage: "en",
       },
       {
         "@type": "BreadcrumbList",
@@ -91,6 +118,7 @@ export default async function Project({ params }: PageProps<"/projects/[slug]">)
         ],
       },
       ...software,
+      ...siteNodes,
     ],
   };
 
@@ -158,8 +186,10 @@ export default async function Project({ params }: PageProps<"/projects/[slug]">)
           </nav>
         </main>
 
+        {/* The work page is otherwise linked only from the home page. */}
         <footer className="footer mono">
-          <Link href="/">{site.name}</Link>
+          <Link href="/">{site.name}</Link> <span aria-hidden="true">·</span>{" "}
+          <Link href="/work">Work with me</Link>
         </footer>
       </div>
       <script

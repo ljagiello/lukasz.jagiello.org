@@ -1,16 +1,12 @@
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { site } from "@/content/site";
+import { ogSize, photoSrc } from "./og-card";
 
 export const alt = `${site.name}: ${site.jobTitle}`;
-export const size = { width: 1200, height: 630 };
+export const size = ogSize;
 export const contentType = "image/png";
 
 // The portrait, so shared links are recognisable at a glance.
-const photo = await readFile(join(process.cwd(), "public", site.photo.src));
-const photoSrc = `data:image/jpeg;base64,${photo.toString("base64")}`;
-
 export default function OpengraphImage() {
   return new ImageResponse(
     (

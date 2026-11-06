@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { site } from "@/content/site";
-import { links, work, WorkIntro } from "@/content/work";
+import { links, type Offer, work, WorkIntro } from "@/content/work";
+import { home, personRef, siteNodes, websiteRef } from "../schema";
 
-const home = `${site.url}/`;
 const url = `${site.url}${work.path}`;
-const title = `${work.title}: ${work.headline}`;
+const title = work.searchTitle;
 
 // Replaces the home page's profile-shaped tags for this page.
 export const metadata: Metadata = {
@@ -28,6 +28,22 @@ export const metadata: Metadata = {
   },
 };
 
+// The price as structured data: a range with minPrice and maxPrice, and a
+// rate with its unit (UN/CEFACT codes MON and DAY).
+function priceSpecification({ min, max, per }: Offer["amount"]) {
+  return {
+    "@type": "UnitPriceSpecification",
+    priceCurrency: "USD",
+    ...(max ? { minPrice: min, maxPrice: max } : { price: min }),
+    ...(per
+      ? { unitCode: per === "month" ? "MON" : "DAY", unitText: per }
+      : {}),
+  };
+}
+
+// "Agent Platform Review" -> "agent-platform-review", for the @id.
+const idOf = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+
 // Tells search engines these are services offered by the person on the home
 // page, with their prices.
 const jsonLd = {
@@ -39,24 +55,36 @@ const jsonLd = {
       url,
       name: title,
       description: work.description,
-      isPartOf: { "@id": `${home}#website` },
-      about: { "@id": `${home}#person` },
-      dateModified: site.updated,
+      isPartOf: websiteRef,
+      about: personRef,
+      breadcrumb: { "@id": `${url}#breadcrumb` },
+      dateModified: site.updated.work,
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${url}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: site.name, item: home },
+        { "@type": "ListItem", position: 2, name: work.title, item: url },
+      ],
     },
     ...work.offers.map((offer) => ({
       "@type": "Service",
+      "@id": `${url}#${idOf(offer.name)}`,
       name: offer.name,
       description: offer.description,
-      provider: { "@id": `${home}#person` },
-      areaServed: "US",
+      provider: personRef,
       offers: {
         "@type": "Offer",
-        price: offer.price.replace(/[^0-9–-]/g, "").split(/[–-]/)[0],
+        // A single price goes on the Offer too; a range only has min and max.
+        ...(offer.amount.max ? {} : { price: offer.amount.min }),
         priceCurrency: "USD",
+        priceSpecification: priceSpecification(offer.amount),
         description: `${offer.price}, ${offer.terms}`,
         url,
       },
     })),
+    ...siteNodes,
   ],
 };
 

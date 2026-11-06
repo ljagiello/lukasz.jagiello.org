@@ -1,32 +1,8 @@
-import { isValidElement, type ReactNode } from "react";
 import { About } from "@/content/about";
 import { projectPath } from "@/content/projects";
 import { activeLinks, projects, site } from "@/content/site";
 import { work, WorkIntro } from "@/content/work";
-
-type ProseProps = { children?: ReactNode; href?: string };
-
-// Turns prose (paragraphs of text and links) into Markdown, so
-// llms.txt carries the same words as the page without a second copy.
-function toMarkdown(node: ReactNode): string {
-  if (typeof node === "string" || typeof node === "number") {
-    return String(node);
-  }
-  if (Array.isArray(node)) {
-    return node.map(toMarkdown).join("");
-  }
-  if (!isValidElement<ProseProps>(node)) {
-    return "";
-  }
-  const inner = toMarkdown(node.props.children);
-  if (node.type === "a") {
-    return `[${inner}](${node.props.href})`;
-  }
-  if (node.type === "p") {
-    return `${inner}\n\n`;
-  }
-  return inner;
-}
+import { toMarkdown } from "../markdown";
 
 // A Markdown summary of the page for LLMs (https://llmstxt.org). Built from
 // the same content as the page, and prerendered at build time.
@@ -76,13 +52,15 @@ export function GET() {
       .join("\n"),
     "## Side projects",
     projectLines.join("\n"),
-    `## Work with me (${site.url}${work.path})`,
-    `${work.headline}.`,
+    "## Work with me",
+    `- [${work.title}](${site.url}${work.path}): ${work.headline}.`,
     toMarkdown(WorkIntro()).trim(),
     offerLines.join("\n"),
     `Not a fit: ${work.notAFit.join(" ")}`,
     "## Contact",
     `- [Email](mailto:${site.email})`,
+    "## Optional",
+    `- [Full text](${site.url}/llms-full.txt): every project write-up and the work page in full.`,
   ].join("\n\n");
 
   return new Response(`${body}\n`, {

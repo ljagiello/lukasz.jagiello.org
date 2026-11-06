@@ -30,7 +30,7 @@ const jsonLd = {
       url: home,
       isPartOf: { "@id": `${home}#website` },
       dateCreated: site.created,
-      dateModified: site.updated,
+      dateModified: site.updated.home,
       mainEntity: {
         "@type": "Person",
         "@id": `${home}#person`,
