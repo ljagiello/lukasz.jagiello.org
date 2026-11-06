@@ -21,6 +21,14 @@ previews, when they should carry the words people search for. They aren't
 shown on the page; without them, the title is "name: tagline" and the
 description is the card's text.
 
+A write-up can have one `image`, shown above the text. Put the file in
+`public/img/` named after the slug (e.g. `public/img/airdash.png`), import it
+in the write-up's file and give its `path` and `alt`. Strip the metadata
+first (`magick in.jpg -strip -resize 1600x1600 -quality 82 out.webp`), since
+photos carry the camera, date and location. Images no wider than the text
+column (700px), such as menu-bar screenshots, are served unchanged so their
+text stays sharp.
+
 The `/work` page (intro, offers, how to get in touch) comes from
 [`content/work.tsx`](content/work.tsx). Its `connect` object holds the booking
 link; while empty it falls back to email, so the page works before the
@@ -36,8 +44,9 @@ the name, so `disambiguatingDescription` (structured data) and `handles`
 The structured-data `dateModified` and the sitemap's `lastmod` come from
 `content/updated.ts`, one date per page: the home page (`site.ts`,
 `about.tsx`, the photo), `/work` (`site.ts`, `work.tsx`) and each project page
-(`site.ts` and its own file in `content/projects/`). Don't edit it: after a
-change to `content/` or the photo lands on `main`, the content-date workflow
+(`site.ts`, its own file in `content/projects/` and its image in
+`public/img/`). Don't edit it: after a change to `content/`, the photo or
+`public/img/` lands on `main`, the content-date workflow
 (`.github/workflows/content-date.yml`) writes each page's last commit time
 there and pushes it, which deploys again. A new project's file is picked up by
 itself; any other new content file needs adding to its page's list in that
@@ -90,7 +99,8 @@ project write-up and the work page in full).
 JSON-LD: the home page has `WebSite`/`ProfilePage`/`Person` data plus a
 `SoftwareSourceCode` entry per public project. Each project page repeats its
 `SoftwareSourceCode` and adds a `WebPage`, an `Article` (the write-up, with
-author and dates) and a breadcrumb. `/work` has a `WebPage`, a breadcrumb and
+author, dates and the project's image if it has one) and a breadcrumb. The
+sitemap lists the photo and each project image too, for image search. `/work` has a `WebPage`, a breadcrumb and
 a `Service` with its `Offer` per offer. The other pages carry short copies of
 the home page's `WebSite` and `Person` (`app/schema.ts`), so each one names
 its author on its own. The 404 page (`app/not-found.tsx`) has its own

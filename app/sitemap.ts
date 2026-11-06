@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: site.updated.home,
       changeFrequency: "weekly",
       priority: 1,
+      images: [new URL(site.photo.src, site.url).toString()],
     },
     {
       url: `${site.url}${work.path}`,
@@ -23,6 +24,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: project.modified,
       changeFrequency: "monthly" as const,
       priority: 0.6,
+      ...(project.image
+        ? { images: [new URL(project.image.path, site.url).toString()] }
+        : {}),
     })),
   ];
 }

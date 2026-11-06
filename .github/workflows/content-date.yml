@@ -12,6 +12,7 @@ on:
     paths:
       - content/**
       - public/photo.jpg
+      - public/img/**
   # A manual re-run, e.g. if a push was ever rejected.
   workflow_dispatch:
 
@@ -52,11 +53,14 @@ jobs:
             echo "  home: \"$home\","
             echo "  // site.ts and work.tsx"
             echo "  work: \"$work\","
-            echo "  // Each project page: site.ts and its own file in projects/"
+            echo "  // Each project page: site.ts, its own file in projects/ and its picture"
             echo "  projects: {"
-            # One per write-up file; index.ts is the list, not a page.
+            # One per write-up file; index.ts is the list, not a page. The
+            # picture is public/img/<slug>.<ext>; a project without one
+            # leaves the pattern unmatched, which git simply ignores.
             for file in content/projects/*.tsx; do
-              echo "    \"$(basename "$file" .tsx)\": \"$(stamp content/site.ts "$file")\","
+              slug=$(basename "$file" .tsx)
+              echo "    \"$slug\": \"$(stamp content/site.ts "$file" public/img/"$slug".*)\","
             done
             echo "  },"
             echo "};"
