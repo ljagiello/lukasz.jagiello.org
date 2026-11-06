@@ -200,29 +200,32 @@ export const stories: Record<string, Story> = {
     body: () => (
       <>
         <p>
-          Poo Math plans the least glamorous part of Burning Man. If you camp in
-          an RV, you can’t drain anything onto the playa, so every gallon of
-          water you use ends up in your gray or black tank until a truck comes
-          to pump it out. Run out of room halfway through the week and you have
-          a very real problem.
+          Poo Math plans the least glamorous part of Burning Man. If you’re
+          camping in an RV, you can’t dump wastewater on the playa, so every
+          gallon of water you use ends up in your gray or black tank until a
+          pump-out truck comes along. Run out of capacity halfway through the
+          week, and you have a very real problem.
         </p>
         <p>
-          You tell it about your rig, who’s staying in it and when each person
-          arrives and leaves, and how you use water. It models showers, the sink
-          and the toilet day by day, then works out how many pump-outs and
-          fresh-water refills you’ll need and roughly when each one is due. Since
-          no week on the playa goes exactly to plan, it also runs a thousand
-          randomized versions of the week to show how much those dates can move.
-          And it estimates the chance that your tank overflows if rain turns the
-          playa to mud and the trucks can’t drive.
+          You enter details about your RV, who’s staying in it, when everyone
+          arrives and leaves, and how you use water. Poo Math models showers,
+          sinks, and toilet usage day by day, then calculates how many pump-outs
+          and fresh-water refills you’ll need and approximately when they’ll be
+          necessary. Since no two weeks on the playa go exactly as planned, it
+          also simulates 1,000 randomized versions of your week to show how
+          much those dates might shift.
         </p>
         <p>
-          When it’s done, it drafts a reply you can paste straight into your
-          camp’s RV survey. It’s free at{" "}
+          It also estimates the risk of your tanks overflowing if rain turns the
+          playa into mud and pump-out trucks can no longer reach your camp.
+        </p>
+        <p>
+          Once the calculations are done, Poo Math generates a response you can
+          paste directly into your camp’s RV survey. It’s free at{" "}
           <a href="https://poomath.com/">poomath.com</a>, with presets for
-          common rental RVs and trailers and a few short guides, like how big RV
-          tanks really are and how much water one person goes through on the
-          playa.
+          common rental RVs and trailers, plus a few practical guides covering
+          things like actual RV tank capacities and how much water one person
+          typically uses on the playa.
         </p>
       </>
     ),
