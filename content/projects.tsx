@@ -258,19 +258,22 @@ export const stories: Record<string, Story> = {
     body: () => (
       <>
         <p>
-          git-clone fixes a small but constant annoyance: forgetting where you
-          cloned something. Give it a repository URL and it puts the repo in a
-          predictable place, <code>~/code/&lt;host&gt;/&lt;org&gt;/&lt;repo&gt;</code>,
-          creating the folders along the way. Everything from GitHub ends up
-          under <code>~/code/github.com</code>, no matter which folder you were
-          in when you cloned it.
+          git-clone solves a small but recurring annoyance: forgetting where you
+          cloned a repository. Give it a repository URL, and it clones the repo
+          into a predictable location:{" "}
+          <code>~/code/&lt;host&gt;/&lt;org&gt;/&lt;repo&gt;</code>. It creates
+          the necessary directories along the way, so everything from GitHub
+          ends up under <code>~/code/github.com</code>, regardless of which
+          directory you’re currently in.
         </p>
         <p>
-          It understands all the usual ways of writing a repo address, whether
-          that’s HTTPS, SSH or just <code>github.com/org/repo</code>. When it’s
-          done it prints the path, so you can clone a repo and cd into it in one
-          go. If a clone fails halfway, it cleans up instead of leaving empty
-          folders behind, and the base folder can be moved with an environment
+          It understands the usual ways of specifying a repository, whether
+          through HTTPS, SSH, or a shorthand like{" "}
+          <code>github.com/org/repo</code>. Once the clone is complete, it
+          prints the resulting path, making it easy to clone a repo and{" "}
+          <code>cd</code> into it in a single command. If cloning fails, it
+          cleans up any partially created directories instead of leaving a mess
+          behind. You can also change the base directory using an environment
           variable.
         </p>
       </>
