@@ -9,6 +9,12 @@ title, profile links, side projects, contact email) and
 [`content/about.tsx`](content/about.tsx) (the about paragraphs).
 Replace `public/photo.jpg` to change the photo (square, at least 400×400).
 
+Each public side project has its own page at `/projects/<slug>`. The `slug`
+on its card in `content/site.ts` turns the page on, and the write-up, tagline
+and optional docs link live under the same key in
+[`content/projects.tsx`](content/projects.tsx). A slug without a write-up
+fails the build. Private projects (no `repo`) get no slug and no page.
+
 The `/work` page (intro, offers, how to get in touch) comes from
 [`content/work.tsx`](content/work.tsx). Its `connect` object holds the booking
 link; while empty it falls back to email, so the page works before the
@@ -64,7 +70,8 @@ The page ships a canonical URL, Open Graph/Twitter tags, a generated social
 image (`app/opengraph-image.tsx`), a generated Apple touch icon
 (`app/apple-icon.tsx`), `favicon.ico` alongside `icon.svg`, JSON-LD
 `WebSite`/`ProfilePage`/`Person` data plus a `SoftwareSourceCode` entry per
-public project, a `googlebot` tag allowing large image previews,
+public project (repeated, with a breadcrumb, on each project's page), a
+`googlebot` tag allowing large image previews,
 `/robots.txt`, `/sitemap.xml` and `/llms.txt` (a Markdown summary for LLMs,
 built from `content/site.ts`, with the about prose rendered from
 `content/about.tsx`). The 404 page (`app/not-found.tsx`) has its own

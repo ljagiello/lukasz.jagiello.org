@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { About } from "@/content/about";
+import { projectPath } from "@/content/projects";
 import { activeLinks, projects, site } from "@/content/site";
 import photo from "@/public/photo.jpg";
 import { ProfileIcon } from "./profile-icon";
+import { softwareSourceCode } from "./projects/software";
 
 const home = `${site.url}/`;
 
@@ -68,23 +70,8 @@ const jsonLd = {
           .filter((href) => href.startsWith("https://")),
       },
     },
-    // The public side projects, credited to him. Private ones (no repo) are
-    // left out.
-    ...projects.flatMap((project) =>
-      project.repo
-        ? [
-            {
-              "@type": "SoftwareSourceCode",
-              name: project.name,
-              description: project.description,
-              codeRepository: project.repo,
-              url: project.url ?? project.repo,
-              programmingLanguage: project.language,
-              author: { "@id": `${home}#person` },
-            },
-          ]
-        : [],
-    ),
+    // The public side projects, credited to him.
+    ...projects.flatMap(softwareSourceCode),
   ],
 };
 
@@ -159,7 +146,15 @@ export default function Home() {
                       {project.language} · {project.year}
                     </span>
                   </p>
-                  <h3>{project.name}</h3>
+                  <h3>
+                    {project.slug ? (
+                      <Link href={projectPath(project.slug)}>
+                        {project.name}
+                      </Link>
+                    ) : (
+                      project.name
+                    )}
+                  </h3>
                   <p className="card-description">{project.description}</p>
                   {project.url || project.repo ? (
                     <p className="card-links mono">

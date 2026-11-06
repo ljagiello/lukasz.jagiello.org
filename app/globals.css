@@ -328,6 +328,7 @@ a:hover {
 }
 
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -340,7 +341,12 @@ a:hover {
     box-shadow 300ms;
 }
 
-.card:hover {
+/* Only cards you can click light up: a project card with a page, and the
+   offer cards on /work, which are decoration. A project with no page
+   (IceFinder) stays still. */
+.card:has(h3 a):hover,
+.card:has(h3 a:focus-visible),
+.work .card:hover {
   border-color: var(--acc);
   box-shadow: 0 0 48px -8px var(--glow);
 }
@@ -361,6 +367,31 @@ a:hover {
   letter-spacing: -0.02em;
 }
 
+/* The name links to the project's page, and its ::after stretches that link
+   over the whole card, so a click anywhere on the card opens the page. The
+   website and repo links sit above it and still go to their own targets. */
+.card h3 a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 200ms;
+}
+
+.card h3 a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.card:hover h3 a {
+  color: var(--acc);
+}
+
+/* The card's glow shows keyboard focus, so the link needs no outline. */
+.card h3 a:focus-visible {
+  outline: none;
+}
+
 .card-description {
   flex: 1;
   margin: 0;
@@ -379,7 +410,10 @@ a:hover {
   font-size: 11px;
 }
 
+/* Above the card-wide link, so these still open their own targets. */
 .card-links a {
+  position: relative;
+  z-index: 1;
   overflow-wrap: anywhere;
 }
 
@@ -585,6 +619,128 @@ a:hover {
   text-decoration: none;
 }
 
+/* Project pages */
+
+/* Keep a name like "git-clone" from breaking at the hyphen. */
+.crumb span:last-child {
+  white-space: nowrap;
+}
+
+.project-hero {
+  padding: clamp(48px, 8vw, 96px) 0 clamp(32px, 5vw, 56px);
+}
+
+.project-hero h1 {
+  margin: 0;
+  font-size: clamp(44px, 7vw, 80px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  overflow-wrap: anywhere;
+}
+
+.project-tagline {
+  margin: 16px 0 0;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.3;
+  color: var(--mute);
+  text-wrap: balance;
+}
+
+/* The write-up at reading width, the facts beside it once there's room. */
+.project-layout {
+  display: grid;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (min-width: 960px) {
+  .project-layout {
+    grid-template-columns: minmax(0, 700px) minmax(240px, 320px);
+    justify-content: space-between;
+    gap: 64px;
+  }
+}
+
+.project-story {
+  text-wrap: pretty;
+}
+
+.project-story p {
+  margin: 0 0 1em;
+}
+
+.project-story p:last-child {
+  margin-bottom: 0;
+}
+
+/* The opening paragraph in full ink, the rest muted, as on the home page. */
+.project-story p + p {
+  color: var(--mute);
+}
+
+.project-story code {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 0.82em;
+  white-space: nowrap;
+}
+
+.project-facts {
+  padding: 22px;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  background: var(--soft);
+  font-size: 12px;
+}
+
+.project-facts dl {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+}
+
+.project-facts dt {
+  color: var(--mute);
+  font-size: 11px;
+}
+
+.project-facts dd {
+  margin: 2px 0 0;
+  overflow-wrap: anywhere;
+}
+
+.project-more {
+  margin-top: 72px;
+  padding-top: 40px;
+  border-top: 1px solid var(--rule);
+}
+
+.project-more h2 {
+  margin: 0 0 20px;
+  font-size: clamp(24px, 3vw, 30px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.project-more ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: 12px 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-more a {
+  font-weight: 600;
+}
+
+.project-more span {
+  display: block;
+  font-size: 15.5px;
+  color: var(--mute);
+}
+
 /* 404 page */
 
 .not-found {
@@ -622,6 +778,7 @@ a:hover {
 
   .profiles a,
   .card,
+  .card h3 a,
   .contact-button {
     transition: none;
   }
