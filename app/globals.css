@@ -328,6 +328,7 @@ a:hover {
 }
 
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -340,7 +341,12 @@ a:hover {
     box-shadow 300ms;
 }
 
-.card:hover {
+/* Only cards you can click light up: a project card with a page, and the
+   offer cards on /work, which are decoration. A project with no page
+   (IceFinder) stays still. */
+.card:has(h3 a):hover,
+.card:has(h3 a:focus-visible),
+.work .card:hover {
   border-color: var(--acc);
   box-shadow: 0 0 48px -8px var(--glow);
 }
@@ -361,16 +367,29 @@ a:hover {
   letter-spacing: -0.02em;
 }
 
-/* The name links to the project's page; the card's other links carry the
-   underline. */
+/* The name links to the project's page, and its ::after stretches that link
+   over the whole card, so a click anywhere on the card opens the page. The
+   website and repo links sit above it and still go to their own targets. */
 .card h3 a {
   color: inherit;
   text-decoration: none;
   transition: color 200ms;
 }
 
-.card h3 a:hover {
+.card h3 a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.card:hover h3 a {
   color: var(--acc);
+}
+
+/* The card's glow shows keyboard focus, so the link needs no outline. */
+.card h3 a:focus-visible {
+  outline: none;
 }
 
 .card-description {
@@ -391,7 +410,10 @@ a:hover {
   font-size: 11px;
 }
 
+/* Above the card-wide link, so these still open their own targets. */
 .card-links a {
+  position: relative;
+  z-index: 1;
   overflow-wrap: anywhere;
 }
 
