@@ -13,7 +13,8 @@ Each public side project has its own page at `/projects/<slug>`. The `slug`
 on its card in `content/site.ts` turns the page on, and the write-up, tagline
 and optional docs link live under the same key in
 [`content/projects.tsx`](content/projects.tsx). A slug without a write-up
-fails the build. Private projects (no `repo`) get no slug and no page.
+fails the build. A private project (no `repo`) can have a page too; it just
+shows no source link. A card without a slug gets no page.
 
 The `/work` page (intro, offers, how to get in touch) comes from
 [`content/work.tsx`](content/work.tsx). Its `connect` object holds the booking

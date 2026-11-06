@@ -31,7 +31,8 @@ export type Project = {
   // Omit for private projects.
   repo?: string;
   // Its page on this site, /projects/<slug>, with the write-up from
-  // projects.tsx. Omit for private projects, which get no page.
+  // projects.tsx. A private project can have one too; it just shows no source
+  // link. Omit to leave the project without a page.
   slug?: string;
 };
 
@@ -162,6 +163,8 @@ export const projects: Project[] = [
       "A wearable LED pendant for Burning Man 2027. Its lights point toward your friends, so you can find each other anywhere on the playa.",
     language: "C++",
     year: "2026",
+    // Private repo, so no `repo`: the page has no source link.
+    slug: "icefinder",
   },
   {
     name: "lastwar-client",

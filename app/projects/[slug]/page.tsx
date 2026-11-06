@@ -65,6 +65,8 @@ export default async function Project({ params }: PageProps<"/projects/[slug]">)
   const home = `${site.url}/`;
   const url = `${site.url}${project.path}`;
   const title = titleOf(project);
+  // Empty for a private project (no repo), which then has no `about`.
+  const software = softwareSourceCode(project);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -75,7 +77,7 @@ export default async function Project({ params }: PageProps<"/projects/[slug]">)
         name: title,
         description: project.description,
         isPartOf: { "@id": `${home}#website` },
-        about: { "@id": `${url}#software` },
+        ...(software.length > 0 ? { about: { "@id": `${url}#software` } } : {}),
         author: { "@id": `${home}#person` },
         breadcrumb: { "@id": `${url}#breadcrumb` },
         dateModified: site.updated,
@@ -88,7 +90,7 @@ export default async function Project({ params }: PageProps<"/projects/[slug]">)
           { "@type": "ListItem", position: 2, name: project.name, item: url },
         ],
       },
-      ...softwareSourceCode(project),
+      ...software,
     ],
   };
 
