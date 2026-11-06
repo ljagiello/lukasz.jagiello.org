@@ -14,6 +14,49 @@ export type Story = {
 };
 
 export const stories: Record<string, Story> = {
+  icefinder: {
+    tagline: "A pendant that points you toward your friends",
+    body: () => (
+      <>
+        <p>
+          IceFinder is a wearable LED pendant I’m building for Burning Man
+          2027. Its ring of lights points toward your friends, so you can find
+          each other anywhere on the playa.
+        </p>
+        <p>
+          Each pendant knows where it is and which way you’re facing, from its
+          own GPS receiver, compass and motion sensor. Friends’ pendants share
+          their positions directly with each other over a radio mesh, with no
+          phones, cell signal or internet involved. Your pendant works out where
+          each friend is relative to you and lights up the part of the ring that
+          faces them, with the top of the ring meaning straight ahead.
+        </p>
+        <p>
+          Because the pendant shares where you are, security matters as much as
+          the lights. Friends are added by exchanging keys between their owners’
+          phones, and every position is encrypted so only the friends it’s meant
+          for can read it. Only the owner can change a pendant’s settings, and a
+          pendant installs only firmware updates that are signed.
+        </p>
+        <p>
+          Right now I’m rewriting the firmware in C on ESP-IDF, ahead of the
+          final circuit board. It runs on a development board with the same GPS
+          receiver, and it already handles owner pairing, the encrypted
+          Bluetooth session, saved settings, the lights and signed updates over
+          Bluetooth or Wi-Fi. The mesh radio and the direction display come
+          next.
+        </p>
+        <p>
+          A device people wear for a week in the desert has to be reliable, so
+          the firmware is tested hard. Every parser that reads outside data has
+          a fuzz target. Mutation tests check that the test suite actually
+          catches bugs. Independent QA agents write their own tests from the
+          design documents rather than from the code.
+        </p>
+        <p>The code is private for now, so there’s no repository to link.</p>
+      </>
+    ),
+  },
   "lastwar-client": {
     tagline: "A from-scratch client for Last War",
     body: () => (
