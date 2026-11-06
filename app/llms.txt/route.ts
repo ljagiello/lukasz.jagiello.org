@@ -1,11 +1,11 @@
 import { isValidElement, type ReactNode } from "react";
 import { About } from "@/content/about";
 import { activeLinks, projects, site } from "@/content/site";
-import { work } from "@/content/work";
+import { work, WorkIntro } from "@/content/work";
 
 type ProseProps = { children?: ReactNode; href?: string };
 
-// Turns the about prose (paragraphs of text and links) into Markdown, so
+// Turns prose (paragraphs of text and links) into Markdown, so
 // llms.txt carries the same words as the page without a second copy.
 function toMarkdown(node: ReactNode): string {
   if (typeof node === "string" || typeof node === "number") {
@@ -69,7 +69,8 @@ export function GET() {
     "## Side projects",
     projectLines.join("\n"),
     `## Work with me (${site.url}${work.path})`,
-    `${work.headline}. ${work.intro[0]}`,
+    `${work.headline}.`,
+    toMarkdown(WorkIntro()).trim(),
     offerLines.join("\n"),
     `Not a fit: ${work.notAFit.join(" ")}`,
     "## Contact",
