@@ -3,9 +3,9 @@
 // each such change lands on main, so don't edit it by hand.
 export const updated = {
   // site.ts, about.tsx and the photo
-  home: "2026-11-05T17:05:53-08:00",
+  home: "2026-11-05T18:29:42-08:00",
   // site.ts and work.tsx
-  work: "2026-11-05T17:05:53-08:00",
+  work: "2026-11-05T18:29:42-08:00",
   // site.ts and projects.tsx
-  projects: "2026-11-05T17:05:53-08:00",
+  projects: "2026-11-05T18:29:42-08:00",
 };
