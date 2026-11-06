@@ -1,6 +1,7 @@
 // Everything on the /work page (intro, offers, how to get in touch, the booking
 // link). The prose stays here so llms.txt can carry the same words as the page.
 
+import Link from "next/link";
 import { site } from "./site";
 
 export type Offer = {
@@ -14,6 +15,9 @@ export type Offer = {
   includes: string[];
   // Who it is for, one line.
   fit: string;
+  // The same price as numbers in USD, for the structured data: the lowest,
+  // the highest for a range, and what it's per for a rate.
+  amount: { min: number; max?: number; per?: "month" | "day" };
 };
 
 // Links that need an account on another service. An empty href falls back to
@@ -26,11 +30,14 @@ export const connect = {
 export const work = {
   path: "/work",
   title: "Work with me",
-  // The page title and the structured-data service name.
+  // The page's heading.
   headline: "Fractional engineering leadership for teams taking AI agents to production",
-  // Search result and link preview description.
+  // Search result and link preview title. Under 60 characters so Google
+  // doesn't cut it, with the name and the role people search for up front.
+  searchTitle: "Lukasz Jagiello: Fractional Head of Platform for AI agents",
+  // Search result and link preview description, under 160 characters.
   description:
-    "Lukasz Jagiello works with teams shipping AI agents to production: a fixed-fee Agent Platform Review, a fractional Head of Platform retainer, and a one-day team workshop on building and evaluating agent skills.",
+    "Lukasz Jagiello helps teams take AI agents to production: a fixed-fee Agent Platform Review, a fractional Head of Platform retainer, and team workshops.",
   offers: [
     {
       name: "Agent Platform Review",
@@ -47,6 +54,7 @@ export const work = {
         "The whole fee is credited to a retainer signed within 30 days",
       ],
       fit: "Seed to Series B teams that just raised, or whose agents just reached production.",
+      amount: { min: 7500 },
     },
     {
       name: "Fractional Head of Platform",
@@ -63,6 +71,7 @@ export const work = {
         "One client at a time on this retainer",
       ],
       fit: "Teams of 3–20 engineers that need a platform lead before they can hire one.",
+      amount: { min: 8000, max: 10000, per: "month" },
     },
     {
       name: "Team workshop",
@@ -77,6 +86,7 @@ export const work = {
         "A follow-up call two weeks later",
       ],
       fit: "Engineering and security teams adopting coding agents.",
+      amount: { min: 12000, per: "day" },
     },
   ] satisfies Offer[],
   howItWorks: [
@@ -103,7 +113,7 @@ export function WorkIntro() {
         from the runtime itself to production infrastructure (Kubernetes and GKE
         since 2019), HashiCorp Vault, and the underlying cost model. I also
         maintain{" "}
-        <a href="https://github.com/ljagiello/ctf-skills">ctf-skills</a>, an
+        <Link href="/projects/ctf-skills">ctf-skills</Link>, an
         open-source library of agent skills with an evaluation suite that lets
         coding agents solve CTF challenges.
       </p>

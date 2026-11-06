@@ -78,8 +78,9 @@ export const site = {
     ],
   },
   // Structured-data dates, also the sitemap's lastmod. Google wants a full
-  // date and time with a UTC offset, not just a date. `updated` is set
-  // automatically (see updated.ts).
+  // date and time with a UTC offset, not just a date. `updated` holds one
+  // date per page (home, work, projects) and is set automatically (see
+  // updated.ts).
   created: "2026-10-23T11:05:59-07:00",
   updated,
   // Structured-data topics, all mentioned on the page.

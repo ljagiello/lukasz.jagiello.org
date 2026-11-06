@@ -4,6 +4,12 @@ const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
+  poweredByHeader: false,
+  // The project pages' breadcrumb reads "Side projects", so someone trimming
+  // the URL back to /projects lands on that list instead of a 404.
+  async redirects() {
+    return [{ source: "/projects", destination: "/#projects", permanent: true }];
+  },
   // Next renders the page fresh, skipping the CDN cache, for crawlers on its
   // "HTML-limited bots" list (Bingbot, social link previews) so they get
   // metadata without streaming. Ours is static and already in the cached

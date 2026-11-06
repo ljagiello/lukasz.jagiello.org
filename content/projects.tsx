@@ -8,14 +8,28 @@ import { type Project, projects } from "./site";
 export type Story = {
   // A few words on what it is. Goes under the name and into the page title.
   tagline: string;
+  // When the page went live, for the structured data.
+  published: string;
+  // Search result and link preview title, when it should carry the words
+  // people search for. Defaults to "<name>: <tagline>". Not shown on the
+  // page; keep it under 60 characters.
+  searchTitle?: string;
+  // Search result and link preview description, when the card's text is too
+  // long for one. Defaults to the card's description. Not shown on the page;
+  // keep it under 160 characters.
+  searchDescription?: string;
   // A documentation site separate from `url`, if there is one.
   docs?: string;
   body: () => ReactNode;
 };
 
+// The project pages went live with #35, IceFinder's with #37.
+const launched = "2026-11-05T16:41:20-08:00";
+
 export const stories: Record<string, Story> = {
   icefinder: {
     tagline: "A pendant that points you toward your friends",
+    published: "2026-11-05T17:01:17-08:00",
     body: () => (
       <>
         <p>
@@ -65,6 +79,10 @@ export const stories: Record<string, Story> = {
   },
   "lastwar-client": {
     tagline: "A from-scratch client for Last War",
+    published: launched,
+    searchTitle: "lastwar-client: Reverse-engineering the Last War protocol",
+    searchDescription:
+      "A from-scratch Go client for Last War: Survival Game, built by reverse-engineering how the app talks to its servers. The protocol write-up is at lastwar.tech.",
     body: () => (
       <>
         <p>
@@ -113,6 +131,10 @@ export const stories: Record<string, Story> = {
   },
   "ctf-skills": {
     tagline: "Hacking know-how for AI coding agents",
+    published: launched,
+    searchTitle: "ctf-skills: CTF agent skills for Claude Code and Codex",
+    searchDescription:
+      "Open-source agent skills that teach Claude Code, Codex and other agents to solve CTF challenges, with an evaluation suite that checks whether they help.",
     docs: "https://ljagiello.github.io/ctf-skills/",
     body: () => (
       <>
@@ -160,6 +182,10 @@ export const stories: Record<string, Story> = {
   },
   "totem-compass": {
     tagline: "Inside a festival gadget",
+    published: launched,
+    searchTitle: "Totem Compass teardown: reverse-engineering the firmware",
+    searchDescription:
+      "A teardown of the Totem Compass: how its firmware works, how the devices talk to the phone and to each other, and an ESP32 that joins their mesh.",
     docs: "https://totem-cb8b3887.mintlify.app",
     body: () => (
       <>
@@ -206,6 +232,9 @@ export const stories: Record<string, Story> = {
   },
   "yamaha-cli": {
     tagline: "Control a Yamaha receiver from the terminal",
+    published: launched,
+    searchDescription:
+      "Control a Yamaha MusicCast receiver from the command line. It finds the receiver on your network and handles volume, inputs, radio and multi-room audio.",
     docs: "https://ljagiello.github.io/yamaha-cli/",
     body: () => (
       <>
@@ -246,6 +275,10 @@ export const stories: Record<string, Story> = {
   },
   "poo-math": {
     tagline: "A Burning Man RV pump-out planner",
+    published: launched,
+    searchTitle: "Poo Math: Burning Man RV pump-out and water planner",
+    searchDescription:
+      "Plan Burning Man RV pump-outs and water refills. Poo Math simulates a thousand possible weeks to predict when your tanks fill, then drafts your RV survey reply.",
     body: () => (
       <>
         <p>
@@ -281,6 +314,8 @@ export const stories: Record<string, Story> = {
   },
   airdash: {
     tagline: "Air quality in your macOS menu bar",
+    published: launched,
+    searchTitle: "airdash: AirGradient readings in your macOS menu bar",
     body: () => (
       <>
         <p>
@@ -304,6 +339,7 @@ export const stories: Record<string, Story> = {
   },
   "git-clone": {
     tagline: "Every repo in a predictable place",
+    published: launched,
     body: () => (
       <>
         <p>

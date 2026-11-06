@@ -14,12 +14,19 @@ on its card in `content/site.ts` turns the page on, and the write-up, tagline
 and optional docs link live under the same key in
 [`content/projects.tsx`](content/projects.tsx). A slug without a write-up
 fails the build. A private project (no `repo`) can have a page too; it just
-shows no source link. A card without a slug gets no page.
+shows no source link. A card without a slug gets no page. Each write-up also
+has a `published` date, and optionally a `searchTitle` and
+`searchDescription`: the title and description for search results and link
+previews, when they should carry the words people search for. They aren't
+shown on the page; without them, the title is "name: tagline" and the
+description is the card's text.
 
 The `/work` page (intro, offers, how to get in touch) comes from
 [`content/work.tsx`](content/work.tsx). Its `connect` object holds the booking
 link; while empty it falls back to email, so the page works before the
-calendar is connected.
+calendar is connected. `searchTitle` and `description` there are for search
+results only. Each offer's `amount` repeats its price as numbers for the
+structured data; keep it in step with `price`.
 
 Links with an empty `href` are hidden. Profiles in `extraProfiles` get no
 icon; they only go in the structured data and `/llms.txt`. Other people share
@@ -27,10 +34,13 @@ the name, so `disambiguatingDescription` (structured data) and `handles`
 (llms.txt) say which accounts are his; keep them in step with the links.
 
 The structured-data `dateModified` and the sitemap's `lastmod` come from
-`content/updated.ts`. Don't edit it: after a change to `content/` or the photo
-lands on `main`, the content-date workflow
-(`.github/workflows/content-date.yml`) writes that commit's time there and
-pushes it, which deploys again. It pushes straight to `main`, so keep `main`
+`content/updated.ts`, one date per page: the home page (`site.ts`,
+`about.tsx`, the photo), `/work` (`site.ts`, `work.tsx`) and the project pages
+(`site.ts`, `projects.tsx`). Don't edit it: after a change to `content/` or
+the photo lands on `main`, the content-date workflow
+(`.github/workflows/content-date.yml`) writes each page's last commit time
+there and pushes it, which deploys again. A new content file needs adding to
+its page's list in that workflow. It pushes straight to `main`, so keep `main`
 open to the Actions bot if you add branch protection.
 
 ## Development
@@ -67,20 +77,27 @@ Both are inlined at build time, so redeploy after changing them.
 
 ## Search engines
 
-The page ships a canonical URL, Open Graph/Twitter tags, a generated social
-image (`app/opengraph-image.tsx`), a generated Apple touch icon
-(`app/apple-icon.tsx`), `favicon.ico` alongside `icon.svg`, JSON-LD
-`WebSite`/`ProfilePage`/`Person` data plus a `SoftwareSourceCode` entry per
-public project (repeated, with a breadcrumb, on each project's page), a
-`googlebot` tag allowing large image previews,
-`/robots.txt`, `/sitemap.xml` and `/llms.txt` (a Markdown summary for LLMs,
-built from `content/site.ts`, with the about prose rendered from
-`content/about.tsx`). The 404 page (`app/not-found.tsx`) has its own
+Every page ships a canonical URL, Open Graph/Twitter tags and its own
+generated social image (`opengraph-image.tsx` next to each page, drawn with
+`app/og-card.tsx`). The site has a generated Apple touch icon
+(`app/apple-icon.tsx`), `favicon.ico` alongside `icon.svg`, a `googlebot` tag
+allowing large image previews, `/robots.txt`, `/sitemap.xml`, `/llms.txt` (a
+Markdown summary for LLMs, built from `content/site.ts`, with the about prose
+rendered from `content/about.tsx`) and `/llms-full.txt` (the same plus every
+project write-up and the work page in full).
+
+JSON-LD: the home page has `WebSite`/`ProfilePage`/`Person` data plus a
+`SoftwareSourceCode` entry per public project. Each project page repeats its
+`SoftwareSourceCode` and adds a `WebPage`, an `Article` (the write-up, with
+author and dates) and a breadcrumb. `/work` has a `WebPage`, a breadcrumb and
+a `Service` with its `Offer` per offer. The other pages carry short copies of
+the home page's `WebSite` and `Person` (`app/schema.ts`), so each one names
+its author on its own. The 404 page (`app/not-found.tsx`) has its own
 `noindex` tags.
 
 After each production deploy, the IndexNow workflow
 (`.github/workflows/indexnow.yml`) asks Bing and the other IndexNow engines to
-recrawl the home page. The key lives in `public/<key>.txt`, whose name and
+recrawl every URL in the live sitemap. The key lives in `public/<key>.txt`, whose name and
 content are the key; it's public by design. To change it, replace that file.
 Google doesn't use IndexNow and goes by the sitemap's `lastmod` instead.
 

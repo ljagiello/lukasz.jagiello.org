@@ -1,8 +1,9 @@
 name: IndexNow
 
 # After each production deploy, ask the IndexNow search engines (Bing, Yandex,
-# Seznam, Naver and others) to recrawl the page, so nobody has to submit it by
-# hand. Google doesn't use IndexNow; it goes by the sitemap's lastmod.
+# Seznam, Naver and others) to recrawl every page in the sitemap, so nobody has
+# to submit them by hand. Google doesn't use IndexNow; it goes by the sitemap's
+# lastmod.
 #
 # Vercel reports deploys as a commit status named "Vercel", not as GitHub
 # deployments, and a successful one on a main commit is a production deploy.
@@ -41,12 +42,18 @@ jobs:
             if [[ $name =~ ^[0-9a-f]{32}$ ]]; then key=$name; fi
           done
           : "${key:?no IndexNow key file in public/}"
-          # The home page is the only page; it's also all the sitemap lists.
-          jq -n --arg key "$key" '{
+          # Every URL in the live sitemap, so new pages (a project, /work) get
+          # submitted without editing this file. The deploy that triggered
+          # this run is already live, so the sitemap is current.
+          curl -sSf https://lukasz.jagiello.org/sitemap.xml \
+            | grep -o '<loc>[^<]*</loc>' | sed -e 's/<loc>//' -e 's/<\/loc>//' > urls.txt
+          [ -s urls.txt ] || { echo "No URLs in the sitemap"; exit 1; }
+          cat urls.txt
+          jq -n --arg key "$key" --rawfile urls urls.txt '{
             host: "lukasz.jagiello.org",
             key: $key,
             keyLocation: "https://lukasz.jagiello.org/\($key).txt",
-            urlList: ["https://lukasz.jagiello.org/"]
+            urlList: ($urls | split("\n") | map(select(length > 0)))
           }' > request.json
           code=$(curl -sS -o response.txt -w '%{http_code}' \
             -X POST https://api.indexnow.org/indexnow \

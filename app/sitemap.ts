@@ -8,19 +8,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       // With the slash, the same URL Google indexed.
       url: `${site.url}/`,
-      lastModified: site.updated,
+      lastModified: site.updated.home,
       changeFrequency: "weekly",
       priority: 1,
     },
     {
       url: `${site.url}${work.path}`,
-      lastModified: site.updated,
+      lastModified: site.updated.work,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     ...projectPages.map((project) => ({
       url: `${site.url}${project.path}`,
-      lastModified: site.updated,
+      lastModified: site.updated.projects,
       changeFrequency: "monthly" as const,
       priority: 0.6,
     })),
