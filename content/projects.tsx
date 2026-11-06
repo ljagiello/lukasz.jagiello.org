@@ -161,32 +161,36 @@ export const stories: Record<string, Story> = {
     body: () => (
       <>
         <p>
-          Yamaha’s networked receivers have an HTTP API, the same one the
-          MusicCast phone app uses. yamaha-cli turns it into simple terminal
-          commands for power, volume, inputs, sound modes, radio and streaming.
-          I built and tested it against an RX-V583, and it should work with any
-          MusicCast receiver.
+          Yamaha’s network-connected receivers expose an HTTP API, the same one
+          used by the MusicCast mobile app. yamaha-cli turns that API into
+          simple terminal commands for controlling power, volume, inputs, sound
+          modes, radio, and streaming. I built and tested it with an RX-V583,
+          and it should work with any MusicCast-compatible receiver.
         </p>
         <p>
-          I wanted something that’s easy to script. The first time you run it,
-          it searches your network, finds the receiver and saves it under a name
-          you pick. If the router later gives the receiver a new IP address, the
-          tool notices, finds it again and carries on. In a terminal it prints a
-          readable table, and when you pipe it into another program it switches
-          to JSON.
+          I wanted something that was easy to script and didn’t require knowing
+          the receiver’s IP address. On first run, the tool scans the local
+          network, discovers the receiver, and saves it under a name you choose.
+          If the receiver’s IP address changes later, yamaha-cli automatically
+          finds it again and updates its configuration. Output is formatted as a
+          readable table in the terminal and switches to JSON when piped into
+          another program.
         </p>
         <p>
-          Beyond the basics, it can link receivers in different rooms so they
-          play the same music, stream changes live as they happen, and talk to
-          older receivers through Yamaha’s legacy text protocol. It also comes
-          with an agent skill, so you can ask an AI assistant to turn the
-          receiver on and switch to HDMI 2, and it knows which commands to run.
+          Beyond basic control, it can synchronize playback across receivers in
+          different rooms, stream state changes in real time, and communicate
+          with older Yamaha receivers using their legacy text-based protocol. It
+          also includes an agent skill that lets AI assistants control the
+          receiver using natural language. For example, you can ask an
+          assistant to turn on the receiver and switch to HDMI 2, and it knows
+          which commands to execute.
         </p>
         <p>
-          One thing worth knowing: Yamaha’s protocol has no password and no
-          encryption, so anyone on your home network can control the receiver.
-          That’s how Yamaha designed it, not something a client can fix, and
-          it’s a good reason never to expose a receiver to the internet.
+          One important security consideration: Yamaha’s protocol has neither
+          authentication nor encryption. Anyone with access to your local
+          network can control the receiver. This is a limitation of Yamaha’s
+          protocol, not something a client can fix. Don’t expose your receiver
+          directly to the internet.
         </p>
       </>
     ),
