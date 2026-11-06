@@ -43,22 +43,27 @@ jobs:
           stamp() { git log -1 --format=%cI -- "$@"; }
           home=$(stamp content/site.ts content/about.tsx public/photo.jpg)
           work=$(stamp content/site.ts content/work.tsx)
-          projects=$(stamp content/site.ts content/projects.tsx)
-          cat > content/updated.ts <<EOF
-          // When each page's content last changed: the time of the last commit to the
-          // files it's built from. The content-date workflow rewrites this file after
-          // each such change lands on main, so don't edit it by hand.
-          export const updated = {
-            // site.ts, about.tsx and the photo
-            home: "$home",
-            // site.ts and work.tsx
-            work: "$work",
-            // site.ts and projects.tsx
-            projects: "$projects",
-          };
-          EOF
+          {
+            echo "// When each page's content last changed: the time of the last commit to the"
+            echo "// files it's built from. The content-date workflow rewrites this file after"
+            echo "// each such change lands on main, so don't edit it by hand."
+            echo "export const updated = {"
+            echo "  // site.ts, about.tsx and the photo"
+            echo "  home: \"$home\","
+            echo "  // site.ts and work.tsx"
+            echo "  work: \"$work\","
+            echo "  // Each project page: site.ts and its own file in projects/"
+            echo "  projects: {"
+            # One per write-up file; index.ts is the list, not a page.
+            for file in content/projects/*.tsx; do
+              echo "    \"$(basename "$file" .tsx)\": \"$(stamp content/site.ts "$file")\","
+            done
+            echo "  },"
+            echo "};"
+          } > content/updated.ts
+          cat content/updated.ts
           if git diff --quiet -- content/updated.ts; then
-            echo "Already home $home, work $work, projects $projects"
+            echo "Already up to date"
             exit 0
           fi
           git config user.name "github-actions[bot]"

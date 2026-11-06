@@ -11,9 +11,9 @@ Replace `public/photo.jpg` to change the photo (square, at least 400×400).
 
 Each public side project has its own page at `/projects/<slug>`. The `slug`
 on its card in `content/site.ts` turns the page on, and the write-up, tagline
-and optional docs link live under the same key in
-[`content/projects.tsx`](content/projects.tsx). A slug without a write-up
-fails the build. A private project (no `repo`) can have a page too; it just
+and optional docs link live in `content/projects/<slug>.tsx`, listed in
+[`content/projects/index.ts`](content/projects/index.ts). A slug without a
+write-up fails the build. A private project (no `repo`) can have a page too; it just
 shows no source link. A card without a slug gets no page. Each write-up also
 has a `published` date, and optionally a `searchTitle` and
 `searchDescription`: the title and description for search results and link
@@ -35,12 +35,13 @@ the name, so `disambiguatingDescription` (structured data) and `handles`
 
 The structured-data `dateModified` and the sitemap's `lastmod` come from
 `content/updated.ts`, one date per page: the home page (`site.ts`,
-`about.tsx`, the photo), `/work` (`site.ts`, `work.tsx`) and the project pages
-(`site.ts`, `projects.tsx`). Don't edit it: after a change to `content/` or
-the photo lands on `main`, the content-date workflow
+`about.tsx`, the photo), `/work` (`site.ts`, `work.tsx`) and each project page
+(`site.ts` and its own file in `content/projects/`). Don't edit it: after a
+change to `content/` or the photo lands on `main`, the content-date workflow
 (`.github/workflows/content-date.yml`) writes each page's last commit time
-there and pushes it, which deploys again. A new content file needs adding to
-its page's list in that workflow. It pushes straight to `main`, so keep `main`
+there and pushes it, which deploys again. A new project's file is picked up by
+itself; any other new content file needs adding to its page's list in that
+workflow. It pushes straight to `main`, so keep `main`
 open to the Actions bot if you add branch protection.
 
 ## Development

@@ -25,7 +25,7 @@ async function findProject(params: PageProps<"/projects/[slug]">["params"]) {
 }
 
 // The search-result title and description, which can say more than the
-// visible name and tagline (see Story in content/projects.tsx).
+// visible name and tagline (see Story in content/projects/index.ts).
 const titleOf = (project: ProjectPage) =>
   project.searchTitle ?? `${project.name}: ${project.tagline}`;
 const descriptionOf = (project: ProjectPage) =>
@@ -52,7 +52,7 @@ export async function generateMetadata({
       description,
       locale: "en_US",
       publishedTime: project.published,
-      modifiedTime: site.updated.projects,
+      modifiedTime: project.modified,
       authors: [home],
     },
     twitter: {
@@ -91,7 +91,7 @@ export default async function Project({ params }: PageProps<"/projects/[slug]">)
         author: personRef,
         breadcrumb: { "@id": `${url}#breadcrumb` },
         datePublished: project.published,
-        dateModified: site.updated.projects,
+        dateModified: project.modified,
       },
       // The write-up itself, signed by him, so search engines and LLMs credit
       // the author and dates.
@@ -103,7 +103,7 @@ export default async function Project({ params }: PageProps<"/projects/[slug]">)
         author: personRef,
         publisher: personRef,
         datePublished: project.published,
-        dateModified: site.updated.projects,
+        dateModified: project.modified,
         image: `${url}/opengraph-image`,
         mainEntityOfPage: { "@id": `${url}#webpage` },
         ...(software.length > 0 ? { about: { "@id": `${url}#software` } } : {}),

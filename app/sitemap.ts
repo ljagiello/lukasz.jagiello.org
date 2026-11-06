@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...projectPages.map((project) => ({
       url: `${site.url}${project.path}`,
-      lastModified: site.updated.projects,
+      lastModified: project.modified,
       changeFrequency: "monthly" as const,
       priority: 0.6,
     })),
