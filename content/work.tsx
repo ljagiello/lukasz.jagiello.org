@@ -85,7 +85,7 @@ export const work = {
     "We sign a short agreement and get started the following week.",
   ],
   notAFit: [
-    "Full-time or interim roles. I’m building an independent practice, not looking for another job.",
+    "Full-time or interim positions. I’m focused on building an independent practice and working with teams on a project basis.",
     "Anything related to Apple or Apple products.",
     "Equity-only advisory.",
   ],
