@@ -115,36 +115,42 @@ export const stories: Record<string, Story> = {
     body: () => (
       <>
         <p>
-          The Totem Compass is a handheld gadget for festivals, with a ring of
-          lights, a glowing touch-sensitive crystal, GPS and a compass. Friends
-          link their Totems into a small mesh network so they can find each
-          other in the crowd, send each other taps and messages, and head to a
-          shared meeting point.
+          The Totem Compass is a handheld gadget designed for festivals. It
+          combines a ring of lights, a glowing touch-sensitive crystal, GPS, and
+          a compass. Friends can link their Totems into a small mesh network to
+          find each other in the crowd, exchange taps and messages, and navigate
+          to a shared meeting point.
         </p>
         <p>
-          I wanted to know how it works, so I took apart the firmware Totem
-          publishes for its updates. Inside is an ESP32 running MicroPython, so
-          all of the device’s own logic is Python, frozen into the firmware as
-          compiled bytecode. It uses three radios on the same 2.4 GHz band:
-          Bluetooth for the phone app, ESP-NOW for the mesh between Totems, and
-          Wi-Fi for updates. The write-up covers all three, along with how the
-          firmware is laid out and how navigation works. It’s also upfront about
-          the gaps: every finding is marked as confirmed or inferred, and the
-          parts still unread are listed.
+          Curious about how it works, I reverse-engineered the firmware Totem
+          publishes for its updates. Under the hood, the device runs
+          MicroPython on an ESP32, with its logic compiled into bytecode and
+          embedded in the firmware. It uses three radios on the same 2.4 GHz
+          band: Bluetooth to communicate with the phone app, ESP-NOW for
+          communication between Totems, and Wi-Fi for firmware updates. The
+          accompanying research covers all three, along with the firmware
+          structure and navigation protocols.
         </p>
         <p>
-          Two tools came out of it. totemctl talks to a Totem over Bluetooth the
-          same way the official app does, so you can check its status, rename
-          it or change its settings from a laptop. totememu turns a plain ESP32
-          board into a stand-in Totem: it pairs with a real one through the
-          normal touch gesture and then swaps status updates with it over the
-          mesh.
+          I’m also explicit about what I haven’t figured out. Every finding is
+          marked as either confirmed or inferred, and anything I haven’t been
+          able to analyze is documented as well.
         </p>
         <p>
-          This is independent work, not affiliated with or endorsed by Totem
-          Labs. The firmware analysis is purely static, both tools have only
-          ever been run against my own Totem, and they deliberately leave out
-          anything that could affect other people’s devices nearby.
+          The research resulted in two tools. <code>totemctl</code> communicates
+          with a Totem over Bluetooth using the same protocol as the official
+          app, allowing you to check its status, rename it, and change its
+          settings from a laptop. <code>totememu</code> turns a standard ESP32
+          development board into a virtual Totem. It pairs with a real device
+          using the normal touch gesture and exchanges status updates with it
+          over the mesh network.
+        </p>
+        <p>
+          This is independent research and is not affiliated with or endorsed
+          by Totem Labs. The firmware analysis is entirely static, and both
+          tools have only been tested against my own Totem. They’re deliberately
+          designed to avoid interacting with or affecting other people’s devices
+          nearby.
         </p>
       </>
     ),
