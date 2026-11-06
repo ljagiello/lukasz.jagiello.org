@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { projectPages } from "@/content/projects";
 import { site } from "@/content/site";
 import { work } from "@/content/work";
 
@@ -17,5 +18,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    ...projectPages.map((project) => ({
+      url: `${site.url}${project.path}`,
+      lastModified: site.updated,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
   ];
 }

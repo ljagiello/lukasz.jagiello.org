@@ -30,6 +30,9 @@ export type Project = {
   url?: string;
   // Omit for private projects.
   repo?: string;
+  // Its page on this site, /projects/<slug>, with the write-up from
+  // projects.tsx. Omit for private projects, which get no page.
+  slug?: string;
 };
 
 export const site = {
@@ -169,6 +172,7 @@ export const projects: Project[] = [
     year: "2026",
     url: "https://lastwar.tech",
     repo: "https://github.com/ljagiello/lastwar-client",
+    slug: "lastwar-client",
   },
   {
     name: "ctf-skills",
@@ -178,6 +182,7 @@ export const projects: Project[] = [
     language: "Python",
     year: "2026",
     repo: "https://github.com/ljagiello/ctf-skills",
+    slug: "ctf-skills",
   },
   {
     name: "Totem Compass",
@@ -187,6 +192,7 @@ export const projects: Project[] = [
     language: "Go",
     year: "2026",
     repo: "https://github.com/ljagiello/totem-compass",
+    slug: "totem-compass",
   },
   {
     name: "yamaha-cli",
@@ -196,6 +202,7 @@ export const projects: Project[] = [
     language: "Go",
     year: "2026",
     repo: "https://github.com/ljagiello/yamaha-cli",
+    slug: "yamaha-cli",
   },
   {
     name: "Poo Math",
@@ -206,6 +213,7 @@ export const projects: Project[] = [
     year: "2026",
     url: "https://poomath.com/",
     repo: "https://github.com/ljagiello/poomath.com",
+    slug: "poo-math",
   },
   {
     name: "airdash",
@@ -215,6 +223,7 @@ export const projects: Project[] = [
     language: "Go",
     year: "2023",
     repo: "https://github.com/ljagiello/airdash",
+    slug: "airdash",
   },
   {
     name: "git-clone",
@@ -224,6 +233,7 @@ export const projects: Project[] = [
     language: "Go",
     year: "2024",
     repo: "https://github.com/ljagiello/git-clone",
+    slug: "git-clone",
   },
 ];
 

@@ -8,7 +8,9 @@ const nextConfig: NextConfig = {
   // "HTML-limited bots" list (Bingbot, social link previews) so they get
   // metadata without streaming. Ours is static and already in the cached
   // page's <head>, so this matches no real user agent and they get the cached
-  // page too. Drop it if metadata ever comes from generateMetadata.
+  // page too. The project pages' generateMetadata runs at build time (every
+  // slug is prerendered), so their tags are in the cached <head> as well. Drop
+  // this if a page's metadata ever needs request-time data.
   htmlLimitedBots: /NoHtmlLimitedBots/,
   experimental: {
     // Puts the (small, Tailwind) stylesheet in a <style> tag instead of a

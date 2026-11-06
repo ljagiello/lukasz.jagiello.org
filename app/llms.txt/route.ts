@@ -1,5 +1,6 @@
 import { isValidElement, type ReactNode } from "react";
 import { About } from "@/content/about";
+import { projectPath } from "@/content/projects";
 import { activeLinks, projects, site } from "@/content/site";
 import { work, WorkIntro } from "@/content/work";
 
@@ -30,12 +31,19 @@ function toMarkdown(node: ReactNode): string {
 // A Markdown summary of the page for LLMs (https://llmstxt.org). Built from
 // the same content as the page, and prerendered at build time.
 export function GET() {
+  // Each public project links to its page here, then to its own site and
+  // source. Private ones are named without a link.
   const projectLines = projects.map((project) => {
-    const href = project.url ?? project.repo;
-    const name = href ? `[${project.name}](${href})` : project.name;
-    const source =
-      project.url && project.repo ? ` [Source code](${project.repo})` : "";
-    return `- ${name}: ${project.description} (${project.language}, ${project.year})${source}`;
+    const name = project.slug
+      ? `[${project.name}](${site.url}${projectPath(project.slug)})`
+      : project.name;
+    const extra = [
+      project.url ? `[Website](${project.url})` : "",
+      project.repo ? `[Source code](${project.repo})` : "",
+    ]
+      .filter(Boolean)
+      .join(" ");
+    return `- ${name}: ${project.description} (${project.language}, ${project.year})${extra ? ` ${extra}` : ""}`;
   });
 
   const linkedIn = activeLinks.find((link) => link.icon === "linkedin");
