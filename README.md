@@ -72,3 +72,6 @@ Dependabot (`.github/dependabot.yml`) opens weekly grouped PRs for npm,
 GitHub Actions and OpenTofu providers, skipping releases younger than three
 days. CI (`.github/workflows/ci.yml`) lints, type-checks and builds every PR,
 and Vercel deploys a preview for it.
+
+The `minimatch` override in `package.json` patches GHSA-g3hv-75wg-m249 for
+ESLint; drop it once ESLint and typescript-eslint depend on `minimatch@^11`.
