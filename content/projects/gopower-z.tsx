@@ -19,32 +19,38 @@ export const story: Story = {
     <>
       <p>
         The POWER-Z KM003C from ChargerLAB is a small USB-C power meter. It
-        sits between a charger and the device being charged, shows the
+        sits between a charger and the device being charged, displays
         voltage, current, and power on its screen, and captures the USB Power
-        Delivery messages the two exchange to agree on a voltage. gopower-z
-        is a Go library and a command-line tool, <code>powerz</code>, that
-        reads the meter from a Mac or a Linux machine.
+        Delivery messages exchanged between the two devices to negotiate a
+        voltage. gopower-z is a Go library and command-line tool,{" "}
+        <code>powerz</code>, that lets you read data from the meter on macOS
+        or Linux.
       </p>
       <p>
-        I designed it for AI agents as much as for people. At a terminal, it
-        opens a live dashboard. When its output goes to another program, it
-        prints JSON with the units in the field names. Errors come with
-        stable exit codes and a hint about what to try next, and{" "}
-        <code>powerz schema</code> describes every command, flag, and field,
-        so an agent can learn the tool without reading the docs. The main
-        command for agents is <code>powerz measure</code>: it samples for a
-        set time, then reports the minimum, average, and maximum voltage,
-        current, and power, the energy used, and the power contract the
-        charger and device agreed on.
+        I designed it for AI agents as much as for people. When run in a
+        terminal, it opens a live dashboard. When its output is piped to
+        another program, it produces JSON with units included in the field
+        names. Errors come with stable exit codes and hints about what to try
+        next. And <code>powerz schema</code> describes every command, flag,
+        and field, allowing an agent to discover how to use the tool without
+        having to read the documentation.
       </p>
       <p>
-        The meter can do more than measure, and some of it you wouldn’t want
-        a script to trigger by accident. Its commands include writing
-        settings, a factory reset, firmware updates, and a mode that makes
-        the attached charger raise the voltage on the cable. powerz sends
-        only a short whitelist of read requests. Every message is checked
-        against that list right before it goes to the meter, and a fuzz test
-        confirms the check lets nothing else through.
+        The main command for agents is <code>powerz measure</code>. It
+        samples for a specified duration and reports the minimum, average,
+        and maximum voltage, current, and power, along with the energy
+        consumed and the power contract negotiated between the charger and
+        the device.
+      </p>
+      <p>
+        The meter can do more than just measure, and some of its capabilities
+        aren’t things you’d want a script to trigger accidentally. Its
+        commands include writing settings, performing a factory reset,
+        updating firmware, and activating a mode that makes the attached
+        charger raise the voltage on the cable. powerz sends only a short
+        whitelist of read-only requests. Every message is checked against
+        that list immediately before being sent to the meter, and a fuzz test
+        verifies that nothing else can get through.
       </p>
       <figure className="project-figure">
         <Image
@@ -58,38 +64,44 @@ export const story: Story = {
         </figcaption>
       </figure>
       <p>
-        The protocol work starts from what others have already published:
-        ChargerLAB’s own documents and sample code, the Linux kernel’s driver
-        for the meter, and several open-source clients and research notes. I
-        checked those sources against each other and filled the gaps myself.
-        I decompiled two versions of the official Windows app to see what it
-        sends to the meter. I also verified a published method for
-        decrypting the meter’s firmware, then decrypted all 21 releases on
-        ChargerLAB’s Google Drive and analyzed them to see how the meter
-        responds. That analysis showed, for example, that the meaning of the
-        last few bytes of each reading changed in firmware 2.0.1.
+        The protocol research builds on what others have already published:
+        ChargerLAB’s own documentation and sample code, the Linux kernel
+        driver for the meter, and several open-source clients and research
+        notes. I cross-checked these sources and filled in the gaps myself.
       </p>
       <p>
-        Testing on my own meter turned up a trap: if the computer sends a new
-        request while the meter still has a reply waiting, the meter stops
-        responding and its watchdog reboots it. powerz now reads every reply
-        to the end, including the empty packet that closes some of them,
-        before it sends anything else. Its tests replay messages captured
-        from my meter, and every command has been run against it. The Linux
-        builds pass CI but haven’t been tried with a meter yet.
+        I also decompiled two versions of the official Windows application to
+        see exactly what they send to the meter. I verified a previously
+        published method for decrypting the meter’s firmware, then decrypted
+        all 21 releases available on ChargerLAB’s Google Drive and analyzed
+        them to better understand how the meter responds. This analysis
+        revealed, for example, that the meaning of the last few bytes in each
+        reading changed with firmware version 2.0.1.
       </p>
       <p>
-        The details are written up at{" "}
-        <a href="https://powerz.jagiello.dev/">powerz.jagiello.dev</a>: the
-        CLI reference, the USB protocol byte by byte, hardware notes, and the
-        analyses of the official software and the firmware. Each claim is
-        labeled with its source, so you can tell what was tested on the meter
-        from what was read in code or documents.
+        Testing on my own meter uncovered a tricky issue: if the computer
+        sends a new request while the meter still has a reply waiting, the
+        meter stops responding and its watchdog eventually reboots it. powerz
+        now reads every reply to completion, including the empty packet that
+        terminates some responses, before sending another request.
       </p>
       <p>
-        This is an independent project, not affiliated with or endorsed by
-        ChargerLAB. The firmware and software analysis is static, and powerz
-        has only been run against my own meter.
+        The test suite replays messages captured from my meter, and I’ve run
+        every command against the actual hardware. The Linux builds pass CI,
+        but I haven’t had a chance to test them with a meter yet.
+      </p>
+      <p>
+        I’ve documented the details at{" "}
+        <a href="https://powerz.jagiello.dev/">powerz.jagiello.dev</a>,
+        including the CLI reference, a byte-by-byte breakdown of the USB
+        protocol, hardware notes, and analyses of the official software and
+        firmware. Every claim is labeled with its source, so you can
+        distinguish what I’ve verified on the actual hardware from what I’ve
+        learned from source code and documentation.
+      </p>
+      <p>
+        The firmware and software analysis was performed statically, and
+        powerz has only been tested against my own meter.
       </p>
     </>
   ),
