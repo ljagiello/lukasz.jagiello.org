@@ -10,6 +10,7 @@ import { updated } from "../updated";
 import { story as airdash } from "./airdash";
 import { story as ctfSkills } from "./ctf-skills";
 import { story as gitClone } from "./git-clone";
+import { story as gopowerZ } from "./gopower-z";
 import { story as icefinder } from "./icefinder";
 import { story as lastwarClient } from "./lastwar-client";
 import { story as pooMath } from "./poo-math";
@@ -49,6 +50,7 @@ export type Story = {
 // too.
 export const stories: Record<string, Story> = {
   icefinder,
+  "gopower-z": gopowerZ,
   "lastwar-client": lastwarClient,
   "ctf-skills": ctfSkills,
   "totem-compass": totemCompass,

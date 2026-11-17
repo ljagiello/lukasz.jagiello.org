@@ -170,6 +170,17 @@ export const projects: Project[] = [
     slug: "icefinder",
   },
   {
+    name: "gopower-z",
+    category: "Hardware",
+    description:
+      "A command-line tool for the POWER-Z KM003C USB-C power meter. It reads voltage, current and USB Power Delivery traffic as JSON for scripts and AI agents. It only reads, so it can’t change the meter’s settings or the voltage.",
+    language: "Go",
+    year: "2026",
+    url: "https://powerz.jagiello.dev/",
+    repo: "https://github.com/ljagiello/gopower-z",
+    slug: "gopower-z",
+  },
+  {
     name: "lastwar-client",
     category: "Hacking and tooling",
     description:
