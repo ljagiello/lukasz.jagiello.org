@@ -35,12 +35,50 @@ export const story: Story = {
         and field, allowing an agent to discover how to use the tool without
         having to read the documentation.
       </p>
+      <figure className="project-figure">
+        {/* Plays only when motion is allowed: with reduced motion no source
+            matches, so the poster stays and the clip isn't downloaded. WebM
+            first, as recorded; the MP4 is for browsers without VP9. */}
+        <video
+          poster="/img/gopower-z-dashboard.webp"
+          width={1180}
+          height={520}
+          autoPlay
+          loop
+          muted
+          playsInline
+          aria-label="The powerz dashboard updating live: voltage, current and power with their ranges, energy and charge, the CC and D+/D− lines, and a power graph with a burst every four seconds"
+        >
+          <source
+            src="/img/gopower-z-dashboard.webm"
+            type="video/webm"
+            media="(prefers-reduced-motion: no-preference)"
+          />
+          <source
+            src="/img/gopower-z-dashboard.mp4"
+            type="video/mp4"
+            media="(prefers-reduced-motion: no-preference)"
+          />
+        </video>
+        <figcaption>
+          The live dashboard, recorded from my meter. The power graph shows a
+          test board drawing a burst of current every four seconds.
+        </figcaption>
+      </figure>
       <p>
         The main command for agents is <code>powerz measure</code>. It
         samples for a specified duration and reports the minimum, average,
         and maximum voltage, current, and power, along with the energy
         consumed and the power contract negotiated between the charger and
         the device.
+      </p>
+      <p>
+        An average can hide what the current actually did, so{" "}
+        <code>measure</code> also splits the window into short time slices
+        and points out where the typical current changed and stayed changed,
+        such as when a charger switches on partway through. On my meter, the
+        slices caught the test board’s four-second bursts, which the average
+        had smoothed over.
       </p>
       <p>
         The meter can do more than just measure, and some of its capabilities
