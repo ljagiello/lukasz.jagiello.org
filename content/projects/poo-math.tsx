@@ -1,3 +1,4 @@
+import screenshot from "@/public/img/poo-math.webp";
 import type { Story } from "./index";
 
 // The write-up on /projects/poo-math. See index.ts for the fields.
@@ -7,6 +8,11 @@ export const story: Story = {
   searchTitle: "Poo Math: Burning Man RV pump-out and water planner",
   searchDescription:
     "Plan Burning Man RV pump-outs and water refills. Poo Math simulates a thousand possible weeks to predict when your tanks fill, then drafts your RV survey reply.",
+  image: {
+    file: screenshot,
+    path: "/img/poo-math.webp",
+    alt: "Poo Math’s pump-out risk panel: likely and service-by dates for three pump-outs, the pump-out count across 1,000 simulated weeks, and an 18% chance that a rain closure overflows the gray tank",
+  },
   body: () => (
     <>
       <p>
