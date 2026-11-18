@@ -689,13 +689,14 @@ a:hover {
   letter-spacing: -0.02em;
 }
 
-/* A picture inside the write-up, framed like the one above it, with its
-   caption underneath. */
+/* A picture or clip inside the write-up, framed like the one above it, with
+   its caption underneath. */
 .project-figure {
   margin: 32px 0;
 }
 
-.project-figure img {
+.project-figure img,
+.project-figure video {
   display: block;
   max-width: 100%;
   height: auto;
